@@ -19,7 +19,7 @@ export default function PrivacyPolicy() {
 
        <div className="prose max-w-none">
          <p className="mb-4">
-           Marketing Tools(이하 '사이트')는 이용자의 프라이버시를 존중하며, 관련 법령을 준수하기 위해 다음과 같은 처리방침을 두고 있습니다.
+           Marketing Tools(이하 &apos;사이트&apos;)는 이용자의 프라이버시를 존중하며, 관련 법령을 준수하기 위해 다음과 같은 처리방침을 두고 있습니다.
          </p>
 
          <h2 className="text-2xl font-semibold mt-8 mb-4">1. 수집하는 정보</h2>

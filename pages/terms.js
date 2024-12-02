@@ -19,7 +19,7 @@ export default function Terms() {
 
        <div className="prose max-w-none">
          <p className="mb-4">
-           Marketing Tools(이하 '사이트')의 서비스 이용과 관련하여 필요한 사항을 규정합니다.
+           Marketing Tools(이하 &apos;사이트&apos;)의 서비스 이용과 관련하여 필요한 사항을 규정합니다.
          </p>
 
          <h2 className="text-2xl font-semibold mt-8 mb-4">1. 목적</h2>
