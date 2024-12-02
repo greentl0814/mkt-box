@@ -21,6 +21,15 @@ export default function Home() {
       icon: <Youtube className="w-6 h-6" />,
       link: '/youtube'
     },
+
+    {
+      id: 'youtube-time',
+      title: '유튜브 타임스탬프 생성기',
+      description: '유튜브 동영상의 특정 시간대로 바로 이동하는 URL을 생성합니다.',
+      icon: <Youtube className="w-6 h-6" />,
+      link: '/youtube-time'
+    },
+
     {
       id: 'url',
       title: 'URL 단축기',
