@@ -47,6 +47,17 @@ export default function Home() {
      <Head>
        <title>마케팅 도구 모음 - 실용적인 마케팅 툴 모음</title>
        <meta name="description" content="UTM 생성, 썸네일 추출, URL 단축 등 마케터에게 필요한 다양한 도구를 제공합니다." />
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-T0EEHV122X"></script>
+       <script
+         dangerouslySetInnerHTML={{
+           __html: `
+             window.dataLayer = window.dataLayer || [];
+             function gtag(){dataLayer.push(arguments);}
+             gtag('js', new Date());
+             gtag('config', 'G-T0EEHV122X');
+           `,
+         }}
+       />
      </Head>
 
      <main className="container mx-auto px-4 py-8">
