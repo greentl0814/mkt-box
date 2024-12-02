@@ -1,5 +1,3 @@
-import { tools } from '../../data/tools';  // 기존 tools 데이터 사용
-
 const EXTERNAL_DATA_URL = 'https://mkt-box.vercel.app';
 
 function generateSiteMap() {
