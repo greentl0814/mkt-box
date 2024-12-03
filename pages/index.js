@@ -31,6 +31,14 @@ export default function Home() {
     },
 
     {
+      id: 'youtube-comments',
+      title: '유튜브 댓글 추출기',
+      description: '유튜브 영상의 댓글을 엑셀 파일로 추출합니다.',
+      icon: <Youtube className="w-6 h-6" />,
+      link: '/youtube-comments'
+    },
+
+    {
       id: 'url',
       title: 'URL 단축기',
       description: '긴 URL을 간단하게 줄여서 관리와 공유를 더 쉽게 만들어줍니다.',
