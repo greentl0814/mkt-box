@@ -57,7 +57,7 @@ export default function PrivacyPolicy() {
          <h2 className="text-2xl font-semibold mt-8 mb-4">5. 문의</h2>
          <p className="mb-4">
            개인정보 처리방침에 대한 문의사항은 다음 이메일로 연락주시기 바랍니다:<br />
-           이메일: kj0815@gmail.com
+           이메일: mkttoolbox.mas@gmail.com
          </p>
 
          <h2 className="text-2xl font-semibold mt-8 mb-4">6. 개인정보처리방침 변경</h2>

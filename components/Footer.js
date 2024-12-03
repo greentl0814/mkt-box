@@ -23,7 +23,7 @@ export default function Footer() {
           © {new Date().getFullYear()} Marketing Tools. All rights reserved.
         </p>
         <p className="text-center text-sm text-gray-500 mt-2">
-          오류 신고 및 문의 : kj0815@gmail.com
+          오류 신고 및 문의 : mkttoolbox.mas@gmail.com
         </p>
       </div>
     </footer>
