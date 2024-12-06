@@ -65,7 +65,10 @@ export default function Home() {
     <>
       <Head>
         <title>마케팅 도구 모음 - 실용적인 마케팅 툴 모음</title>
-        <meta name="description" content="UTM 생성, 썸네일 추출, URL 단축 등 마케터에게 필요한 다양한 도구를 제공합니다." />
+        <meta name="description" content="UTM 생성, 유튜브 댓글 및 썸네일 추출, URL 단축 등 마케터에게 필요한 다양한 도구를 제공합니다." />
+        <meta name="keywords" content="UTM 생성기, 유튜브 댓글 및 썸네일 추출, 마케팅 도구, URL 단축, 마케팅 분석" />
+        <meta property="og:title" content="마케팅 도구 모음" />
+        <meta property="og:description" content="마케터를 위한 필수 도구! UTM 생성, 댓글 및 유튜브 썸네일 추출, URL 단축 등 다양한 기능을 무료로 이용하세요." />
       </Head>
       {/* Google Analytics 스크립트 */}
       <Script
