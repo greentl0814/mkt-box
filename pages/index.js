@@ -69,6 +69,15 @@ export default function Home() {
       keywords: ['ROAS 계산', '광고 성과', 'CPC 분석', '광고 효율', '마케팅 지표', '성과 측정'],
       icon: <BarChart2 className="w-6 h-6" />,
       link: '/analytics'
+    },
+    {
+      id: 'word-cloud',
+      title: '워드클라우드 생성기',
+      description: '텍스트를 분석하여 단어 빈도수를 시각화하는 워드클라우드를 생성합니다.',
+      detailedDescription: '입력된 텍스트에서 자주 등장하는 단어를 추출하여 시각적으로 표현합니다. 단어의 출현 빈도에 따라 글자 크기가 자동으로 조절되며, 커스텀 색상과 레이아웃 옵션을 제공합니다.',
+      keywords: ['워드클라우드', '텍스트 시각화', '단어 빈도 분석', '키워드 추출', '텍스트 마이닝'],
+      icon: <Type className="w-6 h-6" />,
+      link: '/word-cloud'
     }
   ];
 
