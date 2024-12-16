@@ -10,9 +10,16 @@ interface Comment {
   author: string;
   date: string;
   numLikes: number;
+  isReply: boolean;
+  parentAuthor?: string;
 }
 
-const COMMENTS_LIMIT = 1000;
+interface FetchOptions {
+  includeReplies: boolean;
+  sortBy: 'relevance' | 'time';
+}
+
+const COMMENTS_LIMIT = 2000;
 const DAILY_LIMIT = 10;
 
 export default function YouTubeComments() {
@@ -24,6 +31,8 @@ export default function YouTubeComments() {
   const [totalComments, setTotalComments] = useState(0);
   const [dailyRequestCount, setDailyRequestCount] = useState(0);
   const [showTip, setShowTip] = useState(false);
+  const [includeReplies, setIncludeReplies] = useState(true);
+  const [sortBy, setSortBy] = useState<'relevance' | 'time'>('relevance');
 
   useEffect(() => {
     const count = localStorage.getItem('dailyRequestCount');
@@ -63,7 +72,7 @@ export default function YouTubeComments() {
     return date.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
   };
 
-  const fetchComments = async (videoId: string): Promise<Comment[]> => {
+  const fetchComments = async (videoId: string, options: FetchOptions): Promise<Comment[]> => {
     const comments: Comment[] = [];
     let pageToken = '';
     const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
@@ -82,7 +91,7 @@ export default function YouTubeComments() {
 
       while (comments.length < COMMENTS_LIMIT) {
         const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet,replies&videoId=${videoId}&maxResults=100&order=relevance&pageToken=${pageToken}&key=${API_KEY}`
+          `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet,replies&videoId=${videoId}&maxResults=100&order=${options.sortBy}&pageToken=${pageToken}&key=${API_KEY}`
         );
 
         if (!response.ok) {
@@ -103,17 +112,20 @@ export default function YouTubeComments() {
             comment: comment.textDisplay,
             author: comment.authorDisplayName,
             date: formatDate(comment.publishedAt),
-            numLikes: comment.likeCount
+            numLikes: comment.likeCount,
+            isReply: false
           });
 
-          if (item.snippet.totalReplyCount > 0 && item.replies && comments.length < COMMENTS_LIMIT) {
+          if (options.includeReplies && item.snippet.totalReplyCount > 0 && item.replies && comments.length < COMMENTS_LIMIT) {
             for (const reply of item.replies.comments) {
               if (comments.length >= COMMENTS_LIMIT) break;
               comments.push({
                 comment: reply.snippet.textDisplay,
                 author: reply.snippet.authorDisplayName,
                 date: formatDate(reply.snippet.publishedAt),
-                numLikes: reply.snippet.likeCount
+                numLikes: reply.snippet.likeCount,
+                isReply: true,
+                parentAuthor: comment.authorDisplayName
               });
             }
           }
@@ -133,7 +145,42 @@ export default function YouTubeComments() {
   };
 
   const exportToExcel = (comments: Comment[]) => {
-    const worksheet = XLSX.utils.json_to_sheet(comments);
+    // 엑셀용 데이터 포맷 변환
+    const excelData = comments.map(comment => ({
+      '내용': comment.comment,
+      '작성일': comment.date,
+      '좋아요 수': comment.numLikes,
+      '작성자': comment.author,
+      '댓글 유형': comment.isReply ? '↳ 답글' : '원댓글',
+      ...(comment.isReply && { '원댓글 작성자': comment.parentAuthor })
+    }));
+
+    // 컬럼 순서 지정
+    const columnOrder = [
+      '내용',
+      '작성일',
+      '좋아요 수',
+      '작성자',
+      '댓글 유형',
+      '원댓글 작성자'
+    ];
+
+    // 워크시트 생성 시 컬럼 순서 적용
+    const worksheet = XLSX.utils.json_to_sheet(excelData, {
+      header: columnOrder
+    });
+
+    // 컬럼별 너비 설정
+    const wscols = [
+      { wch: 40 },  // 내용
+      { wch: 20 },  // 작성일
+      { wch: 10 },  // 좋아요 수
+      { wch: 15 },  // 작성자
+      { wch: 10 },  // 댓글 유형
+      { wch: 15 }   // 원댓글 작성자
+    ];
+    worksheet['!cols'] = wscols;
+
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Comments');
 
@@ -165,7 +212,12 @@ export default function YouTubeComments() {
         throw new Error('올바른 YouTube URL이 아닙니다');
       }
 
-      const comments = await fetchComments(videoId);
+      const options: FetchOptions = {
+        includeReplies,
+        sortBy
+      };
+
+      const comments = await fetchComments(videoId, options);
       exportToExcel(comments);
       incrementDailyCount();
     } catch (err) {
@@ -191,10 +243,13 @@ export default function YouTubeComments() {
 
         <div className="bg-blue-50 border border-blue-200 text-blue-600 px-4 py-2 rounded mb-6">
           <div>
-            ⚡ 1회당 최대 1,000개의 댓글을 수집할 수 있습니다. (일일 사용 한도: {DAILY_LIMIT}회 중 {dailyRequestCount}회 사용)
+            ⚡ 1회당 최대 2,000개의 댓글을 수집할 수 있습니다. (일일 사용 한도: {DAILY_LIMIT}회 중 {dailyRequestCount}회 사용)
           </div>
           <div className="mt-2">
-            전체 이용자의 사용량에 따라 나의 한도와 상관없이 수집이 중단될 수 있습니다. 그런 경우 다음날 이용해 주세요
+            전체 이용자의 사용량에 따라 나의 한도와 상관없이 수집이 중단될 수 있습니다. 다음날 이용해 주세요
+          </div>
+          <div className="mt-2">
+            2,000개가 넘는 댓글이 있더라도 유튜브의 댓글 정책에 따라 전체 댓글이 수집되지 않을수 있습니다.
           </div>
         </div>
 
@@ -210,6 +265,32 @@ export default function YouTubeComments() {
             />
           </div>
 
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <label className="block mb-2 font-medium">정렬 방식</label>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as 'relevance' | 'time')}
+                className="w-full p-2 border rounded"
+              >
+                <option value="relevance">인기 댓글순</option>
+                <option value="time">최신순</option>
+              </select>
+            </div>
+
+            <div className="flex-1">
+              <label className="block mb-2 font-medium">대댓글 설정</label>
+              <select
+                value={includeReplies.toString()}
+                onChange={(e) => setIncludeReplies(e.target.value === 'true')}
+                className="w-full p-2 border rounded"
+              >
+                <option value="true">대댓글 포함</option>
+                <option value="false">대댓글 제외</option>
+              </select>
+            </div>
+          </div>
+
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-2 rounded">
               {error}
@@ -218,7 +299,8 @@ export default function YouTubeComments() {
 
           {showTip && (
             <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-2 rounded">
-              💡 전체 {totalComments.toLocaleString()}개의 댓글 중 인기 댓글순으로 상위 1,000개만 수집됩니다.
+              💡 전체 {totalComments.toLocaleString()}개의 댓글 중 {sortBy === 'relevance' ? '인기 댓글순' : '최신순'}으로 상위 2,000개만 수집됩니다.
+              {!includeReplies && ' (대댓글 제외)'}
             </div>
           )}
 
@@ -239,7 +321,7 @@ export default function YouTubeComments() {
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:bg-blue-300"
           >
             {loading ? '댓글 수집 중...' : '댓글 추출하기'}
           </button>
