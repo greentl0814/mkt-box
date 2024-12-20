@@ -4,6 +4,7 @@ import Script from 'next/script';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Link2, Youtube, Type, BarChart2, FileCode } from 'lucide-react';
+import { Palette } from 'lucide-react';
 
 export default function Home() {
   const tools = [
@@ -78,7 +79,17 @@ export default function Home() {
       keywords: ['워드클라우드', '텍스트 시각화', '단어 빈도 분석', '키워드 추출', '텍스트 마이닝'],
       icon: <Type className="w-6 h-6" />,
       link: '/word-cloud'
+    },
+    {
+      id: 'colors',
+      title: '컬러 도구',
+      description: '완벽한 색상 조합을 찾고 활용하세요.',
+      detailedDescription: '메인 컬러를 기준으로 보색, 유사색, 삼각 배색 등 다양한 색상 조합을 확인할 수 있습니다. HEX, RGB 등 색상 코드를 쉽게 복사하고, 팔레트를 만들어 브랜드 디자인에 활용하세요.',
+      keywords: ['컬러 팔레트', '색상 조합', '브랜드 컬러', '보색', '색상 코드', 'HEX 코드', 'RGB 코드'],
+      icon: <Palette className="w-6 h-6" />,
+      link: '/colors'
     }
+
   ];
 
   return (
