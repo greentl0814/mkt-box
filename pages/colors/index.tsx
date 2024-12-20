@@ -17,7 +17,7 @@ const HowToUseSection = () => {
            </div>
            <div>
              <h3 className="font-medium mb-1">컬러 선택</h3>
-             <p className="text-sm text-gray-600">메인 컬러를 클릭해 피커를 사용하거나 'Random' 버튼으로 새로운 컬러를 선택하세요.</p>
+             <p className="text-sm text-gray-600">메인 컬러를 클릭해 피커를 사용하거나 &apos;Random&apos; 버튼으로 새로운 컬러를 선택하세요.</p>
            </div>
          </div>
 
