@@ -12,7 +12,7 @@ const nextConfig = {
           },
         ],
         destination: 'https://www.mktbox.co.kr/:path*',
-        permanent: true,
+        statusCode: 301
       },
     ];
   },
