@@ -1,10 +1,21 @@
 import "../styles/globals.css";
 import Footer from "../components/Footer";
 import Script from "next/script";
+import Head from "next/head";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
   return (
     <div className="min-h-screen flex flex-col">
+      <Head>
+        <link
+          rel="canonical"
+          href={`https://www.mktbox.co.kr${router.asPath}`}
+        />
+      </Head>
+
       {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-T0EEHV122X"
@@ -19,31 +30,8 @@ function MyApp({ Component, pageProps }) {
         `}
       </Script>
 
-      {/* Google AdSense */}
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6071061687711848"
-        strategy="afterInteractive"
-        crossOrigin="anonymous"
-      />
-      <Script id="adsbygoogle-init" strategy="afterInteractive">
-        {`
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        `}
-      </Script>
-
       <main className="flex-grow">
         <Component {...pageProps} />
-        {/* 광고 블록 */}
-        <div className="ad-container">
-          <ins
-            className="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-client="ca-pub-6071061687711848"
-            data-ad-slot="1234567890"
-            data-ad-format="auto"
-          ></ins>
-        </div>
       </main>
 
       <Footer />

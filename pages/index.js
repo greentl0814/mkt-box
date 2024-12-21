@@ -101,7 +101,7 @@ export default function Home() {
         <meta property="og:title" content="마케팅 도구 모음" />
         <meta property="og:description" content="마케터를 위한 필수 도구! UTM 생성, 유튜브 댓글 및 썸네일 추출, URL 단축 등 다양한 기능을 무료로 이용하세요." />
       </Head>
-      
+
 
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-center mb-8">
