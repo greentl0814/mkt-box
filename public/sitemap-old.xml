@@ -2,62 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- 메인 페이지 -->
   <url>
-    <loc>https://www.mktbox.co.kr</loc>
+    <loc>https://mkt-box.vercel.app</loc>
     <lastmod>2024-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <!-- 도구 페이지들 -->
   <url>
-    <loc>https://www.mktbox.co.kr/utm</loc>
+    <loc>https://mkt-box.vercel.app/utm</loc>
     <lastmod>2024-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mktbox.co.kr/youtube</loc>
+    <loc>https://mkt-box.vercel.app/youtube</loc>
     <lastmod>2024-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mktbox.co.kr/youtube-time</loc>
+    <loc>https://mkt-box.vercel.app/youtube-time</loc>
     <lastmod>2024-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mktbox.co.kr/youtube-comments</loc>
+    <loc>https://mkt-box.vercel.app/youtube-comments</loc>
     <lastmod>2024-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mktbox.co.kr/url</loc>
+    <loc>https://mkt-box.vercel.app/url</loc>
     <lastmod>2024-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mktbox.co.kr/text</loc>
+    <loc>https://mkt-box.vercel.app/text</loc>
     <lastmod>2024-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mktbox.co.kr/analytics</loc>
+    <loc>https://mkt-box.vercel.app/analytics</loc>
     <lastmod>2024-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mktbox.co.kr/word-cloud</loc>
+    <loc>https://mkt-box.vercel.app/word-cloud</loc>
     <lastmod>2024-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mktbox.co.kr/colors</loc>
+    <loc>https://mkt-box.vercel.app/colors</loc>
     <lastmod>2024-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
