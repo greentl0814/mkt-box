@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useTranslation } from '@/lib/i18n/useTranslation';
+import { LanguageSelector } from '@/components/LanguageSelector';
 
 export default function Analytics() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('roas');
 
   // ROAS 분석을 위한 상태
@@ -72,41 +75,42 @@ export default function Analytics() {
   const renderROASAnalysis = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium mb-4">ROAS 분석</h3>
+        <h3 className="text-lg font-medium mb-4">{t('tools.analytics.tabs.roas')}</h3>
         <p className="text-gray-600 mb-4">
-          ROAS(Return On Ad Spend)는 광고 투자 대비 매출액의 비율을 나타내는 지표입니다.
-          예를 들어, ROAS 500%는 광고비 1만원 당 5만원의 매출이 발생했다는 의미입니다.
+          {t('tools.analytics.sections.roas.description')}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block mb-2">광고비</label>
+            <label className="block mb-2">{t('tools.analytics.inputs.adCost')}</label>
             <input
               type="text"
               value={adCost ? formatNumber(adCost) : ''}
               onChange={(e) => setAdCost(e.target.value.replace(/,/g, ''))}
               className="w-full p-2 border rounded"
-              placeholder="광고 비용을 입력하세요"
+              placeholder={t('tools.analytics.inputs.adCostPlaceholder')}
             />
           </div>
           <div>
-            <label className="block mb-2">매출액</label>
+            <label className="block mb-2">{t('tools.analytics.inputs.revenue')}</label>
             <input
               type="text"
               value={revenue ? formatNumber(revenue) : ''}
               onChange={(e) => setRevenue(e.target.value.replace(/,/g, ''))}
               className="w-full p-2 border rounded"
-              placeholder="매출액을 입력하세요"
+              placeholder={t('tools.analytics.inputs.revenuePlaceholder')}
             />
           </div>
         </div>
         {adCost && revenue && (
           <div className="mt-4 bg-blue-50 p-4 rounded">
-            <div className="font-medium">분석 결과</div>
+            <div className="font-medium">{t('tools.analytics.sections.roas.analysisResult')}</div>
             <div>
-              ROAS: {calculateROAS()}%
+              {t('tools.analytics.sections.roas.results.value', {
+                value: calculateROAS()
+              })}
               {calculateROAS() >= 100 ?
-                <span className="text-green-600 ml-2">✓ 수익이 발생하고 있습니다</span> :
-                <span className="text-red-600 ml-2">! 손실이 발생하고 있습니다</span>
+                <span className="text-green-600 ml-2">{t('tools.analytics.sections.roas.profitMessage')}</span> :
+                <span className="text-red-600 ml-2">{t('tools.analytics.sections.roas.lossMessage')}</span>
               }
             </div>
           </div>
@@ -118,58 +122,64 @@ export default function Analytics() {
   const renderEfficiencyAnalysis = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium mb-4">광고 효율 분석</h3>
+        <h3 className="text-lg font-medium mb-4">{t('tools.analytics.tabs.efficiency')}</h3>
         <div className="bg-yellow-50 p-4 rounded mb-6">
           <p className="text-sm text-gray-600">
-            • CPC (Cost Per Click): 클릭당 평균 비용<br />
-            • CPM (Cost Per Mile): 1000회 노출당 비용<br />
-            • CTR (Click Through Rate): 노출 대비 클릭률
+            {t('tools.analytics.sections.efficiency.descriptions.0')}<br />
+            {t('tools.analytics.sections.efficiency.descriptions.1')}<br />
+            {t('tools.analytics.sections.efficiency.descriptions.2')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block mb-2">광고비</label>
+            <label className="block mb-2">{t('tools.analytics.inputs.adCost')}</label>
             <input
               type="text"
               value={adCost ? formatNumber(adCost) : ''}
               onChange={(e) => setAdCost(e.target.value.replace(/,/g, ''))}
               className="w-full p-2 border rounded"
-              placeholder="광고 비용을 입력하세요"
+              placeholder={t('tools.analytics.inputs.adCostPlaceholder')}
             />
           </div>
           <div>
-            <label className="block mb-2">노출수</label>
+            <label className="block mb-2">{t('tools.analytics.inputs.impressions')}</label>
             <input
               type="text"
               value={impressions ? formatNumber(impressions) : ''}
               onChange={(e) => setImpressions(e.target.value.replace(/,/g, ''))}
               className="w-full p-2 border rounded"
-              placeholder="총 노출 횟수"
+              placeholder={t('tools.analytics.inputs.impressionsPlaceholder')}
             />
           </div>
           <div>
-            <label className="block mb-2">클릭수</label>
+            <label className="block mb-2">{t('tools.analytics.inputs.clicks')}</label>
             <input
               type="text"
               value={clicks ? formatNumber(clicks) : ''}
               onChange={(e) => setClicks(e.target.value.replace(/,/g, ''))}
               className="w-full p-2 border rounded"
-              placeholder="총 클릭 횟수"
+              placeholder={t('tools.analytics.inputs.clicksPlaceholder')}
             />
           </div>
         </div>
 
         {adCost && impressions && clicks && (
           <div className="mt-4 bg-blue-50 p-4 rounded space-y-2">
-            <div className="font-medium">분석 결과</div>
+            <div className="font-medium">{t('tools.analytics.analysisResult')}</div>
             <div>
-              CPC (클릭당 비용): {formatNumber(calculateCPC())}원
+              {t('tools.analytics.sections.efficiency.results.cpc', {
+                value: formatNumber(calculateCPC())
+              })}
             </div>
             <div>
-              CPM (1000회 노출당 비용): {formatNumber(calculateCPM())}원
+              {t('tools.analytics.sections.efficiency.results.cpm', {
+                value: formatNumber(calculateCPM())
+              })}
             </div>
             <div>
-              CTR (클릭률): {calculateCTR()}%
+              {t('tools.analytics.sections.efficiency.results.ctr', {
+                value: calculateCTR()
+              })}
             </div>
           </div>
         )}
@@ -180,54 +190,58 @@ export default function Analytics() {
   const renderConversionAnalysis = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium mb-4">전환 분석</h3>
+        <h3 className="text-lg font-medium mb-4">{t('tools.analytics.tabs.conversion')}</h3>
         <div className="bg-yellow-50 p-4 rounded mb-6">
           <p className="text-sm text-gray-600">
-            • CVR (Conversion Rate): 방문자의 전환율<br />
-            • CPA (Cost Per Action): 전환당 비용
+            {t('tools.analytics.sections.conversion.descriptions.0')}<br />
+            {t('tools.analytics.sections.conversion.descriptions.1')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block mb-2">광고비</label>
+            <label className="block mb-2">{t('tools.analytics.inputs.adCost')}</label>
             <input
               type="text"
               value={adCost ? formatNumber(adCost) : ''}
               onChange={(e) => setAdCost(e.target.value.replace(/,/g, ''))}
               className="w-full p-2 border rounded"
-              placeholder="광고 비용을 입력하세요"
+              placeholder={t('tools.analytics.inputs.adCostPlaceholder')}
             />
           </div>
           <div>
-            <label className="block mb-2">방문수</label>
+            <label className="block mb-2">{t('tools.analytics.inputs.visits')}</label>
             <input
               type="text"
               value={visits ? formatNumber(visits) : ''}
               onChange={(e) => setVisits(e.target.value.replace(/,/g, ''))}
               className="w-full p-2 border rounded"
-              placeholder="총 방문자 수"
+              placeholder={t('tools.analytics.inputs.visitsPlaceholder')}
             />
           </div>
           <div>
-            <label className="block mb-2">전환수</label>
+            <label className="block mb-2">{t('tools.analytics.inputs.conversions')}</label>
             <input
               type="text"
               value={conversions ? formatNumber(conversions) : ''}
               onChange={(e) => setConversions(e.target.value.replace(/,/g, ''))}
               className="w-full p-2 border rounded"
-              placeholder="총 전환 수"
+              placeholder={t('tools.analytics.inputs.conversionsPlaceholder')}
             />
           </div>
         </div>
 
         {visits && conversions && adCost && (
           <div className="mt-4 bg-blue-50 p-4 rounded space-y-2">
-            <div className="font-medium">분석 결과</div>
+            <div className="font-medium">{t('tools.analytics.analysisResult')}</div>
             <div>
-              CVR (전환율): {calculateCVR()}%
+              {t('tools.analytics.sections.conversion.results.cvr', {
+                value: calculateCVR()
+              })}
             </div>
             <div>
-              CPA (전환당 비용): {formatNumber(calculateCPA())}원
+              {t('tools.analytics.sections.conversion.results.cpa', {
+                value: formatNumber(calculateCPA())
+              })}
             </div>
           </div>
         )}
@@ -238,40 +252,41 @@ export default function Analytics() {
   return (
     <>
       <Head>
-        <title>광고 성과 분석 - Marketing Tools</title>
-        <meta name="description" content="ROAS, CPC, CTR 등 주요 광고 지표를 분석하고 성과를 측정합니다." />
+        <title>{t('tools.analytics.head.title')}</title>
+        <meta name="description" content={t('tools.analytics.head.description')} />
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">
-        <Link href="/" className="text-blue-500 hover:text-blue-700 mb-6 inline-block">
-          ← 메인으로 돌아가기
-        </Link>
+        <div className="flex justify-between items-center mb-6">
+          <Link href="/" className="text-blue-500 hover:text-blue-700">
+            {t('common.backButton')}
+          </Link>
+          <LanguageSelector />
+        </div>
 
-        <h1 className="text-2xl font-bold mb-6">광고 성과 분석</h1>
+        <h1 className="text-2xl font-bold mb-6">{t('tools.analytics.title')}</h1>
 
-        {/* 탭 메뉴 */}
         <div className="flex border-b mb-6">
           <button
             className={`px-4 py-2 ${activeTab === 'roas' ? 'border-b-2 border-blue-500 font-medium' : ''}`}
             onClick={() => handleTabChange('roas')}
           >
-            ROAS 분석
+            {t('tools.analytics.tabs.roas')}
           </button>
           <button
             className={`px-4 py-2 ${activeTab === 'efficiency' ? 'border-b-2 border-blue-500 font-medium' : ''}`}
             onClick={() => handleTabChange('efficiency')}
           >
-            광고 효율 분석
+            {t('tools.analytics.tabs.efficiency')}
           </button>
           <button
             className={`px-4 py-2 ${activeTab === 'conversion' ? 'border-b-2 border-blue-500 font-medium' : ''}`}
             onClick={() => handleTabChange('conversion')}
           >
-            전환 분석
+            {t('tools.analytics.tabs.conversion')}
           </button>
         </div>
 
-        {/* 탭 내용 */}
         {activeTab === 'roas' && renderROASAnalysis()}
         {activeTab === 'efficiency' && renderEfficiencyAnalysis()}
         {activeTab === 'conversion' && renderConversionAnalysis()}

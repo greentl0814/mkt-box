@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useTranslation } from '@/lib/i18n/useTranslation';
+import { LanguageSelector } from '@/components/LanguageSelector';
 
-export default function URLShortener() {
+export default function URLShortener({ pageData }) {
+  const { t } = useTranslation();
   const [url, setUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
   const [error, setError] = useState('');
@@ -19,12 +22,12 @@ export default function URLShortener() {
 
   const shortenUrl = async () => {
     if (!url) {
-      setError('URL을 입력해주세요');
+      setError(pageData.messages.error.empty);
       return;
     }
 
     if (!validateUrl(url)) {
-      setError('올바른 URL 형식이 아닙니다');
+      setError(pageData.messages.error.invalid);
       return;
     }
 
@@ -34,13 +37,13 @@ export default function URLShortener() {
       setShortUrl(data);
       setError('');
     } catch (error) {
-      setError('URL 단축 중 오류가 발생했습니다');
+      setError(pageData.messages.error.failed);
     }
   };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shortUrl);
-    setCopyMessage('URL이 복사되었습니다!');
+    setCopyMessage(pageData.messages.success);
     setTimeout(() => {
       setCopyMessage('');
     }, 2000);
@@ -49,35 +52,38 @@ export default function URLShortener() {
   return (
     <>
       <Head>
-        <title>URL 단축기 - Marketing Tools</title>
-        <meta name="description" content="긴 URL을 짧고 간단하게 줄여보세요." />
+        <title>{pageData.head.title}</title>
+        <meta name="description" content={pageData.head.description} />
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">
-        <Link href="/" className="text-blue-500 hover:text-blue-700 mb-6 inline-block">
-          ← 메인으로 돌아가기
-        </Link>
+        <div className="flex justify-between items-center mb-6">
+          <Link href="/" className="text-blue-500 hover:text-blue-700">
+            {t('common.backButton')}
+          </Link>
+          <LanguageSelector />
+        </div>
 
-        <h1 className="text-2xl font-bold mb-6">URL 단축기</h1>
+        <h1 className="text-2xl font-bold mb-6">{pageData.title}</h1>
 
         <div className="space-y-6">
           <div>
             <label className="block mb-2 font-medium">
-              URL 입력
+              {pageData.inputs.urlLabel}
             </label>
             <div className="flex gap-2">
               <input
                 type="text"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                placeholder="https://..."
+                placeholder={pageData.inputs.placeholder}
                 className="flex-1 p-2 border rounded"
               />
               <button
                 onClick={shortenUrl}
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               >
-                단축하기
+                {pageData.buttons.shorten}
               </button>
             </div>
           </div>
@@ -90,7 +96,7 @@ export default function URLShortener() {
 
           {shortUrl && (
             <div className="bg-gray-50 p-4 rounded">
-              <div className="font-medium mb-2">단축된 URL:</div>
+              <div className="font-medium mb-2">{pageData.results.title}</div>
               <div className="flex gap-2 items-center">
                 <input
                   type="text"
@@ -102,7 +108,7 @@ export default function URLShortener() {
                   onClick={copyToClipboard}
                   className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                 >
-                  복사
+                  {pageData.buttons.copy}
                 </button>
               </div>
               {copyMessage && (
@@ -116,4 +122,15 @@ export default function URLShortener() {
       </div>
     </>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  const pageData = await import(`../../public/locales/${locale}/common.json`)
+    .then((module) => module.default.tools.url);
+
+  return {
+    props: {
+      pageData,
+    },
+  };
 }

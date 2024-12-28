@@ -1,9 +1,10 @@
-// pages/youtube-comments/index.tsx
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+import { useTranslation } from '@/lib/i18n/useTranslation';
+import { LanguageSelector } from '@/components/LanguageSelector';
 
 interface Comment {
   comment: string;
@@ -22,7 +23,8 @@ interface FetchOptions {
 const COMMENTS_LIMIT = 2000;
 const DAILY_LIMIT = 10;
 
-export default function YouTubeComments() {
+export default function YouTubeComments({ pageData }) {
+  const { t } = useTranslation();
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -97,9 +99,9 @@ export default function YouTubeComments() {
         if (!response.ok) {
           const error = await response.json();
           if (error.error.code === 403 && error.error.message.includes('quotaExceeded')) {
-            throw new Error('YouTube API 일일 할당량이 초과되었습니다. 내일 다시 시도해주세요.');
+            throw new Error(pageData.errors.quotaExceeded);
           }
-          throw new Error('댓글을 가져오는데 실패했습니다');
+          throw new Error(pageData.errors.fetchFailed);
         }
 
         const data = await response.json();
@@ -145,39 +147,37 @@ export default function YouTubeComments() {
   };
 
   const exportToExcel = (comments: Comment[]) => {
-    // 엑셀용 데이터 포맷 변환
+    console.log("pageData in exportToExcel:", pageData); // pageData 전체 확인
+    console.log("pageData.excel in exportToExcel:", pageData.excel); // pageData.excel 확인
     const excelData = comments.map(comment => ({
-      '내용': comment.comment,
-      '작성일': comment.date,
-      '좋아요 수': comment.numLikes,
-      '작성자': comment.author,
-      '댓글 유형': comment.isReply ? '↳ 답글' : '원댓글',
-      ...(comment.isReply && { '원댓글 작성자': comment.parentAuthor })
+      [pageData.excel.content]: comment.comment,
+      [pageData.excel.date]: comment.date,
+      [pageData.excel.likes]: comment.numLikes,
+      [pageData.excel.author]: comment.author,
+      [pageData.excel.type]: comment.isReply ? pageData.excel.replyType : pageData.excel.commentType,
+      ...(comment.isReply && { [pageData.excel.parentAuthor]: comment.parentAuthor })
     }));
 
-    // 컬럼 순서 지정
     const columnOrder = [
-      '내용',
-      '작성일',
-      '좋아요 수',
-      '작성자',
-      '댓글 유형',
-      '원댓글 작성자'
+      pageData.excel.content,
+      pageData.excel.date,
+      pageData.excel.likes,
+      pageData.excel.author,
+      pageData.excel.type,
+      pageData.excel.parentAuthor
     ];
 
-    // 워크시트 생성 시 컬럼 순서 적용
     const worksheet = XLSX.utils.json_to_sheet(excelData, {
       header: columnOrder
     });
 
-    // 컬럼별 너비 설정
     const wscols = [
-      { wch: 40 },  // 내용
-      { wch: 20 },  // 작성일
-      { wch: 10 },  // 좋아요 수
-      { wch: 15 },  // 작성자
-      { wch: 10 },  // 댓글 유형
-      { wch: 15 }   // 원댓글 작성자
+      { wch: 40 },
+      { wch: 20 },
+      { wch: 10 },
+      { wch: 15 },
+      { wch: 10 },
+      { wch: 15 }
     ];
     worksheet['!cols'] = wscols;
 
@@ -195,7 +195,7 @@ export default function YouTubeComments() {
     e.preventDefault();
 
     if (dailyRequestCount >= DAILY_LIMIT) {
-      setError('일일 사용 한도(10회)를 초과했습니다. 내일 다시 시도해주세요.');
+      setError(pageData.errors.dailyLimit.replace('{limit}', DAILY_LIMIT));
       return;
     }
 
@@ -209,7 +209,7 @@ export default function YouTubeComments() {
     try {
       const videoId = getVideoId(url);
       if (!videoId) {
-        throw new Error('올바른 YouTube URL이 아닙니다');
+        throw new Error(pageData.errors.invalidUrl);
       }
 
       const options: FetchOptions = {
@@ -221,7 +221,7 @@ export default function YouTubeComments() {
       exportToExcel(comments);
       incrementDailyCount();
     } catch (err) {
-      setError(err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다');
+      setError(err instanceof Error ? err.message : pageData.errors.unknown);
     } finally {
       setLoading(false);
     }
@@ -230,63 +230,66 @@ export default function YouTubeComments() {
   return (
     <>
       <Head>
-        <title>YouTube 댓글 추출기 - Marketing Tools</title>
-        <meta name="description" content="YouTube 동영상의 댓글을 엑셀 파일로 추출합니다." />
+        <title>{pageData.head.title}</title>
+        <meta name="description" content={pageData.head.description} />
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">
-        <Link href="/" className="text-blue-500 hover:text-blue-700 mb-6 inline-block">
-          ← 메인으로 돌아가기
-        </Link>
+        <div className="flex justify-between items-center mb-6">
+          <Link href="/" className="text-blue-500 hover:text-blue-700">
+            {t('common.backButton')}
+          </Link>
+          <LanguageSelector />
+        </div>
 
-        <h1 className="text-2xl font-bold mb-6">YouTube 댓글 추출기</h1>
+        <h1 className="text-2xl font-bold mb-6">{pageData.title}</h1>
 
         <div className="bg-blue-50 border border-blue-200 text-blue-600 px-4 py-2 rounded mb-6">
           <div>
-            ⚡ 1회당 최대 2,000개의 댓글을 수집할 수 있습니다. (일일 사용 한도: {DAILY_LIMIT}회 중 {dailyRequestCount}회 사용)
+            {pageData.notice.limits.comments.replace('{limit}', DAILY_LIMIT).replace('{used}', dailyRequestCount)}
           </div>
           <div className="mt-2">
-            전체 이용자의 사용량에 따라 나의 한도와 상관없이 수집이 중단될 수 있습니다. 다음날 이용해 주세요
+            {pageData.notice.limits.quota}
           </div>
           <div className="mt-2">
-            2,000개가 넘는 댓글이 있더라도 유튜브의 댓글 정책에 따라 전체 댓글이 수집되지 않을수 있습니다.
+            {pageData.notice.limits.policy}
           </div>
         </div>
 
         <div className="space-y-6">
           <div>
-            <label className="block mb-2 font-medium">YouTube URL</label>
+            <label className="block mb-2 font-medium">{pageData.inputs.url.label}</label>
             <input
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://www.youtube.com/watch?v=..."
+              placeholder={pageData.inputs.url.placeholder}
               className="w-full p-2 border rounded"
             />
           </div>
 
           <div className="flex gap-4">
             <div className="flex-1">
-              <label className="block mb-2 font-medium">정렬 방식</label>
+              <label className="block mb-2 font-medium">{pageData.inputs.sort.label}</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as 'relevance' | 'time')}
                 className="w-full p-2 border rounded"
               >
-                <option value="relevance">인기 댓글순</option>
-                <option value="time">최신순</option>
+                <option value="relevance">{pageData.inputs.sort.relevance}</option>
+                <option value="time">{pageData.inputs.sort.time}</option>
               </select>
             </div>
 
             <div className="flex-1">
-              <label className="block mb-2 font-medium">대댓글 설정</label>
+              <label className="block mb-2 font-medium">{pageData.inputs.replies.label}</label>
               <select
                 value={includeReplies.toString()}
                 onChange={(e) => setIncludeReplies(e.target.value === 'true')}
                 className="w-full p-2 border rounded"
               >
-                <option value="true">대댓글 포함</option>
-                <option value="false">대댓글 제외</option>
+                <option value="true">{pageData.inputs.replies.include}</option>
+                <option value="false">{pageData.inputs.replies.exclude}</option>
               </select>
             </div>
           </div>
@@ -299,8 +302,10 @@ export default function YouTubeComments() {
 
           {showTip && (
             <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-2 rounded">
-              💡 전체 {totalComments.toLocaleString()}개의 댓글 중 {sortBy === 'relevance' ? '인기 댓글순' : '최신순'}으로 상위 2,000개만 수집됩니다.
-              {!includeReplies && ' (대댓글 제외)'}
+              {pageData.info.total
+                .replace('{count}', totalComments.toLocaleString())
+                .replace('{sortType}', sortBy === 'relevance' ? pageData.info.sortTypes.relevance : pageData.info.sortTypes.time)
+                .replace('{repliesNote}', !includeReplies ? pageData.info.repliesNote : '')}
             </div>
           )}
 
@@ -313,7 +318,10 @@ export default function YouTubeComments() {
                 ></div>
               </div>
               <div className="text-sm text-gray-600 text-center">
-                {commentCount}/{Math.min(totalComments, COMMENTS_LIMIT)} 댓글 수집 중... ({progress.toFixed(1)}%)
+                {pageData.progress.collecting
+                  .replace('{current}', commentCount.toLocaleString())
+                  .replace('{total}', Math.min(totalComments, COMMENTS_LIMIT).toLocaleString())
+                  .replace('{progress}', progress.toFixed(1))}
               </div>
             </div>
           )}
@@ -323,10 +331,21 @@ export default function YouTubeComments() {
             disabled={loading}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:bg-blue-300"
           >
-            {loading ? '댓글 수집 중...' : '댓글 추출하기'}
+            {loading ? pageData.buttons.extracting : pageData.buttons.extract}
           </button>
         </div>
       </div>
     </>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  const common = await import(`../../public/locales/${locale}/common.json`)
+    .then((module) => module.default);
+
+  return {
+    props: {
+      pageData: common.tools.youtubeComments,
+    },
+  };
 }

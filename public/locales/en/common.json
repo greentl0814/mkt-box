@@ -1,0 +1,522 @@
+{
+  "meta": {
+    "title": "Marketing Tools Collection - Practical Marketing Tools",
+    "description": "Provides various tools for marketers including UTM generator, YouTube comment and thumbnail extractor, URL shortener, and more.",
+    "keywords": "UTM Generator, YouTube Comment Extractor, Thumbnail Extractor, Marketing Tools, URL Shortener, Marketing Analytics",
+    "ogTitle": "Marketing Tools Collection",
+    "ogDescription": "Essential tools for marketers! Use UTM generator, YouTube tools, URL shortener, and more features for free."
+  },
+  "main": {
+    "heading": "Tool Box for Marketers",
+    "useButton": "Use Tool"
+  },
+  "common": {
+    "backButton": "← Back to Main"
+  },
+  "tools": {
+    "utm": {
+      "title": "UTM Generator",
+      "description": "Generate UTM codes easily for tracking and analyzing links from different marketing channels.",
+      "head": {
+        "title": "UTM Generator - Marketing Tools",
+        "description": "Generate UTM tags quickly and easily. Process multiple sources and mediums at once with this free UTM generator."
+      },
+      "inputs": {
+        "url": {
+          "label": "Landing Page URL",
+          "placeholder": "Enter the full URL including http:// or https://"
+        },
+        "sources": {
+          "label": "UTM Source (Source Channel)",
+          "subLabel": "(Multiple selections allowed)",
+          "placeholder": "Enter other source"
+        },
+        "mediums": {
+          "label": "UTM Medium (Medium)",
+          "subLabel": "(Multiple selections allowed)",
+          "placeholder": "Enter other medium"
+        },
+        "campaign": "Campaign (Campaign Name)",
+        "campaignPlaceholder": "campaign_name",
+        "content": "Content (Ad Content)",
+        "contentPlaceholder": "banner_a",
+        "term": "Term (Keyword)",
+        "termPlaceholder": "keyword"
+      },
+      "buttons": {
+        "add": "Add",
+        "generate": "Generate UTM URLs",
+        "excel": "Download Excel"
+      },
+      "errors": {
+        "urlRequired": "Please enter a landing page URL",
+        "invalidUrl": "Invalid URL format",
+        "sourceOrMediumRequired": "Please select at least one source and one medium"
+      },
+      "messages": {
+        "copy": "URL copied to clipboard!"
+      },
+      "results": {
+        "title": "Generated UTM URLs"
+      },
+      "excel": {
+        "source": "Source",
+        "medium": "Medium",
+        "campaign": "Campaign",
+        "content": "Content",
+        "term": "Term",
+        "fullUrl": "Full URL"
+      },
+      "sources": {
+        "google": "Google",
+        "naver": "Naver",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "kakao": "Kakao"
+      },
+      "mediums": {
+        "cpc": "CPC",
+        "display": "Display",
+        "social": "Social",
+        "email": "Email"
+      }
+    },
+    "youtube": {
+      "title": "YouTube Thumbnail Extractor",
+      "description": "Extract thumbnail images from YouTube videos in various resolutions.",
+      "head": {
+        "title": "YouTube Thumbnail Extractor - Marketing Tools",
+        "description": "Extract YouTube video thumbnails in various resolutions."
+      },
+      "inputs": {
+        "urlLabel": "YouTube URL",
+        "urlPlaceholder": "https://www.youtube.com/watch?v=..."
+      },
+      "buttons": {
+        "extract": "Extract Thumbnail",
+        "download": "Download"
+      },
+      "thumbnails": {
+        "max": {
+          "title": "Maximum Resolution",
+          "resolution": "(1280x720)"
+        },
+        "standard": {
+          "title": "Standard Resolution",
+          "resolution": "(120x90)"
+        },
+        "medium": {
+          "title": "Medium Resolution",
+          "resolution": "(320x180)"
+        },
+        "high": {
+          "title": "High Resolution",
+          "resolution": "(480x360)"
+        }
+      },
+      "errors": {
+        "urlRequired": "Please enter a URL",
+        "invalidUrl": "Invalid YouTube URL"
+      }
+    },
+    "youtubeTime": {
+      "title": "YouTube Timestamp URL Generator",
+      "description": "Generate URLs that jump to specific timestamps in YouTube videos.",
+      "head": {
+        "title": "YouTube Timestamp URL Generator - Marketing Tools",
+        "description": "Generate URLs that jump to specific timestamps in YouTube videos."
+      },
+      "inputs": {
+        "url": {
+          "label": "YouTube URL",
+          "placeholder": "https://www.youtube.com/watch?v=..."
+        },
+        "hours": {
+          "label": "Hours"
+        },
+        "minutes": {
+          "label": "Minutes"
+        },
+        "seconds": {
+          "label": "Seconds"
+        }
+      },
+      "errors": {
+        "urlRequired": "Please enter YouTube URL",
+        "invalidUrl": "Invalid YouTube URL",
+        "timeRequired": "Please enter time",
+        "zeroTime": "Cannot enter 0 seconds"
+      },
+      "buttons": {
+        "generate": "Generate Timestamp URL"
+      },
+      "results": {
+        "title": "Generated URL List",
+        "jumpTime": "Jump to: {time}"
+      },
+      "copyMessage": "URL copied!"
+    },
+    "youtubeComments": {
+      "title": "YouTube Comment Extractor",
+      "description": "Export YouTube video comments to Excel files.",
+      "head": {
+        "title": "YouTube Comment Extractor - Marketing Tools",
+        "description": "Export YouTube video comments to Excel files."
+      },
+      "notice": {
+        "limits": {
+          "comments": "⚡ You can collect up to 2,000 comments per request. (Daily limit: {used} of {limit} uses)",
+          "quota": "Collection may stop regardless of your limit depending on total user usage. Please try again tomorrow.",
+          "policy": "Even for videos with over 2,000 comments, not all comments may be collected due to YouTube's comment policy."
+        }
+      },
+      "inputs": {
+        "url": {
+          "label": "YouTube URL",
+          "placeholder": "https://www.youtube.com/watch?v=..."
+        },
+        "sort": {
+          "label": "Sort By",
+          "relevance": "Top Comments",
+          "time": "Newest First"
+        },
+        "replies": {
+          "label": "Reply Settings",
+          "include": "Include Replies",
+          "exclude": "Exclude Replies"
+        }
+      },
+      "buttons": {
+        "extract": "Extract Comments",
+        "extracting": "Collecting Comments..."
+      },
+      "progress": {
+        "collecting": "Collecting {current}/{total} comments... ({progress}%)"
+      },
+      "errors": {
+        "dailyLimit": "Daily limit ({limit} uses) exceeded. Please try again tomorrow.",
+        "quotaExceeded": "YouTube API daily quota exceeded. Please try again tomorrow.",
+        "fetchFailed": "Failed to fetch comments",
+        "invalidUrl": "Invalid YouTube URL"
+      },
+      "info": {
+        "total": "Collecting top 2,000 comments {sortType} out of {count} total comments.{repliesNote}",
+        "sortTypes": {
+          "relevance": "by relevance",
+          "time": "by newest"
+        },
+        "repliesNote": " (excluding replies)"
+      },
+      "excel": {
+       "content": "Content",
+       "date": "Date",
+       "likes": "Likes",
+       "author": "Author",
+       "type": "Comment Type",
+       "parentAuthor": "Parent Author",
+       "replyType": "↳ Reply",
+       "commentType": "Original Comment"
+      }
+    },
+    "url": {
+      "title": "URL Shortener",
+      "description": "Simplify management and sharing by shortening long URLs.",
+      "head": {
+        "title": "URL Shortener - Marketing Tools",
+        "description": "Shorten long URLs simply and easily."
+      },
+      "inputs": {
+        "urlLabel": "Enter URL",
+        "placeholder": "https://..."
+      },
+      "buttons": {
+        "shorten": "Shorten",
+        "copy": "Copy"
+      },
+      "results": {
+        "title": "Shortened URL:"
+      },
+      "messages": {
+        "error": {
+          "empty": "Please enter a URL",
+          "invalid": "Invalid URL format",
+          "failed": "Error occurred while shortening URL"
+        },
+        "success": "URL copied!"
+      }
+    },
+    "text": {
+      "title": "Text Analyzer",
+      "description": "Check and analyze text character count and bytes in real-time.",
+      "head": {
+        "title": "Text Analyzer - Marketing Tools",
+        "description": "Check total characters, characters excluding spaces, and byte count in real-time."
+      },
+      "placeholder": "Enter text to analyze.",
+      "stats": {
+        "total": "Total Characters",
+        "noSpace": "Excluding Spaces",
+        "byte2": "Bytes (2byte)",
+        "byte3": "Bytes (3byte)"
+      },
+      "info": {
+        "byteStandard": {
+          "title": "Byte Calculation Standard",
+          "basic": "English/Numbers/Basic Symbols: 1 byte",
+          "korean": "Korean: 2 or 3 bytes depending on encoding"
+        },
+        "encoding": {
+          "title": "Korean Bytes by Encoding",
+          "utf8": "UTF-8: 3 bytes (Variable length encoding for efficient Unicode processing)",
+          "euckr": "EUC-KR: 2 bytes (Legacy Korean encoding)",
+          "utf16": "UTF-16: 2 bytes (Processes all Unicode characters as 2 bytes)"
+        },
+        "platform": {
+          "title": "Platform Standards",
+          "naver": "Naver/Kakao Ads: Generally uses 2-byte standard",
+          "google": "Google/Facebook Ads: Character count only (bytes irrelevant)"
+        }
+      }
+    },
+    "analytics": {
+      "title": "Ad Performance Analytics",
+      "description": "Analyze and measure key advertising metrics including ROAS, CPC, and CTR.",
+      "head": {
+        "title": "Ad Performance Analytics - Marketing Tools",
+        "description": "Analyze and measure key advertising metrics including ROAS, CPC, and CTR."
+      },
+      "tabs": {
+        "roas": "ROAS Analysis",
+        "efficiency": "Ad Efficiency Analysis",
+        "conversion": "Conversion Analysis"
+      },
+      "sections": {
+        "roas": {
+          "title": "ROAS Analysis",
+          "description": "ROAS (Return On Ad Spend) shows the ratio of revenue to advertising cost. For example, ROAS of 500% means $5 in revenue for every $1 spent on advertising.",
+          "analysisResult": "Analysis Result",
+          "results": {
+            "value": "ROAS: {{value}}%"
+          },
+          "profitMessage": "✓ Generating profit",
+          "lossMessage": "! Operating at a loss"
+        },
+        "efficiency": {
+          "title": "Ad Efficiency Analysis",
+          "descriptions": [
+            "• CPC (Cost Per Click): Average cost per click",
+            "• CPM (Cost Per Mile): Cost per thousand impressions",
+            "• CTR (Click Through Rate): Ratio of clicks to impressions"
+          ],
+          "results": {
+            "cpc": "CPC (Cost per Click): ${{value}}",
+            "cpm": "CPM (Cost per Thousand): ${{value}}",
+            "ctr": "CTR (Click Through Rate): {{value}}%"
+          }
+        },
+        "conversion": {
+          "title": "Conversion Analysis",
+          "descriptions": [
+            "• CVR (Conversion Rate): Visitor to conversion ratio",
+            "• CPA (Cost Per Action): Cost per conversion"
+          ],
+          "results": {
+            "cvr": "CVR (Conversion Rate): {{value}}%",
+            "cpa": "CPA (Cost per Action): ${{value}}"
+          }
+        }
+      },
+      "inputs": {
+        "adCost": "Ad Cost",
+        "adCostPlaceholder": "Enter advertising cost",
+        "revenue": "Revenue",
+        "revenuePlaceholder": "Enter revenue",
+        "impressions": "Impressions",
+        "impressionsPlaceholder": "Total impressions",
+        "clicks": "Clicks",
+        "clicksPlaceholder": "Total clicks",
+        "visits": "Visits",
+        "visitsPlaceholder": "Total visits",
+        "conversions": "Conversions",
+        "conversionsPlaceholder": "Total conversions"
+      },
+      "analysisResult": "Analysis Result"
+    },
+    "wordCloud": {
+      "title": "Word Cloud Generator",
+      "description": "Generate word clouds visualizing word frequency from text analysis.",
+      "head": {
+        "title": "Word Cloud Generator - Marketing Tools",
+        "description": "Generate word clouds visualizing word frequency from text analysis."
+      },
+      "stopword": {
+        "label": "Stopword Settings",
+        "subLabel": "(Add words to exclude from the analysis)",
+        "defaultTitle": "Default Stopwords:",
+        "placeholder": "Enter a word to exclude"
+      },
+      "inputs": {
+        "text": {
+          "label": "Text to Analyze",
+          "placeholder": "Enter text to analyze..."
+        }
+      },
+      "buttons": {
+        "add": "Add",
+        "saveImage": "Save as Image"
+      },
+      "errors": {
+        "emptyStopWord": "Please enter a word to exclude",
+        "duplicateStopWord": "Stopword already exists"
+      },
+      "result": {
+        "title": "Word Cloud",
+        "subTitle": "Frequently Appearing Words",
+        "frequency": "times"
+      }
+    },
+    "colors": {
+      "title": "Color Tools",
+      "description": "Find and utilize perfect color combinations.",
+      "head": {
+        "title": "Color Tools - Marketing Tools"
+      },
+      "howToUse": {
+        "title": "How to Use",
+        "sections": {
+          "colorSelect": {
+            "title": "Color Selection",
+            "description": "Click the main color to use the picker or use the 'Random' button to select a new color."
+          },
+          "codeCopy": {
+            "title": "Copy Code",
+            "description": "Click on colors to automatically copy their HEX values to clipboard."
+          },
+          "palette": {
+            "title": "Palette Use",
+            "description": "Check and utilize the automatically generated color palette."
+          }
+        }
+      },
+      "mainColor": "Main Color",
+      "colorCode": "Color Code",
+      "randomColor": "Random Color",
+      "palettes": {
+        "basic": {
+          "title": "Basic Palette",
+          "description": "Variations with adjusted brightness and saturation of the selected color"
+        },
+        "complementary": {
+          "title": "Complementary Colors",
+          "description": "Colors opposite each other on the color wheel"
+        },
+        "splitComplementary": {
+          "title": "Split Complementary",
+          "description": "Soft contrast using colors adjacent to the complement"
+        },
+        "analogous": {
+          "title": "Analogous Colors",
+          "description": "Natural harmony from neighboring colors on the wheel"
+        },
+        "triadic": {
+          "title": "Triadic Colors",
+          "description": "Balanced harmony of three colors 120 degrees apart"
+        },
+        "tetradic": {
+          "title": "Tetradic Colors",
+          "description": "Various combinations of four colors 90 degrees apart"
+        }
+      },
+      "copyMessage": "{color} copied!"
+    }
+  },
+  "footer": {
+   "privacyPolicy": "Privacy Policy",
+   "termsOfService": "Terms of Service",
+   "copyright": "© 2024 Marketing Tools. All rights reserved.",
+   "contact": "Report errors and inquiries: mkttoolbox.mas@gmail.com"
+ },
+ "privacyPolicyPage": {
+   "head": {
+     "title": "Privacy Policy - Marketing Tools",
+     "description": "This is the privacy policy page for Marketing Tool Box."
+   },
+   "title": "Privacy Policy",
+   "intro": "Marketing Tools (hereinafter referred to as the 'Site') respects the privacy of users and has the following policy to comply with relevant laws and regulations.",
+   "section1": {
+     "title": "1. Information Collected",
+     "content1": "The site provides services free of charge without separate membership registration, and collects only minimal information:",
+     "item1": "Automatically collected information: visit history, IP address",
+     "item2": "Site usage statistics through Google Analytics",
+     "item3": "Cookie information to provide advertising services"
+   },
+   "section2": {
+     "title": "2. Purpose of Collection",
+     "item1": "Understanding site usage status and improving service",
+     "item2": "Providing customized advertisements"
+   },
+   "section3": {
+     "title": "3. Use of Cookies",
+     "content": "This site uses cookies to provide Google Analytics and advertising services. You can refuse the use of cookies in your browser settings, but in this case, the use of some services may be restricted."
+   },
+   "section4": {
+     "title": "4. Information Security",
+     "content": "The site takes the following basic security measures to protect users' personal information:",
+     "item1": "Using SSL security protocol",
+     "item2": "Limiting the collection of data containing personal information",
+     "item3": "Minimizing automatically collected information"
+   },
+   "section5": {
+     "title": "5. Contact",
+     "content": "If you have any questions about the Privacy Policy, please contact us by email:",
+     "email": "Email: mkttoolbox.mas@gmail.com"
+   },
+   "section6": {
+     "title": "6. Changes to Privacy Policy",
+     "content": "This Privacy Policy is effective from December 1, 2024, and any changes will be notified through the site."
+   }
+ },
+ "termsOfServicePage": {
+   "head": {
+     "title": "Terms of Service - Marketing Tools",
+     "description": "This is the terms of service page for Marketing Tool Box."
+   },
+   "title": "Terms of Service",
+   "intro": "These terms and conditions govern your use of the services provided by Marketing Tools (hereinafter referred to as the 'Site').",
+   "section1": {
+     "title": "1. Purpose",
+     "content": "The purpose of these terms is to define the terms and procedures for using all services provided by the site, as well as the rights, obligations, and responsibilities of users and the site."
+   },
+   "section2": {
+     "title": "2. Use of Service",
+     "item1": "The site provides services free of charge without separate membership registration.",
+     "item2": "Services are provided through a web browser, and some functions may be limited depending on the browser type and version.",
+     "item3": "The site may change the service contents without prior notice to improve the service."
+   },
+   "section3": {
+     "title": "3. User's Obligations",
+     "item1": "Users must comply with relevant laws and regulations and the provisions of these terms when using the service.",
+     "item2": "Users may not reproduce or distribute information obtained through the service without permission.",
+     "item3": "Users must not engage in any act that interferes with the stable operation of the service."
+   },
+   "section4": {
+     "title": "4. Disclaimer",
+     "item1": "The site is not responsible for any damages arising from the use of the free services provided.",
+     "item2": "The site is not responsible for service interruption due to natural disasters, technical defects, etc.",
+     "item3": "Users are responsible for the use of the results generated through the tools provided by the site."
+   },
+   "section5": {
+     "title": "5. Copyright",
+     "content": "The copyright for all services, information, and designs provided by the site belongs to the site. Users may use the services for non-commercial purposes, but may not use them commercially without the consent of the site."
+   },
+   "section6": {
+     "title": "6. Changes to Terms",
+     "content": "The site may change the terms if necessary, and the changed terms will be announced through the site. Users who do not agree to the changed terms may stop using the service."
+   },
+   "section7": {
+     "title": "7. Dispute Resolution",
+     "content": "Disputes arising from the use of the service shall be handled in accordance with relevant laws and regulations, and in the event of a dispute, both parties shall make efforts to resolve the dispute through mutual consultation."
+   },
+   "effectiveDate": "Effective Date: December 1, 2024"
+ }
+}

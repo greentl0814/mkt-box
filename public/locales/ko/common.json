@@ -1,0 +1,522 @@
+{
+  "meta": {
+    "title": "마케팅 도구 모음 - 실용적인 마케팅 툴 모음",
+    "description": "UTM 생성, 유튜브 댓글 및 썸네일 추출, URL 단축 등 마케터에게 필요한 다양한 도구를 제공합니다.",
+    "keywords": "UTM 생성기, 유튜브 댓글 및 썸네일 추출, 마케팅 도구, URL 단축, 마케팅 분석",
+    "ogTitle": "마케팅 도구 모음",
+    "ogDescription": "마케터를 위한 필수 도구! UTM 생성, 유튜브 댓글 및 썸네일 추출, URL 단축 등 다양한 기능을 무료로 이용하세요."
+  },
+  "main": {
+    "heading": "마케터를 위한 Tool Box",
+    "useButton": "도구 사용하기"
+  },
+  "common": {
+    "backButton": "← 메인으로 돌아가기"
+  },
+  "tools": {
+    "utm": {
+      "title": "UTM 생성기",
+      "description": "마케팅 채널별 링크를 추적하고 분석하기 위한 UTM 코드를 쉽게 생성하세요.",
+      "head": {
+        "title": "UTM 생성기 - Marketing Tools",
+        "description": "UTM 태그를 쉽고 빠르게 생성하세요. 여러 소스와 매체를 한 번에 처리할 수 있는 무료 UTM 생성기입니다."
+      },
+      "inputs": {
+        "url": {
+          "label": "랜딩페이지 주소",
+          "placeholder": "http:// 또는 https://를 포함한 전체 URL을 입력해주세요"
+        },
+        "sources": {
+          "label": "UTM Source (유입 채널)",
+          "subLabel": "(중복 체크 가능)",
+          "placeholder": "기타 소스 입력"
+        },
+        "mediums": {
+          "label": "UTM Medium (유입 매체)",
+          "subLabel": "(중복 체크 가능)",
+          "placeholder": "기타 매체 입력"
+        },
+        "campaign": "Campaign (캠페인명)",
+        "campaignPlaceholder": "campaign_name",
+        "content": "Content (소재)",
+        "contentPlaceholder": "banner_a",
+        "term": "Term (검색어)",
+        "termPlaceholder": "keyword"
+      },
+      "buttons": {
+        "add": "추가",
+        "generate": "UTM URL 생성하기",
+        "excel": "엑셀 다운로드"
+      },
+      "errors": {
+        "urlRequired": "랜딩페이지 주소를 입력해주세요",
+        "invalidUrl": "올바른 URL 형식이 아닙니다",
+        "sourceOrMediumRequired": "소스와 매체를 하나 이상 선택해주세요"
+      },
+      "messages": {
+        "copy": "URL이 복사되었습니다!"
+      },
+      "results": {
+        "title": "생성된 URL 목록"
+      },
+      "excel": {
+        "source": "Source",
+        "medium": "Medium",
+        "campaign": "Campaign",
+        "content": "Content",
+        "term": "Term",
+        "fullUrl": "Full URL"
+      },
+      "sources": {
+        "google": "Google",
+        "naver": "Naver",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "kakao": "Kakao"
+      },
+      "mediums": {
+        "cpc": "CPC",
+        "display": "Display",
+        "social": "Social",
+        "email": "Email"
+      }
+    },
+    "youtube": {
+      "title": "유튜브 썸네일 추출기",
+      "description": "유튜브 영상의 썸네일 이미지를 다양한 해상도로 추출할 수 있습니다.",
+      "head": {
+        "title": "유튜브 썸네일 추출기 - Marketing Tools",
+        "description": "유튜브 동영상의 썸네일 이미지를 다양한 해상도로 추출하세요."
+      },
+      "inputs": {
+        "urlLabel": "유튜브 URL",
+        "urlPlaceholder": "https://www.youtube.com/watch?v=..."
+      },
+      "buttons": {
+        "extract": "썸네일 추출",
+        "download": "다운로드"
+      },
+      "thumbnails": {
+        "max": {
+          "title": "최대 해상도",
+          "resolution": "(1280x720)"
+        },
+        "standard": {
+          "title": "기본 해상도",
+          "resolution": "(120x90)"
+        },
+        "medium": {
+          "title": "중간 해상도",
+          "resolution": "(320x180)"
+        },
+        "high": {
+          "title": "고해상도",
+          "resolution": "(480x360)"
+        }
+      },
+      "errors": {
+        "urlRequired": "URL을 입력해주세요",
+        "invalidUrl": "올바른 유튜브 URL이 아닙니다"
+      }
+    },
+    "youtubeTime": {
+      "title": "YouTube 타임스탬프 URL 생성기",
+      "description": "유튜브 동영상의 특정 시간대로 바로 이동하는 URL을 생성합니다.",
+      "head": {
+        "title": "YouTube 타임스탬프 URL 생성기 - Marketing Tools",
+        "description": "YouTube 동영상의 특정 시간대로 바로 이동하는 URL을 생성합니다."
+      },
+      "inputs": {
+        "url": {
+          "label": "YouTube URL",
+          "placeholder": "https://www.youtube.com/watch?v=..."
+        },
+        "hours": {
+          "label": "시간"
+        },
+        "minutes": {
+          "label": "분"
+        },
+        "seconds": {
+          "label": "초"
+        }
+      },
+      "errors": {
+        "urlRequired": "YouTube URL을 입력해주세요",
+        "invalidUrl": "올바른 YouTube URL이 아닙니다",
+        "timeRequired": "시간을 입력해주세요",
+        "zeroTime": "0초는 입력할 수 없습니다"
+      },
+      "buttons": {
+        "generate": "타임스탬프 URL 생성하기"
+      },
+      "results": {
+        "title": "생성된 URL 목록",
+        "jumpTime": "이동 시간: {time}"
+      },
+      "copyMessage": "URL이 복사되었습니다!"
+    },
+    "youtubeComments": {
+      "title": "YouTube 댓글 추출기",
+      "description": "유튜브 영상의 댓글을 엑셀 파일로 추출합니다.",
+      "head": {
+        "title": "YouTube 댓글 추출기 - Marketing Tools",
+        "description": "YouTube 동영상의 댓글을 엑셀 파일로 추출합니다."
+      },
+      "notice": {
+        "limits": {
+          "comments": "⚡ 1회당 최대 2,000개의 댓글을 수집할 수 있습니다. (일일 사용 한도: {limit}회 중 {used}회 사용)",
+          "quota": "전체 이용자의 사용량에 따라 나의 한도와 상관없이 수집이 중단될 수 있습니다. 다음날 이용해 주세요",
+          "policy": "2,000개가 넘는 댓글이 있더라도 유튜브의 댓글 정책에 따라 전체 댓글이 수집되지 않을수 있습니다."
+        }
+      },
+      "inputs": {
+        "url": {
+          "label": "YouTube URL",
+          "placeholder": "https://www.youtube.com/watch?v=..."
+        },
+        "sort": {
+          "label": "정렬 방식",
+          "relevance": "인기 댓글순",
+          "time": "최신순"
+        },
+        "replies": {
+          "label": "대댓글 설정",
+          "include": "대댓글 포함",
+          "exclude": "대댓글 제외"
+        }
+      },
+      "buttons": {
+        "extract": "댓글 추출하기",
+        "extracting": "댓글 수집 중..."
+      },
+      "progress": {
+        "collecting": "{current}/{total} 댓글 수집 중... ({progress}%)"
+      },
+      "errors": {
+        "dailyLimit": "일일 사용 한도({limit}회)를 초과했습니다. 내일 다시 시도해주세요.",
+        "quotaExceeded": "YouTube API 일일 할당량이 초과되었습니다. 내일 다시 시도해주세요.",
+        "fetchFailed": "댓글을 가져오는데 실패했습니다",
+        "invalidUrl": "올바른 YouTube URL이 아닙니다"
+      },
+      "info": {
+        "total": "전체 {count}개의 댓글 중 {sortType}으로 상위 2,000개만 수집됩니다.{repliesNote}",
+        "sortTypes": {
+          "relevance": "인기 댓글순",
+          "time": "최신순"
+        },
+        "repliesNote": " (대댓글 제외)"
+      },
+      "excel": {
+       "content": "내용",
+       "date": "작성일",
+       "likes": "좋아요 수",
+       "author": "작성자",
+       "type": "댓글 유형",
+       "parentAuthor": "원댓글 작성자",
+       "replyType": "↳ 답글",
+       "commentType": "원댓글"
+      }
+    },
+    "url": {
+      "title": "URL 단축기",
+      "description": "긴 URL을 간단하게 줄여서 관리와 공유를 더 쉽게 만들어줍니다.",
+      "head": {
+        "title": "URL 단축기 - Marketing Tools",
+        "description": "긴 URL을 짧고 간단하게 줄여보세요."
+      },
+      "inputs": {
+        "urlLabel": "URL 입력",
+        "placeholder": "https://..."
+      },
+      "buttons": {
+        "shorten": "단축하기",
+        "copy": "복사"
+      },
+      "results": {
+        "title": "단축된 URL:"
+      },
+      "messages": {
+        "error": {
+          "empty": "URL을 입력해주세요",
+          "invalid": "올바른 URL 형식이 아닙니다",
+          "failed": "URL 단축 중 오류가 발생했습니다"
+        },
+        "success": "URL이 복사되었습니다!"
+      }
+    },
+    "text": {
+      "title": "글자수 세기",
+      "description": "텍스트의 글자수와 바이트를 실시간으로 체크하고 분석합니다.",
+      "head": {
+        "title": "글자수 세기 - Marketing Tools",
+        "description": "텍스트의 전체 글자수, 공백 제외 글자수, 바이트 수를 실시간으로 확인하세요."
+      },
+      "placeholder": "텍스트를 입력하세요.",
+      "stats": {
+        "total": "전체 글자수",
+        "noSpace": "공백 제외",
+        "byte2": "바이트 수 (2byte)",
+        "byte3": "바이트 수 (3byte)"
+      },
+      "info": {
+        "byteStandard": {
+          "title": "바이트 계산 기준",
+          "basic": "영어/숫자/기본 특수문자: 1바이트",
+          "korean": "한글: 인코딩 방식에 따라 2바이트 또는 3바이트"
+        },
+        "encoding": {
+          "title": "인코딩별 한글 바이트 수",
+          "utf8": "UTF-8: 3바이트 (유니코드 문자를 효율적으로 처리하는 가변 길이 인코딩)",
+          "euckr": "EUC-KR: 2바이트 (과거 한글 전용 인코딩)",
+          "utf16": "UTF-16: 2바이트 (모든 유니코드 문자를 2바이트로 처리)"
+        },
+        "platform": {
+          "title": "플랫폼별 기준",
+          "naver": "네이버/카카오 광고: 일반적으로 2바이트 기준 사용",
+          "google": "구글/페이스북 광고: 글자 수로만 제한 (바이트 수 무관)"
+        }
+      }
+    },
+    "analytics": {
+      "title": "광고 성과 분석",
+      "description": "ROAS, CPC, CTR 등 주요 광고 지표를 분석하고 성과를 측정합니다.",
+      "head": {
+        "title": "광고 성과 분석 - Marketing Tools",
+        "description": "ROAS, CPC, CTR 등 주요 광고 지표를 분석하고 성과를 측정합니다."
+      },
+      "tabs": {
+        "roas": "ROAS 분석",
+        "efficiency": "광고 효율 분석",
+        "conversion": "전환 분석"
+      },
+      "sections": {
+        "roas": {
+          "title": "ROAS 분석",
+          "description": "ROAS(Return On Ad Spend)는 광고 투자 대비 매출액의 비율을 나타내는 지표입니다. 예를 들어, ROAS 500%는 광고비 1만원 당 5만원의 매출이 발생했다는 의미입니다.",
+          "analysisResult": "분석 결과",
+          "results": {
+            "value": "ROAS: {{value}}%"
+          },
+          "profitMessage": "✓ 수익이 발생하고 있습니다",
+          "lossMessage": "! 손실이 발생하고 있습니다"
+        },
+        "efficiency": {
+          "title": "광고 효율 분석",
+          "descriptions": [
+            "• CPC (Cost Per Click): 클릭당 평균 비용",
+            "• CPM (Cost Per Mile): 1000회 노출당 비용",
+            "• CTR (Click Through Rate): 노출 대비 클릭률"
+          ],
+          "results": {
+            "cpc": "CPC (클릭당 비용): {{value}}원",
+            "cpm": "CPM (1000회 노출당 비용): {{value}}원",
+            "ctr": "CTR (클릭률): {{value}}%"
+          }
+        },
+        "conversion": {
+          "title": "전환 분석",
+          "descriptions": [
+            "• CVR (Conversion Rate): 방문자의 전환율",
+            "• CPA (Cost Per Action): 전환당 비용"
+          ],
+          "results": {
+            "cvr": "CVR (전환율): {{value}}%",
+            "cpa": "CPA (전환당 비용): {{value}}원"
+          }
+        }
+      },
+      "inputs": {
+        "adCost": "광고비",
+        "adCostPlaceholder": "광고 비용을 입력하세요",
+        "revenue": "매출액",
+        "revenuePlaceholder": "매출액을 입력하세요",
+        "impressions": "노출수",
+        "impressionsPlaceholder": "총 노출 횟수",
+        "clicks": "클릭수",
+        "clicksPlaceholder": "총 클릭 횟수",
+        "visits": "방문수",
+        "visitsPlaceholder": "총 방문자 수",
+        "conversions": "전환수",
+        "conversionsPlaceholder": "총 전환 수"
+      },
+      "analysisResult": "분석 결과"
+    },
+    "wordCloud": {
+      "title": "워드클라우드 생성기",
+      "description": "텍스트를 분석하여 단어 빈도수를 시각화하는 워드클라우드를 생성합니다.",
+      "head": {
+        "title": "워드클라우드 생성기 - Marketing Tools",
+        "description": "텍스트를 분석하여 단어 빈도수를 시각화하는 워드클라우드를 생성합니다."
+      },
+      "stopword": {
+        "label": "제외할 단어 설정",
+        "subLabel": "(분석에서 제외할 단어를 추가해주세요)",
+        "defaultTitle": "기본 불용어 목록:",
+        "placeholder": "제외할 단어 입력"
+      },
+      "inputs": {
+        "text": {
+          "label": "분석할 텍스트",
+          "placeholder": "분석할 텍스트를 입력하세요..."
+        }
+      },
+      "buttons": {
+        "add": "추가",
+        "saveImage": "이미지로 저장"
+      },
+      "errors": {
+        "emptyStopWord": "제외할 단어를 입력해주세요",
+        "duplicateStopWord": "이미 존재하는 불용어입니다"
+      },
+      "result": {
+        "title": "워드클라우드",
+        "subTitle": "자주 등장하는 단어",
+        "frequency": "회"
+      }
+    },
+    "colors": {
+      "title": "컬러 도구",
+      "description": "완벽한 색상 조합을 찾고 활용하세요.",
+      "head": {
+        "title": "컬러 도구 - Marketing Tools"
+      },
+      "howToUse": {
+        "title": "How to Use",
+        "sections": {
+          "colorSelect": {
+            "title": "컬러 선택",
+            "description": "메인 컬러를 클릭해 피커를 사용하거나 'Random' 버튼으로 새로운 컬러를 선택하세요."
+          },
+          "codeCopy": {
+            "title": "코드 복사",
+            "description": "컬러를 클릭하면 HEX값이 클립보드에 자동으로 복사됩니다."
+          },
+          "palette": {
+            "title": "팔레트 활용",
+            "description": "자동으로 생성된 컬러 팔레트를 확인하고 활용하세요."
+          }
+        }
+      },
+      "mainColor": "메인 컬러",
+      "colorCode": "컬러 코드",
+      "randomColor": "랜덤 컬러",
+      "palettes": {
+        "basic": {
+          "title": "기본 팔레트",
+          "description": "선택한 색상의 밝기와 채도를 조절한 변형"
+        },
+        "complementary": {
+          "title": "보색 조합",
+          "description": "색상환에서 정반대에 위치한 색상"
+        },
+        "splitComplementary": {
+          "title": "분할 보색",
+          "description": "보색의 양옆 색상을 활용한 부드러운 대비"
+        },
+        "analogous": {
+          "title": "유사 색상",
+          "description": "색상환에서 이웃한 자연스러운 조화"
+        },
+        "triadic": {
+          "title": "삼각 배색",
+          "description": "색상환에서 120도씩 떨어진 세 색상의 균형잡힌 조화"
+        },
+        "tetradic": {
+          "title": "사각 배색",
+          "description": "색상환에서 90도씩 떨어진 네 색상의 다양한 조합"
+        }
+      },
+      "copyMessage": "{color} 복사됨!"
+    }
+  },
+  "footer": {
+   "privacyPolicy": "개인정보처리방침",
+   "termsOfService": "이용약관",
+   "copyright": "© 2024 Marketing Tools. All rights reserved.",
+   "contact": "오류 신고 및 문의: mkttoolbox.mas@gmail.com"
+ },
+ "privacyPolicyPage": {
+   "head": {
+     "title": "개인정보처리방침 - Marketing Tools",
+     "description": "마케팅 툴 박스의 개인정보처리방침 페이지입니다."
+   },
+   "title": "개인정보처리방침",
+   "intro": "Marketing Tools(이하 '사이트')는 이용자의 프라이버시를 존중하며, 관련 법령을 준수하기 위해 다음과 같은 처리방침을 두고 있습니다.",
+   "section1": {
+     "title": "1. 수집하는 정보",
+     "content1": "사이트는 별도의 회원가입 없이 무료로 서비스를 제공하고 있으며, 최소한의 정보만을 수집합니다:",
+     "item1": "자동 수집 정보: 방문 기록, IP 주소",
+     "item2": "Google Analytics를 통한 사이트 이용 통계",
+     "item3": "광고 서비스 제공을 위한 쿠키 정보"
+   },
+   "section2": {
+     "title": "2. 수집 목적",
+     "item1": "사이트 이용 현황 파악 및 서비스 개선",
+     "item2": "맞춤형 광고 제공"
+   },
+   "section3": {
+     "title": "3. 쿠키 사용",
+     "content": "이 사이트는 Google Analytics 및 광고 서비스 제공을 위해 쿠키를 사용합니다. 브라우저 설정에서 쿠키 사용을 거부할 수 있으며, 이 경우 일부 서비스 이용에 제한이 있을 수 있습니다."
+   },
+   "section4": {
+     "title": "4. 정보 보안",
+     "content": "사이트는 이용자의 개인정보 보호를 위해 다음과 같은 기본적인 보안 조치를 취하고 있습니다:",
+     "item1": "SSL 보안 프로토콜 사용",
+     "item2": "개인정보가 포함된 데이터 수집 제한",
+     "item3": "자동 수집되는 정보의 최소화"
+   },
+   "section5": {
+     "title": "5. 문의",
+     "content": "개인정보 처리방침에 대한 문의사항은 다음 이메일로 연락주시기 바랍니다:",
+     "email": "이메일: mkttoolbox.mas@gmail.com"
+   },
+   "section6": {
+     "title": "6. 개인정보처리방침 변경",
+     "content": "이 개인정보처리방침은 2024년 12월 1일부터 적용되며, 변경사항이 있을 경우 사이트를 통해 공지하겠습니다."
+   }
+ },
+ "termsOfServicePage": {
+   "head": {
+     "title": "이용약관 - Marketing Tools",
+     "description": "마케팅 툴 박스의 이용약관 페이지입니다."
+   },
+   "title": "이용약관",
+   "intro": "Marketing Tools(이하 '사이트')의 서비스 이용과 관련하여 필요한 사항을 규정합니다.",
+   "section1": {
+     "title": "1. 목적",
+     "content": "이 약관은 사이트가 제공하는 모든 서비스의 이용 조건 및 절차, 이용자와 사이트의 권리, 의무, 책임 등을 규정하는 것을 목적으로 합니다."
+   },
+   "section2": {
+     "title": "2. 서비스 이용",
+     "item1": "사이트는 별도의 회원 가입 없이 무료로 서비스를 제공합니다.",
+     "item2": "서비스는 웹브라우저를 통해 제공되며, 브라우저 종류 및 버전에 따라 일부 기능이 제한될 수 있습니다.",
+     "item3": "사이트는 서비스 향상을 위해 사전 고지 없이 서비스 내용을 변경할 수 있습니다."
+   },
+   "section3": {
+     "title": "3. 이용자의 의무",
+     "item1": "이용자는 서비스 이용 시 관련 법령과 이 약관의 규정을 준수해야 합니다.",
+     "item2": "이용자는 서비스를 이용하여 얻은 정보를 무단으로 복제, 배포할 수 없습니다.",
+     "item3": "이용자는 서비스의 안정적 운영을 방해하는 행위를 해서는 안 됩니다."
+   },
+   "section4": {
+     "title": "4. 면책조항",
+     "item1": "사이트는 무료로 제공되는 서비스 이용과 관련하여 발생한 손해에 대해 책임을 지지 않습니다.",
+     "item2": "천재지변, 기술적 결함 등으로 인한 서비스 제공 중단에 대해 책임을 지지 않습니다.",
+     "item3": "사이트가 제공하는 도구를 통해 생성된 결과물의 활용은 이용자의 책임입니다."
+   },
+   "section5": {
+     "title": "5. 저작권",
+     "content": "사이트가 제공하는 모든 서비스, 정보, 디자인 등에 대한 저작권은 사이트에 귀속됩니다. 이용자는 비상업적 목적으로 서비스를 이용할 수 있으나, 사이트의 동의 없이 이를 상업적으로 이용할 수 없습니다."
+   },
+   "section6": {
+     "title": "6. 약관의 변경",
+     "content": "사이트는 필요한 경우 약관을 변경할 수 있으며, 변경된 약관은 사이트를 통해 공지합니다. 변경된 약관에 동의하지 않는 이용자는 서비스 이용을 중단할 수 있습니다."
+   },
+   "section7": {
+     "title": "7. 분쟁해결",
+     "content": "서비스 이용으로 발생한 분쟁은 관련 법령에 따라 처리되며, 분쟁 발생 시 양 당사자는 상호 협의하여 분쟁 해결을 위해 노력합니다."
+   },
+   "effectiveDate": "시행일자: 2024년 12월 1일"
+ }
+}
