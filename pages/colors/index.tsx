@@ -260,6 +260,24 @@ export default function ColorTool({ pageData }) {
 
   const ColorPaletteItem = ({ color }) => {
     const { t } = useTranslation();
+    const [rgb, setRgb] = useState([0, 0, 0]);
+
+    // hex to rgb 변환 함수
+    const hexToRgb = (hex) => {
+      hex = hex.replace('#', '');
+      if (!/^[0-9A-Fa-f]{6}$/.test(hex)) {
+        return [0, 0, 0];
+      }
+      const r = parseInt(hex.slice(0, 2), 16);
+      const g = parseInt(hex.slice(2, 4), 16);
+      const b = parseInt(hex.slice(4, 6), 16);
+      return [r, g, b];
+    };
+
+    // 컬러가 변경될 때마다 RGB 값 업데이트
+    useEffect(() => {
+      setRgb(hexToRgb(color));
+    }, [color]);
 
     const copyToClipboard = (color) => {
       navigator.clipboard.writeText(color);
@@ -274,14 +292,19 @@ export default function ColorTool({ pageData }) {
           style={{ backgroundColor: color }}
           onClick={() => copyToClipboard(color)}
         />
-        <div className="flex items-center justify-between px-1">
-          <span className="font-mono text-sm">{color.toUpperCase()}</span>
-          <button
-            onClick={() => copyToClipboard(color)}
-            className="text-gray-500 hover:text-gray-700"
-          >
-            <Copy className="w-4 h-4" />
-          </button>
+        <div className="px-1 space-y-1">
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-sm">{color.toUpperCase()}</span>
+            <button
+              onClick={() => copyToClipboard(color)}
+              className="text-gray-500 hover:text-gray-700"
+            >
+              <Copy className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="font-mono text-xs text-gray-500">
+            rgb({rgb.join(', ')})
+          </div>
         </div>
       </div>
     );
