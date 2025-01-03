@@ -2,8 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Link2, Youtube, Type, BarChart2, FileCode } from 'lucide-react';
+import { Image as NextImage } from 'next/image'; // Image를 NextImage로 import
+import { Link2, Youtube, Type, BarChart2, FileCode, Image } from 'lucide-react';
 import { Palette } from 'lucide-react';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useTranslation } from '@/lib/i18n/useTranslation';
@@ -92,7 +92,16 @@ export default function Home() {
       keywords: ['컬러 팔레트', '색상 조합', '브랜드 컬러', '보색', '색상 코드', 'HEX 코드', 'RGB 코드'],
       icon: <Palette className="w-6 h-6" />,
       link: '/colors'
-    }
+    },
+    {
+      id: 'imageConverter',
+      title: t('tools.imageConverter.title'),
+      description: t('tools.imageConverter.description'),
+      detailedDescription: t('tools.imageConverter.detailedDescription'),
+      keywords: t('tools.imageConverter.keywords'),
+      icon: <Image className="w-6 h-6" />, // Image 아이콘 사용
+      link: '/images',
+    },
   ];
 
   return (

@@ -141,7 +141,7 @@ export default function WordCloudGenerator({ pageData }) {
         <meta property="og:title" content={pageData.head.ogTitle} />
         <meta property="og:description" content={pageData.head.ogDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mkt-box.vercel.app/word-cloud" />
+        <meta property="og:url" content="https://mktbox.co.kr/word-cloud" />
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">

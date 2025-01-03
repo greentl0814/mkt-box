@@ -180,7 +180,7 @@ export default function UTMGenerator({ pageData = {} }) {
         <meta property="og:title" content={pageData.head?.ogTitle || 'UTM 생성기 - Marketing Tools'} />
         <meta property="og:description" content={pageData.head?.ogDescription || 'UTM 태그를 쉽고 빠르게 생성하세요. 여러 소스와 매체를 한 번에 처리할 수 있는 무료 UTM 생성기입니다.'} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mkt-box.vercel.app/utm" />
+        <meta property="og:url" content="https://mktbox.co.kr/utm" />
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">

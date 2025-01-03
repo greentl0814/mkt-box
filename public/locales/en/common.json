@@ -309,8 +309,8 @@
             "• CTR (Click Through Rate): Ratio of clicks to impressions"
           ],
           "results": {
-            "cpc": "CPC (Cost per Click): ${{value}}",
-            "cpm": "CPM (Cost per Thousand): ${{value}}",
+            "cpc": "CPC (Cost per Click): {{value}}원",
+            "cpm": "CPM (Cost per Thousand): {{value}}원",
             "ctr": "CTR (Click Through Rate): {{value}}%"
           }
         },
@@ -322,7 +322,7 @@
           ],
           "results": {
             "cvr": "CVR (Conversion Rate): {{value}}%",
-            "cpa": "CPA (Cost per Action): ${{value}}"
+            "cpa": "CPA (Cost per Action): {{value}}원"
           }
         }
       },
@@ -428,9 +428,89 @@
         }
       },
       "copyMessage": "{color} copied!"
+    },
+    "imageConverter": {
+      "title": "Image Converter",
+      "description": "Convert image file formats and adjust quality.",
+      "detailedDescription": "Convert image file formats and adjust quality. Supported formats are JPEG, PNG, and WebP.",
+      "keywords": ["image conversion", "JPEG conversion", "PNG conversion", "WebP conversion", "image compression", "quality adjustment"],
+      "uploadText": "Upload Images by Dragging or Clicking",
+      "supportedFormats": "Supported Formats: JPEG, PNG, WebP",
+      "errors": {
+        "fileType": "Only Supported Image Formats Can Be Uploaded.",
+        "conversion": "Error Occurred During Image Conversion"
+      },
+      "convertButton": "Convert",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "outputFormat": "Output Format",
+      "quality": "Quality",
+      "originalImageInfo": "Original Image Information",
+      "fileName": "Filename",
+      "fileSize": "File Size",
+      "fileType": "File Format",
+      "resolution": "Resolution",
+      "newResolution": "New Resolution",
+      "convertedImageInfo": "Converted Image Information",
+      "original": "Original",
+      "converted": "Converted",
+      "maxWidth": "Maximum Width (px)",
+      "maxWidthNote1": "ℹ️ Cannot set resolution larger than the original image.",
+      "maxWidthNote2": "Maximum Width",
+      "maxWidthNote3": "px, Maximum Height",
+      "maxWidthNote4": "px"
     }
   },
-  "footer": {
+  "qualityExplanation": {
+    "heading": "Detailed Explanation of Quality Settings",
+    "description": "The quality setting only applies when the output format is JPEG or WebP (lossy compression mode). The lower the value, the smaller the file size, but the image quality may be degraded.",
+    "link": "See detailed explanation",
+    "pngWarning": "PNG is a lossless compression format, so the output quality is always maintained at 100%. Therefore, PNG → PNG conversion does not affect the quality.",
+    "jpegWarning1": "JPEG is a lossy compression format, so image quality may degrade as the quality value decreases. but",
+    "jpegWarning2": "setting the quality to 100% will also apply lossless compression to JPEG",
+    "jpegWarning3": "to maintain image quality.",
+    "webpWarning1": "WebP is a format that supports both lossy and lossless compression.",
+    "webpWarning2": "Setting the quality to 100% also applies lossless compression to WebP,",
+    "webpWarning3": "which maintains image quality, but can increase file size.",
+    "pngNote": "When converting to PNG, the transparent areas of the original image are preserved.",
+    "otherNote": "When converting to JPEG or WebP, the transparent areas of the original image are filled with white.",
+    "table": {
+      "originalFormat": "Original Format",
+      "outputFormat": "Output Format",
+      "qualitySetting": "Quality Setting Applied",
+      "explanation": "Explanation"
+    },
+    "cases": {
+      "pngToPng": {
+        "description": "PNG is lossless compression, so the quality setting is not applied. The output PNG has the same quality as the original PNG."
+      },
+      "pngToJpeg": {
+        "description": "Since this is a PNG (lossless) → JPEG (lossy) conversion, the quality setting value is applied. The lower the value, the smaller the file size, but the image quality is degraded. When the quality is set to 100%, it is not JPEG lossless compression, but it maintains the best possible quality."
+      },
+      "pngToWebp": {
+        "description": "Since this is a PNG (lossless) → WebP (lossy/lossless) conversion, the quality setting value is applied. Lossless compression is applied when set to 100%, and lossy compression is applied when set to less than 100%. In the case of lossy compression, the lower the value, the smaller the file size, but the image quality is degraded."
+      },
+      "jpegToPng": {
+        "description": "This is a JPEG (lossy) → PNG (lossless) conversion. Since PNG is lossless compression, the quality setting is not applied. The output PNG looks visually identical to the original JPEG, but the loss already incurred in JPEG is not recovered."
+      },
+      "jpegToJpeg": {
+        "description": "Since this is a JPEG (lossy) → JPEG (lossy) conversion, the quality setting value is applied. The lower the value, the smaller the file size, but the image quality is further degraded."
+      },
+      "jpegToWebp": {
+        "description": "Since this is a JPEG (lossy) → WebP (lossy/lossless) conversion, the quality setting value is applied. Lossless compression is applied when set to 100%, and lossy compression is applied when set to less than 100%. In the case of lossy compression, the lower the value, the smaller the file size, but the image quality is degraded."
+      },
+      "webpToPng": {
+        "description": "This is a WebP (lossy/lossless) → PNG (lossless) conversion. Since PNG is lossless compression, the quality setting is not applied. The output PNG looks visually identical to the original WebP, but if the original WebP was lossy compressed, that loss is not recovered."
+      },
+      "webpToJpeg": {
+        "description": "Since this is a WebP (lossy/lossless) → JPEG (lossy) conversion, the quality setting value is applied. The lower the value, the smaller the file size, but the image quality is degraded. When the quality is set to 100%, it is not JPEG lossless compression, but it maintains the best possible quality."
+      },
+      "webpToWebp": {
+        "description": "Since this is a WebP (lossy/lossless) → WebP (lossy/lossless) conversion, the quality setting value is applied. Lossless compression is applied when set to 100%, and lossy compression is applied when set to less than 100%. In the case of lossy compression, the lower the value, the smaller the file size, but the image quality is degraded."
+      }
+    }
+  },
+ "footer": {
    "privacyPolicy": "Privacy Policy",
    "termsOfService": "Terms of Service",
    "copyright": "© 2024 Marketing Tools. All rights reserved.",
@@ -518,5 +598,5 @@
      "content": "Disputes arising from the use of the service shall be handled in accordance with relevant laws and regulations, and in the event of a dispute, both parties shall make efforts to resolve the dispute through mutual consultation."
    },
    "effectiveDate": "Effective Date: December 1, 2024"
- }
+  }
 }
