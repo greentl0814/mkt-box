@@ -77,6 +77,10 @@ export default function Document() {
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
+        {/* Google AdSense */}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6071061687711848"
+             crossorigin="anonymous"></script>
+
         {/* JSON-LD 구조화된 데이터 */}
         <script
           type="application/ld+json"
