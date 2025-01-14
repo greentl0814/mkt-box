@@ -65,8 +65,16 @@ export default function YoutubeThumbnail({ pageData }) {
           <LanguageSelector />
         </div>
 
-        <h1 className="text-2xl font-bold mb-6">{pageData.title}</h1>
-
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold">{pageData.title || 'YouTube 썸네일 추출기'}</h1>
+          <Link
+            href="/youtube/guide" 
+            className="text-blue-500 hover:text-blue-700 flex items-center"
+          >
+            <span>{pageData.guideLink || '썸네일 추출 가이드'}</span>
+            <span className="ml-1">→</span>
+          </Link>
+        </div>
         <div className="space-y-6">
           <div>
             <label className="block mb-2 font-medium">

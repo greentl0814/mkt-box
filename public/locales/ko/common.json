@@ -21,6 +21,7 @@
         "title": "UTM 생성기 - Marketing Tools",
         "description": "UTM 태그를 쉽고 빠르게 생성하세요. 여러 소스와 매체를 한 번에 처리할 수 있는 무료 UTM 생성기입니다."
       },
+      "guideLink": "UTM 태그 가이드",
       "inputs": {
         "url": {
           "label": "랜딩페이지 주소",
@@ -37,11 +38,11 @@
           "placeholder": "기타 매체 입력"
         },
         "campaign": "Campaign (캠페인명)",
-        "campaignPlaceholder": "campaign_name",
+        "campaignPlaceholder": "캠페인명",
         "content": "Content (소재)",
-        "contentPlaceholder": "banner_a",
+        "contentPlaceholder": "소재_a",
         "term": "Term (검색어)",
-        "termPlaceholder": "keyword"
+        "termPlaceholder": "검색어"
       },
       "buttons": {
         "add": "추가",
@@ -60,12 +61,12 @@
         "title": "생성된 URL 목록"
       },
       "excel": {
-        "source": "Source",
-        "medium": "Medium",
-        "campaign": "Campaign",
-        "content": "Content",
-        "term": "Term",
-        "fullUrl": "Full URL"
+        "source": "소스",
+        "medium": "매체",
+        "campaign": "캠페인",
+        "content": "콘텐츠",
+        "term": "검색어",
+        "fullUrl": "전체 URL"
       },
       "sources": {
         "google": "Google",
@@ -90,6 +91,7 @@
         "ogDescription": "UTM 태그에 대한 종합적인 가이드: 정의, 설정 방법, 활용 사례"
       },
       "title": "UTM 태그 완벽 가이드",
+      "description": "마케팅 캠페인에 UTM 태그를 효과적으로 사용하는 방법을 알아보세요.",
       "sections": {
         "what": {
           "title": "UTM이란 무엇인가요?",
@@ -102,7 +104,37 @@
             "마케팅 효과 측정: 각 캠페인의 성과를 정확하게 측정",
             "예산 최적화: 효과적인 채널에 집중 투자 가능",
             "데이터 기반 의사결정: 정확한 데이터를 바탕으로 마케팅 전략 수립"
-          ]
+          ],
+          "cards": {
+            "traffic": {
+              "title": "정확한 트래픽 소스 추적",
+              "description": "어떤 웹사이트, 캠페인 또는 채널이 사이트로 트래픽을 유도하는지 정확히 파악합니다."
+            },
+            "measurement": {
+              "title": "마케팅 효과 정밀 측정",
+              "description": "각 마케팅 활동의 성과를 평가하고 가장 효과적인 전략을 식별합니다."
+            },
+            "optimization": {
+              "title": "마케팅 예산 최적화",
+              "description": "성과가 좋은 채널에 더 많은 예산을 투입하고 덜 효과적인 채널은 축소합니다."
+            },
+            "dataDriven": {
+              "title": "데이터 기반 의사결정",
+              "description": "추측이 아닌 정확한 데이터를 기반으로 합리적인 의사결정을 내립니다."
+            },
+            "marketing": {
+              "title": "마케팅 효과 측정",
+              "description": "마케팅 캠페인의 성과를 정확하게 측정하고 분석합니다."
+            },
+            "data": {
+              "title": "정확한 데이터 기반 의사결정",
+              "description": "신뢰할 수 있는 데이터와 분석을 기반으로 정보에 입각한 의사결정을 내립니다."
+            },
+            "budget": {
+              "title": "마케팅 예산 최적화",
+              "description": "가장 수익성이 높은 채널에 집중하여 마케팅 예산을 효과적으로 할당합니다."
+            }
+          }
         },
         "parameters": {
           "title": "UTM 매개변수 설명",
@@ -123,7 +155,7 @@
         }
       },
       "cta": "UTM 생성기 사용하기"
-    },    
+    },
     "youtube": {
       "title": "유튜브 썸네일 추출기",
       "description": "유튜브 영상의 썸네일 이미지를 다양한 해상도로 추출할 수 있습니다.",
@@ -160,6 +192,118 @@
       "errors": {
         "urlRequired": "URL을 입력해주세요",
         "invalidUrl": "올바른 유튜브 URL이 아닙니다"
+      },
+      "guideLink": "썸네일 가이드",
+      "youtubeThumbnailGuide": {
+        "head": {
+          "title": "유튜브 썸네일 추출기 가이드 - Marketing Tools",
+          "description": "유튜브 동영상의 썸네일을 손쉽게 추출하는 방법을 알아보세요.",
+          "keywords": "유튜브 썸네일, 썸네일 추출, 유튜브 마케팅, 콘텐츠 제작",
+          "ogTitle": "유튜브 썸네일 추출기 가이드",
+          "ogDescription": "유튜브 썸네일 추출 방법과 활용 가이드"
+        },
+        "title": "유튜브 썸네일 추출기 가이드",
+        "description": "유튜브 동영상의 썸네일을 다양한 해상도로 추출하고 활용하는 방법을 알아보세요.",
+        "sections": {
+          "what": {
+            "title": "유튜브 썸네일이란?",
+            "content": "유튜브 썸네일은 동영상의 대표 이미지로, 시청자들의 첫인상을 결정짓는 중요한 요소입니다. 효과적인 썸네일은 조회수 증가에 큰 도움이 됩니다."
+          },
+          "why": {
+            "title": "썸네일을 추출해야 하는 이유",
+            "reasons": [
+              "블로그나 웹사이트에 유튜브 콘텐츠 홍보",
+              "마케팅 자료 제작에 활용",
+              "SNS 공유 시 맞춤 썸네일 사용",
+              "콘텐츠 아카이브 구성"
+            ]
+          },
+          "parameters": {
+            "title": "제공되는 썸네일 해상도",
+            "max": "최대 해상도 (1280x720) - 고품질 웹 게시용",
+            "high": "고화질 (480x360) - 중간 크기 게시용",
+            "medium": "중간 화질 (320x180) - SNS 게시용",
+            "standard": "기본 화질 (120x90) - 미리보기용"
+          },
+          "bestPractices": {
+            "title": "활용 팁",
+            "tips": [
+              "웹사이트에는 최대 해상도 이미지 사용",
+              "SNS에는 중간 해상도 이미지가 적합",
+              "썸네일로 콘텐츠 일관성 유지",
+              "브랜딩에 맞는 해상도 선택"
+            ]
+          },
+          "features": {
+            "title": "주요 기능",
+            "description": "유튜브 썸네일 추출기의 핵심 기능을 살펴보세요.",
+            "cards": {
+              "resolution": {
+                "title": "다양한 해상도 지원",
+                "description": "최대 해상도(1920x1080)부터 표준 해상도까지 다양한 크기의 썸네일을 제공합니다."
+              },
+              "download": {
+                "title": "간편한 다운로드",
+                "description": "원하는 크기의 썸네일을 클릭 한 번으로 바로 다운로드할 수 있습니다."
+              },
+              "directUrl": {
+                "title": "URL 직접 사용",
+                "description": "다운로드 없이 썸네일 URL을 직접 사용할 수 있어 웹사이트나 블로그에 바로 활용 가능합니다."
+              },
+              "preview": {
+                "title": "미리보기 제공",
+                "description": "다운로드 전에 각 해상도별 썸네일을 미리 확인할 수 있습니다."
+              }
+            }
+          },
+          "usage": {
+            "title": "사용 방법",
+            "description": "간단한 단계를 따라 유튜브 썸네일을 추출해보세요.",
+            "steps": {
+              "urlPreparation": {
+                "title": "유튜브 URL 준비",
+                "description": "추출하고 싶은 유튜브 동영상의 URL을 복사합니다. 일반 URL과 공유 URL 모두 사용 가능합니다."
+              },
+              "urlInput": {
+                "title": "URL 입력",
+                "description": "복사한 URL을 입력창에 붙여넣고 '썸네일 추출' 버튼을 클릭합니다."
+              },
+              "resolutionSelection": {
+                "title": "해상도 선택",
+                "description": "제공되는 다양한 해상도 중 원하는 크기의 썸네일을 선택합니다."
+              },
+              "download": {
+                "title": "다운로드",
+                "description": "'다운로드' 버튼을 클릭하여 선택한 썸네일을 저장합니다."
+              }
+            }
+          },
+          "useCases": {
+            "title": "활용 사례",
+            "cards": {
+              "blogPosting": {
+                "title": "블로그 포스팅",
+                "description": "블로그 글에 유튜브 동영상을 임베드할 때 썸네일을 대표 이미지로 활용할 수 있습니다."
+              },
+              "socialMedia": {
+                "title": "소셜 미디어 공유",
+                "description": "Facebook, Twitter 등 소셜 미디어에 동영상을 공유할 때 고품질 썸네일을 활용할 수 있습니다."
+              },
+              "presentation": {
+                "title": "프레젠테이션",
+                "description": "비즈니스 프레젠테이션이나 교육 자료에 유튜브 콘텐츠를 참조할 때 썸네일을 활용할 수 있습니다."
+              },
+              "marketing": {
+                "title": "마케팅 자료",
+                "description": "마케팅 캠페인이나 광고 소재 제작 시 유튜브 썸네일을 활용하여 시각적 효과를 높일 수 있습니다."
+              }
+            }
+          },
+          "cta": {
+            "title": "지금 바로 시작하세요",
+            "description": "유튜브 썸네일 추출기로 더 효과적인 콘텐츠를 만들어보세요."
+          }
+        }
       }
     },
     "youtubeTime": {
@@ -251,14 +395,14 @@
         "repliesNote": " (대댓글 제외)"
       },
       "excel": {
-       "content": "내용",
-       "date": "작성일",
-       "likes": "좋아요 수",
-       "author": "작성자",
-       "type": "댓글 유형",
-       "parentAuthor": "원댓글 작성자",
-       "replyType": "↳ 답글",
-       "commentType": "원댓글"
+        "content": "내용",
+        "date": "작성일",
+        "likes": "좋아요 수",
+        "author": "작성자",
+        "type": "댓글 유형",
+        "parentAuthor": "원댓글 작성자",
+        "replyType": "↳ 답글",
+        "commentType": "원댓글"
       }
     },
     "url": {
@@ -476,7 +620,14 @@
       "title": "이미지 변환 도구",
       "description": "이미지 파일 형식을 변환하고 품질을 조정합니다.",
       "detailedDescription": "이미지 파일 형식을 변환하고 품질을 조정합니다. 지원하는 형식은 JPEG, PNG, WebP입니다.",
-      "keywords": ["이미지 변환", "JPEG 변환", "PNG 변환", "WebP 변환", "이미지 압축", "품질 조정"],
+      "keywords": [
+        "이미지 변환",
+        "JPEG 변환",
+        "PNG 변환",
+        "WebP 변환",
+        "이미지 압축",
+        "품질 조정"
+      ],
       "uploadText": "이미지를 드래그하거나 클릭하여 업로드",
       "supportedFormats": "지원 형식: JPEG, PNG, WebP",
       "errors": {

@@ -21,6 +21,7 @@
         "title": "UTM Generator - Marketing Tools",
         "description": "Generate UTM tags quickly and easily. Process multiple sources and mediums at once with this free UTM generator."
       },
+      "guideLink": "UTM Tag Guide",
       "inputs": {
         "url": {
           "label": "Landing Page URL",
@@ -81,7 +82,6 @@
         "email": "Email"
       }
     },
-
     "utmGuide": {
       "head": {
         "title": "UTM Tag Guide - Marketing Tools",
@@ -91,6 +91,7 @@
         "ogDescription": "Comprehensive guide to UTM tags: definition, setup, and use cases"
       },
       "title": "Complete UTM Tag Guide",
+      "description": "Learn how to effectively use UTM tags for your marketing campaigns",
       "sections": {
         "what": {
           "title": "What is UTM?",
@@ -103,7 +104,37 @@
             "Measure marketing effectiveness: Track the performance of each campaign",
             "Optimize budget: Focus investment on effective channels",
             "Data-driven decisions: Build marketing strategies based on accurate data"
-          ]
+          ],
+          "cards": {
+            "traffic": {
+              "title": "Accurately Track Traffic Sources",
+              "description": "Determine exactly which websites, campaigns, or channels are driving traffic to your site."
+            },
+            "measurement": {
+              "title": "Precisely Measure Marketing Effectiveness",
+              "description": "Evaluate the performance of each marketing activity and identify the most effective strategies."
+            },
+            "optimization": {
+              "title": "Optimize Marketing Budget",
+              "description": "Invest more in high-performing channels and cut back on less effective ones."
+            },
+            "dataDriven": {
+              "title": "Data-Driven Marketing Decisions",
+              "description": "Make informed decisions based on accurate data, rather than guesswork."
+            },
+            "marketing": {
+              "title": "Measure Marketing Effectiveness",
+              "description": "Accurately measure and analyze the performance of your marketing campaigns."
+            },
+            "data": {
+              "title": "Base Decisions on Accurate Data",
+              "description": "Make informed decisions based on reliable data and analytics."
+            },
+            "budget": {
+              "title": "Optimize Marketing Budget",
+              "description": "Allocate your marketing budget effectively by focusing on the most profitable channels."
+            }
+          }
         },
         "parameters": {
           "title": "UTM Parameters Explained",
@@ -124,20 +155,20 @@
         }
       },
       "cta": "Use UTM Generator"
-    },    
+    },
     "youtube": {
       "title": "YouTube Thumbnail Extractor",
       "description": "Extract thumbnail images from YouTube videos in various resolutions.",
       "head": {
         "title": "YouTube Thumbnail Extractor - Marketing Tools",
-        "description": "Extract YouTube video thumbnails in various resolutions."
+        "description": "Extract thumbnail images from YouTube videos in different resolutions."
       },
       "inputs": {
         "urlLabel": "YouTube URL",
         "urlPlaceholder": "https://www.youtube.com/watch?v=..."
       },
       "buttons": {
-        "extract": "Extract Thumbnail",
+        "extract": "Extract Thumbnails",
         "download": "Download"
       },
       "thumbnails": {
@@ -161,6 +192,119 @@
       "errors": {
         "urlRequired": "Please enter a URL",
         "invalidUrl": "Invalid YouTube URL"
+      },
+      "guideLink": "Thumbnail Guide",
+      "youtubeThumbnailGuide": {
+        "head": {
+          "title": "YouTube Thumbnail Extractor Guide - Marketing Tools",
+          "description": "Learn how to easily extract thumbnails from YouTube videos.",
+          "keywords": "YouTube thumbnail, thumbnail extraction, YouTube marketing, content creation",
+          "ogTitle": "YouTube Thumbnail Extractor Guide",
+          "ogDescription": "Guide to extracting and using YouTube thumbnails"
+        },
+        "title": "YouTube Thumbnail Extractor Guide",
+        "description": "Learn how to extract and utilize YouTube thumbnails in various resolutions.",
+        "sections": {
+          "what": {
+            "title": "What is a YouTube Thumbnail?",
+            "content": "A YouTube thumbnail is the preview image of a video that creates the first impression for viewers. An effective thumbnail can significantly increase view counts."
+          },
+          "why": {
+            "title": "Why Extract Thumbnails?",
+            "reasons": [
+              "Promote YouTube content on blogs and websites",
+              "Use in marketing materials",
+              "Custom thumbnails for social media sharing",
+              "Build content archives"
+            ]
+          },
+          "parameters": {
+            "title": "Available Thumbnail Resolutions",
+            "max": "Maximum Resolution (1280x720) - For high-quality web posts",
+            "high": "High Quality (480x360) - For medium-sized posts",
+            "medium": "Medium Quality (320x180) - For social media",
+            "standard": "Standard Quality (120x90) - For previews"
+          },
+          "bestPractices": {
+            "title": "Usage Tips",
+            "tips": [
+              "Use maximum resolution for websites",
+              "Medium resolution works best for social media",
+              "Maintain content consistency with thumbnails",
+              "Choose resolution that matches your branding"
+            ]
+          },
+          "features": {
+            "title": "Key Features",
+            "description": "Explore the core features of the YouTube Thumbnail Extractor.",
+            "cards": {
+              "resolution": {
+                "title": "Multiple Resolution Support",
+                "description": "Provides thumbnails in various sizes, from maximum resolution (1920x1080) to standard resolution."
+              },
+              "download": {
+                "title": "Easy Download",
+                "description": "Download the desired thumbnail size with a single click."
+              },
+              "directUrl": {
+                "title": "Direct URL Usage",
+                "description": "You can use the thumbnail URL directly without downloading, making it easy to use on websites or blogs."
+              },
+              "preview": {
+                "title": "Preview Available",
+                "description": "Preview thumbnails in each resolution before downloading."
+              }
+            }
+          },
+          "usage": {
+            "title": "How to Use",
+            "description": "Follow these simple steps to extract YouTube thumbnails.",
+            "steps": {
+              "urlPreparation": {
+                "title": "Prepare YouTube URL",
+                "description": "Copy the URL of the YouTube video you want to extract from. Both regular and shared URLs are supported."
+              },
+              "urlInput": {
+                "title": "Enter URL",
+                "description": "Paste the copied URL into the input field and click the 'Extract Thumbnail' button."
+              },
+              "resolutionSelection": {
+                "title": "Select Resolution",
+                "description": "Choose the desired thumbnail size from the various resolutions provided."
+              },
+              "download": {
+                "title": "Download",
+                "description": "Click the 'Download' button to save the selected thumbnail."
+              }
+            }
+          },
+          "useCases": {
+            "title": "Use Cases",
+            "cards": {
+              "blogPosting": {
+                "title": "Blog Posting",
+                "description": "Use thumbnails as featured images when embedding YouTube videos in blog posts."
+              },
+              "socialMedia": {
+                "title": "Social Media Sharing",
+                "description": "Utilize high-quality thumbnails when sharing videos on social media like Facebook and Twitter."
+              },
+              "presentation": {
+                "title": "Presentations",
+                "description": "Use thumbnails when referencing YouTube content in business presentations or educational materials."
+              },
+              "marketing": {
+                "title": "Marketing Materials",
+                "description": "Enhance the visual appeal of your marketing campaigns or ad creatives with YouTube thumbnails."
+              }
+            }
+          },
+          "cta": {
+            "title": "Get Started Now",
+            "description": "Create more effective content with the YouTube Thumbnail Extractor."
+          
+          }
+        }
       }
     },
     "youtubeTime": {
