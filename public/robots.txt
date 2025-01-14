@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.mktbox.co.kr/sitemap.xml
-Sitemap: https://mkt-box.vercel.app/sitemap-old.xml

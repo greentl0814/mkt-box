@@ -81,6 +81,49 @@
         "email": "Email"
       }
     },
+    "utmGuide": {
+      "head": {
+        "title": "UTM 태그 가이드 - Marketing Tools",
+        "description": "UTM 태그란 무엇인지, 어떻게 설정하는지, 그리고 왜 필요한지 알아보세요.",
+        "keywords": "UTM 가이드, UTM 설정 방법, UTM 태그 활용, 마케팅 트래킹",
+        "ogTitle": "UTM 태그 가이드 - Marketing Tools",
+        "ogDescription": "UTM 태그에 대한 종합적인 가이드: 정의, 설정 방법, 활용 사례"
+      },
+      "title": "UTM 태그 완벽 가이드",
+      "sections": {
+        "what": {
+          "title": "UTM이란 무엇인가요?",
+          "content": "UTM(Urchin Tracking Module)은 디지털 마케팅 캠페인의 효과를 추적하기 위한 URL 매개변수입니다. Google Analytics와 같은 분석 도구에서 트래픽 소스를 정확하게 파악할 수 있게 해줍니다."
+        },
+        "why": {
+          "title": "UTM을 사용해야 하는 이유",
+          "reasons": [
+            "트래픽 소스 추적: 방문자가 어디서 왔는지 정확히 파악",
+            "마케팅 효과 측정: 각 캠페인의 성과를 정확하게 측정",
+            "예산 최적화: 효과적인 채널에 집중 투자 가능",
+            "데이터 기반 의사결정: 정확한 데이터를 바탕으로 마케팅 전략 수립"
+          ]
+        },
+        "parameters": {
+          "title": "UTM 매개변수 설명",
+          "source": "트래픽의 출처 (예: google, facebook, newsletter)",
+          "medium": "마케팅 매체 (예: cpc, banner, email)",
+          "campaign": "특정 캠페인 이름 (예: spring_sale)",
+          "content": "광고 콘텐츠 구분 (예: logo_link, text_link)",
+          "term": "유료 검색 키워드 (예: running_shoes)"
+        },
+        "bestPractices": {
+          "title": "모범 사례",
+          "tips": [
+            "일관된 명명 규칙 사용",
+            "소문자 사용 권장",
+            "특수문자 대신 언더스코어(_) 사용",
+            "간단하고 명확한 이름 사용"
+          ]
+        }
+      },
+      "cta": "UTM 생성기 사용하기"
+    },    
     "youtube": {
       "title": "유튜브 썸네일 추출기",
       "description": "유튜브 영상의 썸네일 이미지를 다양한 해상도로 추출할 수 있습니다.",

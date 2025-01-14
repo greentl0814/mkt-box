@@ -191,7 +191,13 @@ export default function UTMGenerator({ pageData = {} }) {
           <LanguageSelector />
         </div>
 
-        <h1 className="text-2xl font-bold mb-6">{pageData.title || 'UTM 생성기'}</h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold">{pageData.title || 'UTM 생성기'}</h1>
+          <Link href="/utm/guide" className="text-blue-500 hover:text-blue-700 flex items-center">
+            <span>{pageData.guideLink || 'UTM 태그 가이드'}</span>
+            <span className="ml-1">→</span>
+          </Link>
+        </div>
         <div className="space-y-6">
           <div>
             <label className="block mb-2 font-medium">

@@ -81,6 +81,50 @@
         "email": "Email"
       }
     },
+
+    "utmGuide": {
+      "head": {
+        "title": "UTM Tag Guide - Marketing Tools",
+        "description": "Learn what UTM tags are, how to set them up, and why you need them.",
+        "keywords": "UTM guide, UTM setup, UTM tag usage, marketing tracking",
+        "ogTitle": "UTM Tag Guide - Marketing Tools",
+        "ogDescription": "Comprehensive guide to UTM tags: definition, setup, and use cases"
+      },
+      "title": "Complete UTM Tag Guide",
+      "sections": {
+        "what": {
+          "title": "What is UTM?",
+          "content": "UTM (Urchin Tracking Module) parameters are URL parameters used to track the effectiveness of digital marketing campaigns. They allow analytics tools like Google Analytics to accurately identify traffic sources."
+        },
+        "why": {
+          "title": "Why Use UTM Tags",
+          "reasons": [
+            "Track traffic sources: Accurately identify where visitors come from",
+            "Measure marketing effectiveness: Track the performance of each campaign",
+            "Optimize budget: Focus investment on effective channels",
+            "Data-driven decisions: Build marketing strategies based on accurate data"
+          ]
+        },
+        "parameters": {
+          "title": "UTM Parameters Explained",
+          "source": "Traffic source (e.g., google, facebook, newsletter)",
+          "medium": "Marketing medium (e.g., cpc, banner, email)",
+          "campaign": "Specific campaign name (e.g., spring_sale)",
+          "content": "Ad content identifier (e.g., logo_link, text_link)",
+          "term": "Paid search keywords (e.g., running_shoes)"
+        },
+        "bestPractices": {
+          "title": "Best Practices",
+          "tips": [
+            "Use consistent naming conventions",
+            "Use lowercase letters",
+            "Use underscores (_) instead of special characters",
+            "Use simple and clear names"
+          ]
+        }
+      },
+      "cta": "Use UTM Generator"
+    },    
     "youtube": {
       "title": "YouTube Thumbnail Extractor",
       "description": "Extract thumbnail images from YouTube videos in various resolutions.",
