@@ -115,8 +115,8 @@ export default function Home() {
       </Head>
 
       <main className="container mx-auto px-4 py-8">
-        <div className="flex flex-col items-center mb-12">
-          <h1 className="text-3xl font-bold text-center">
+        <div className="flex flex-col items-center mb-8">
+          <h1 className="text-3xl font-bold text-center mb-4">
             {t('main.heading')}
           </h1>
           <LanguageSelector />
