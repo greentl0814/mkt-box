@@ -264,7 +264,16 @@ export default function Analytics() {
           <LanguageSelector />
         </div>
 
-        <h1 className="text-2xl font-bold mb-6">{t('tools.analytics.title')}</h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold">{t('tools.analytics.title')}</h1>
+          <Link
+            href="/analytics/guide"
+            className="text-blue-500 hover:text-blue-700 flex items-center"
+          >
+            <span>{t('tools.analytics.guideLink')}</span>
+            <span className="ml-1">→</span>
+          </Link>
+        </div>
 
         <div className="flex border-b mb-6">
           <button

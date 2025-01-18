@@ -302,7 +302,7 @@
           "cta": {
             "title": "Get Started Now",
             "description": "Create more effective content with the YouTube Thumbnail Extractor."
-          
+
           }
         }
       }
@@ -342,7 +342,65 @@
         "title": "Generated URL List",
         "jumpTime": "Jump to: {time}"
       },
-      "copyMessage": "URL copied!"
+      "copyMessage": "URL copied!",
+      "guideLink": "YouTube Timestamp Guide",
+      "youtubeTimeGuide": {
+        "head": {
+          "title": "YouTube Timestamp URL Generator Guide - Marketing Tools",
+          "description": "Learn how to create timestamp URLs that take you directly to a specific time in a YouTube video.",
+          "keywords": "YouTube timestamp, YouTube URL generator, YouTube time jump, marketing tools",
+          "ogTitle": "YouTube Timestamp URL Generator Guide",
+          "ogDescription": "Guide to creating and using YouTube timestamp URLs"
+        },
+        "title": "YouTube Timestamp URL Generator Guide",
+        "description": "Learn step-by-step how to create and use timestamp URLs that take you directly to a specific time in a YouTube video.",
+        "cta": "Use Timestamp URL Generator",
+        "sections": {
+          "what": {
+            "title": "What is a YouTube Timestamp URL?",
+            "content": "A YouTube timestamp URL is a URL that starts playing a video from a specific point in time. It's useful for improving user experience and highlighting key content by allowing viewers to quickly jump to the part they want to watch.",
+            "card1": {
+              "title": "Viewer Convenience",
+              "content": "Quickly find and watch the desired part in a long video"
+            },
+            "card2": {
+              "title": "Highlight Key Points",
+              "content": "Emphasize specific parts to enhance message delivery"
+            }
+          },
+          "how": {
+            "title": "How to Use the Timestamp URL Generator",
+            "content": "Follow these simple steps to create and use a YouTube timestamp URL.",
+            "step1": {
+              "title": "Enter YouTube URL",
+              "content": "Copy the URL of the desired YouTube video and paste it into the input field."
+            },
+            "step2": {
+              "title": "Set Time",
+              "content": "Enter the time (hours, minutes, seconds) at which you want the video to start."
+            },
+            "step3": {
+              "title": "Generate URL",
+              "content": "Click the 'Generate Timestamp URL' button to create the timestamp URL."
+            }
+          },
+          "example": {
+            "title": "Example",
+            "description": "A timestamp URL that starts at 1 minute and 23 seconds looks like this: https://www.youtube.com/watch?v=VIDEO_ID&t=1m23s"
+          },
+          "tips": {
+            "title": "Tips for Use",
+            "tip1": {
+              "title": "Set Time Accurately",
+              "content": "Enter the hours, minutes, and seconds accurately to start playback from the desired point."
+            },
+            "tip2": {
+              "title": "Share URL",
+              "content": "Copy the generated timestamp URL and share it on blogs, social media, emails, and other channels."
+            }
+          }
+        }
+      }
     },
     "youtubeComments": {
       "title": "YouTube Comment Extractor",
@@ -404,7 +462,62 @@
        "parentAuthor": "Parent Author",
        "replyType": "↳ Reply",
        "commentType": "Original Comment"
-      }
+     },
+     "guideLink": "Comment Extractor Guide",
+     "youtubeCommentsGuide": {
+       "head": {
+         "title": "YouTube Comments Extractor Guide - How to Use & Features",
+         "description": "Learn how to easily extract YouTube comments into an Excel file.",
+         "keywords": "youtube comments extraction, youtube comments download, youtube comments analysis, youtube comments excel",
+         "ogTitle": "YouTube Comments Extractor Tool Guide",
+         "ogDescription": "Learn how to use the YouTube Comments Extractor and explore its key features."
+       },
+       "title": "YouTube Comments Extractor Guide",
+       "description": "Extract, analyze, and manage YouTube video comments easily by downloading them as Excel files.",
+       "cta": "Get Started",
+       "sections": {
+         "what": {
+           "title": "What is YouTube Comments Extraction?",
+           "content": "The YouTube Comments Extractor is a free tool that helps you quickly and easily save video comments to Excel files.",
+           "card1": {
+             "title": "Simple URL Input",
+             "content": "Just enter the YouTube video URL and automatically collect all comments."
+           },
+           "card2": {
+             "title": "Including Replies",
+             "content": "Extract all replies to comments and get them in an organized format."
+           }
+         },
+         "how": {
+           "title": "How to Use",
+           "content": "Extract YouTube comments to an Excel file in three simple steps.",
+           "step1": {
+             "title": "Enter Video URL",
+             "content": "Paste the URL of the YouTube video you want to extract comments from."
+           },
+           "step2": {
+             "title": "Select Options",
+             "content": "Choose whether to include replies and set your preferred sorting method."
+           },
+           "step3": {
+             "title": "Start Extraction",
+             "content": "Click the extract button and the Excel file will automatically download."
+           }
+         },
+         "features": {
+           "title": "Key Features",
+           "content": "Explore the core features of the YouTube Comments Extractor.",
+           "card1": {
+             "title": "Sorting Options",
+             "content": "Extract comments sorted by either popularity or most recent first."
+           },
+           "card2": {
+             "title": "Excel Format",
+             "content": "Get extracted comments in a well-organized Excel file format."
+           }
+         }
+       }
+     }
     },
     "url": {
       "title": "URL Shortener",
@@ -431,7 +544,62 @@
           "failed": "Error occurred while shortening URL"
         },
         "success": "URL copied!"
-      }
+      },
+      "guideLink": "URL Shortener Guide",
+      "urlGuide": {
+         "head": {
+           "title": "URL Shortener Guide - How to Use & Features",
+           "description": "Learn how to shorten long URLs into simple, concise links.",
+           "keywords": "URL shortener, link shortener, URL shortening, create short URL",
+           "ogTitle": "URL Shortener Tool Guide",
+           "ogDescription": "Learn how to use the URL Shortener tool and explore its key features."
+         },
+         "title": "URL Shortener Guide",
+         "description": "Create shorter, memorable links from long URLs for efficient sharing.",
+         "cta": "Get Started",
+         "sections": {
+           "what": {
+             "title": "What is URL Shortening?",
+             "content": "The URL Shortener is a free tool that converts long, complex web addresses into short, clean links.",
+             "card1": {
+               "title": "Simple URL Conversion",
+               "content": "Just enter the original URL and instantly get a shortened link."
+             },
+             "card2": {
+               "title": "Easy Sharing",
+               "content": "Copy the shortened URL to your clipboard and share it anywhere."
+             }
+           },
+           "how": {
+             "title": "How to Use",
+             "content": "Shorten your long URLs in three simple steps.",
+             "step1": {
+               "title": "Enter URL",
+               "content": "Paste the complete URL of the webpage you want to shorten."
+             },
+             "step2": {
+               "title": "Convert",
+               "content": "Click the shorten button to convert it into a brief URL."
+             },
+             "step3": {
+               "title": "Copy & Share",
+               "content": "Copy the generated short URL and share it wherever you want."
+             }
+           },
+           "features": {
+             "title": "Key Features",
+             "content": "Explore the core features of the URL Shortener.",
+             "card1": {
+               "title": "Permanent Links",
+               "content": "Once created, your shortened URLs remain accessible permanently."
+             },
+             "card2": {
+               "title": "Quick Copy",
+               "content": "Copy shortened URLs to your clipboard with a single click."
+             }
+           }
+         }
+       }
     },
     "text": {
       "title": "Text Analyzer",
@@ -463,6 +631,61 @@
           "title": "Platform Standards",
           "naver": "Naver/Kakao Ads: Generally uses 2-byte standard",
           "google": "Google/Facebook Ads: Character count only (bytes irrelevant)"
+        }
+      },
+      "guideLink": "Character Counter Guide",
+      "textGuide": {
+        "head": {
+          "title": "Character Counter Guide - How to Use & Features",
+          "description": "Learn how to accurately check text character count and byte size.",
+          "keywords": "character counter, word counter, byte calculator, text analysis",
+          "ogTitle": "Character Counter Tool Guide",
+          "ogDescription": "Learn how to use the Character Counter tool and explore its features."
+        },
+        "title": "Character Counter Guide",
+        "description": "Analyze and manage text character count and byte size in real-time.",
+        "cta": "Get Started",
+        "sections": {
+          "what": {
+            "title": "What is Character Counter?",
+            "content": "The Character Counter is a free tool that calculates total characters, characters without spaces, and byte size of your text in real-time.",
+            "card1": {
+              "title": "Real-time Analysis",
+              "content": "Character count and byte size are automatically calculated as you type."
+            },
+            "card2": {
+              "title": "Accurate Calculation",
+              "content": "Provides accurate byte counts considering various encoding methods."
+            }
+          },
+          "how": {
+            "title": "How to Use",
+            "content": "Analyze your text in three simple steps.",
+            "step1": {
+              "title": "Enter Text",
+              "content": "Paste or type the text you want to analyze in the input field."
+            },
+            "step2": {
+              "title": "Real-time Check",
+              "content": "Character count and byte size are calculated automatically as you type."
+            },
+            "step3": {
+              "title": "Check Details",
+              "content": "Refer to the byte calculation standards below for detailed information."
+            }
+          },
+          "features": {
+            "title": "Key Features",
+            "content": "Explore the core features of the Character Counter.",
+            "card1": {
+              "title": "Multiple Calculation Methods",
+              "content": "Provides total characters, characters without spaces, and byte calculations based on 2-byte/3-byte standards."
+            },
+            "card2": {
+              "title": "Platform Standards",
+              "content": "Provides character count guidelines for major platforms like Google, Facebook, and more."
+            }
+          }
         }
       }
     },
@@ -528,7 +751,62 @@
         "conversions": "Conversions",
         "conversionsPlaceholder": "Total conversions"
       },
-      "analysisResult": "Analysis Result"
+      "analysisResult": "Analysis Result",
+      "guideLink": "Ad Analytics Guide",
+      "analyticsGuide": {
+        "head": {
+          "title": "Ad Analytics Guide - How to Use & Features",
+          "description": "Learn how to analyze key advertising metrics including ROAS, ad efficiency, and conversion rates.",
+          "keywords": "ad analytics, ROAS calculator, ad efficiency analysis, conversion rate analysis",
+          "ogTitle": "Ad Analytics Tool Guide",
+          "ogDescription": "Learn how to use the Ad Analytics tool and explore its key features."
+        },
+        "title": "Ad Analytics Tool Guide",
+        "description": "Measure and analyze your advertising performance to optimize your marketing strategy.",
+        "cta": "Get Started",
+        "sections": {
+          "what": {
+            "title": "What is Ad Analytics?",
+            "content": "The Ad Analytics tool is a free tool that helps you easily and accurately calculate key advertising metrics including ROAS, ad efficiency, and conversion rates.",
+            "card1": {
+              "title": "ROI Analysis",
+              "content": "Accurately measure ROAS by calculating revenue against advertising costs."
+            },
+            "card2": {
+              "title": "Multiple Efficiency Metrics",
+              "content": "Check various advertising efficiency metrics like CPC, CPM, and CTR all at once."
+            }
+          },
+          "how": {
+            "title": "How to Use",
+            "content": "Select the metrics you want to analyze, input your data, and instantly see the results.",
+            "step1": {
+              "title": "Select Analysis Type",
+              "content": "Choose from ROAS, Ad Efficiency, or Conversion analysis."
+            },
+            "step2": {
+              "title": "Enter Data",
+              "content": "Input your data such as ad costs, revenue, impressions, etc."
+            },
+            "step3": {
+              "title": "Check Results",
+              "content": "View automatically calculated analysis results based on your input."
+            }
+          },
+          "features": {
+            "title": "Key Features",
+            "content": "Explore the core features of the Ad Analytics tool.",
+            "card1": {
+              "title": "Real-time Calculation",
+              "content": "See results instantly as you input your data."
+            },
+            "card2": {
+              "title": "Comprehensive Analysis",
+              "content": "Analyze all major advertising metrics from ROAS to conversion rates in one tool."
+            }
+          }
+        }
+      }
     },
     "wordCloud": {
       "title": "Word Cloud Generator",
@@ -561,6 +839,61 @@
         "title": "Word Cloud",
         "subTitle": "Frequently Appearing Words",
         "frequency": "times"
+      },
+      "guideLink": "Word Cloud Generator Guide",
+      "wordCloudGuide": {
+        "head": {
+          "title": "Word Cloud Generator Guide - How to Use & Features",
+          "description": "Learn how to visualize frequently used words from your text.",
+          "keywords": "word cloud, text analysis, word frequency, visualization",
+          "ogTitle": "Word Cloud Generator Tool Guide",
+          "ogDescription": "Learn how to use the Word Cloud Generator and explore its features."
+        },
+        "title": "Word Cloud Generator Guide",
+        "description": "Analyze text and derive meaningful insights through visual representation.",
+        "cta": "Get Started",
+        "sections": {
+          "what": {
+            "title": "What is Word Cloud?",
+            "content": "A word cloud is a tool that visually emphasizes frequently occurring words in text through size and color variations.",
+            "card1": {
+              "title": "Text Analysis",
+              "content": "Automatically analyzes input text and calculates word frequency."
+            },
+            "card2": {
+              "title": "Stop Words Management",
+              "content": "Customize which words to exclude from analysis for more meaningful results."
+            }
+          },
+          "how": {
+            "title": "How to Use",
+            "content": "Create your word cloud in three simple steps.",
+            "step1": {
+              "title": "Set Stop Words",
+              "content": "Configure which words you want to exclude from the analysis."
+            },
+            "step2": {
+              "title": "Enter Text",
+              "content": "Paste or type the text you want to analyze in the input field."
+            },
+            "step3": {
+              "title": "View and Save",
+              "content": "Check your generated word cloud and save it as an image."
+            }
+          },
+          "features": {
+            "title": "Key Features",
+            "content": "Explore the core features of the Word Cloud Generator.",
+            "card1": {
+              "title": "Frequency Analysis",
+              "content": "View the TOP 20 most frequently occurring words in a table format."
+            },
+            "card2": {
+              "title": "Image Export",
+              "content": "Save your generated word cloud as a PNG image file."
+            }
+          }
+        }
       }
     },
     "colors": {
@@ -615,9 +948,66 @@
           "description": "Various combinations of four colors 90 degrees apart"
         }
       },
-      "copyMessage": "{color} copied!"
+      "copyMessage": "{color} copied!",
+      "guideLink": "Color Tool Guide",
+      "colorGuide": {
+        "head": {
+          "title": "Color Tool Guide - How to Use & Features",
+          "description": "Learn how to create color combinations and palettes easily.",
+          "keywords": "color palette, color combinations, color extraction, color codes",
+          "ogTitle": "Color Tool Guide",
+          "ogDescription": "Learn how to use the Color Tool and explore its features."
+        },
+        "title": "Color Tool Guide",
+        "description": "Find perfect color combinations and apply them to your brand.",
+        "cta": "Get Started",
+        "sections": {
+          "what": {
+            "title": "What is the Color Tool?",
+            "content": "The Color Tool is a comprehensive solution that helps with everything from color selection to palette generation for your design needs.",
+            "card1": {
+              "title": "Intuitive Color Selection",
+              "content": "Easily select colors using the color picker and check HEX and RGB codes instantly."
+            },
+            "card2": {
+              "title": "Versatile Palette Generation",
+              "content": "Automatically generate various color combinations including complementary, analogous, and triadic schemes."
+            }
+          },
+          "how": {
+            "title": "How to Use",
+            "content": "Find perfect color combinations in three simple steps.",
+            "step1": {
+              "title": "Select Main Color",
+              "content": "Choose your main color using the color picker or random button."
+            },
+            "step2": {
+              "title": "Check Palettes",
+              "content": "Find your preferred combination from various automatically generated palettes."
+            },
+            "step3": {
+              "title": "Copy Codes",
+              "content": "Click on any color you like to copy its HEX code for use."
+            }
+          },
+          "features": {
+            "title": "Key Features",
+            "content": "Explore the core features of the Color Tool.",
+            "card1": {
+              "title": "Multiple Generation Methods",
+              "content": "Provides various palette types from basic to complementary and triadic combinations."
+            },
+            "card2": {
+              "title": "Easy Copy Function",
+              "content": "Click any color to automatically copy its HEX code to your clipboard."
+            }
+          }
+        }
+      }
     },
+
     "imageConverter": {
+      "guideLink": "Image Converter Guide",
       "title": "Image Converter",
       "description": "Convert image file formats and adjust quality.",
       "detailedDescription": "Convert image file formats and adjust quality. Supported formats are JPEG, PNG, and WebP.",
@@ -646,7 +1036,61 @@
       "maxWidthNote1": "ℹ️ Cannot set resolution larger than the original image.",
       "maxWidthNote2": "Maximum Width",
       "maxWidthNote3": "px, Maximum Height",
-      "maxWidthNote4": "px"
+      "maxWidthNote4": "px",
+      "imageConverterGuide": {
+        "head": {
+          "title": "Image Converter Tool Guide - How to Use and Features",
+          "description": "Learn how to convert image file formats and optimize quality.",
+          "keywords": "image conversion, image optimization, file format conversion, image quality",
+          "ogTitle": "Image Converter Tool User Guide",
+          "ogDescription": "Discover how to use the Image Converter Tool and its key features."
+        },
+        "title": "Image Converter Tool Guide",
+        "description": "Convert image file formats and optimize file size for efficient use.",
+        "cta": "Get Started Now",
+        "sections": {
+          "what": {
+            "title": "What is Image Conversion?",
+            "content": "The Image Converter Tool is a free tool that helps you convert between various image file formats and optimize quality.",
+            "card1": {
+              "title": "Supports Various Formats",
+              "content": "Supports conversion between various image formats such as JPEG, PNG, WebP, etc."
+            },
+            "card2": {
+              "title": "Fine-grained Quality Adjustment",
+              "content": "Find the optimal balance between file size and image quality."
+            }
+          },
+          "how": {
+            "title": "How to Use",
+            "content": "Convert images in 3 simple steps.",
+            "step1": {
+              "title": "Upload Image",
+              "content": "Drag and drop or click to upload the image you want to convert."
+            },
+            "step2": {
+              "title": "Set Options",
+              "content": "Select desired options such as output format, quality, and size."
+            },
+            "step3": {
+              "title": "Convert and Download",
+              "content": "Click the convert button and download the result."
+            }
+          },
+          "features": {
+            "title": "Key Features",
+            "content": "Introducing the core features of the Image Converter Tool.",
+            "card1": {
+              "title": "Resolution Adjustment",
+              "content": "You can adjust the image to the desired size by specifying the maximum width."
+            },
+            "card2": {
+              "title": "Instant Download",
+              "content": "You can immediately download and use the converted image."
+            }
+          }
+        }
+      }
     }
   },
   "qualityExplanation": {

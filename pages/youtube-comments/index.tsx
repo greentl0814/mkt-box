@@ -115,7 +115,7 @@ export default function YouTubeComments({ pageData }) {
             author: comment.authorDisplayName,
             date: formatDate(comment.publishedAt),
             numLikes: comment.likeCount,
-            isReply: false
+            isReply: false,
           });
 
           if (options.includeReplies && item.snippet.totalReplyCount > 0 && item.replies && comments.length < COMMENTS_LIMIT) {
@@ -127,7 +127,7 @@ export default function YouTubeComments({ pageData }) {
                 date: formatDate(reply.snippet.publishedAt),
                 numLikes: reply.snippet.likeCount,
                 isReply: true,
-                parentAuthor: comment.authorDisplayName
+                parentAuthor: comment.authorDisplayName,
               });
             }
           }
@@ -147,15 +147,13 @@ export default function YouTubeComments({ pageData }) {
   };
 
   const exportToExcel = (comments: Comment[]) => {
-    console.log("pageData in exportToExcel:", pageData); // pageData 전체 확인
-    console.log("pageData.excel in exportToExcel:", pageData.excel); // pageData.excel 확인
     const excelData = comments.map(comment => ({
       [pageData.excel.content]: comment.comment,
       [pageData.excel.date]: comment.date,
       [pageData.excel.likes]: comment.numLikes,
       [pageData.excel.author]: comment.author,
       [pageData.excel.type]: comment.isReply ? pageData.excel.replyType : pageData.excel.commentType,
-      ...(comment.isReply && { [pageData.excel.parentAuthor]: comment.parentAuthor })
+      ...(comment.isReply && { [pageData.excel.parentAuthor]: comment.parentAuthor }),
     }));
 
     const columnOrder = [
@@ -164,11 +162,11 @@ export default function YouTubeComments({ pageData }) {
       pageData.excel.likes,
       pageData.excel.author,
       pageData.excel.type,
-      pageData.excel.parentAuthor
+      pageData.excel.parentAuthor,
     ];
 
     const worksheet = XLSX.utils.json_to_sheet(excelData, {
-      header: columnOrder
+      header: columnOrder,
     });
 
     const wscols = [
@@ -177,7 +175,7 @@ export default function YouTubeComments({ pageData }) {
       { wch: 10 },
       { wch: 15 },
       { wch: 10 },
-      { wch: 15 }
+      { wch: 15 },
     ];
     worksheet['!cols'] = wscols;
 
@@ -214,7 +212,7 @@ export default function YouTubeComments({ pageData }) {
 
       const options: FetchOptions = {
         includeReplies,
-        sortBy
+        sortBy,
       };
 
       const comments = await fetchComments(videoId, options);
@@ -239,10 +237,20 @@ export default function YouTubeComments({ pageData }) {
           <Link href="/" className="text-blue-500 hover:text-blue-700">
             {t('common.backButton')}
           </Link>
-          <LanguageSelector />
+            <LanguageSelector />
+          </div>
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-2xl font-bold">{pageData.title}</h1>
+            <Link
+              href="/youtube-comments/guide"
+              className="text-blue-500 hover:text-blue-700 flex items-center"
+            >
+              <span>{pageData.guideLink || '댓글 추출 가이드'}</span>
+              <span className="ml-1">→</span>
+            </Link>
+
         </div>
 
-        <h1 className="text-2xl font-bold mb-6">{pageData.title}</h1>
 
         <div className="bg-blue-50 border border-blue-200 text-blue-600 px-4 py-2 rounded mb-6">
           <div>
@@ -340,8 +348,9 @@ export default function YouTubeComments({ pageData }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const common = await import(`../../public/locales/${locale}/common.json`)
-    .then((module) => module.default);
+  const common = await import(`../../public/locales/${locale}/common.json`).then(
+    (module) => module.default
+  );
 
   return {
     props: {

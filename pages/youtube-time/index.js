@@ -41,9 +41,10 @@ export default function YoutubeTime({ pageData }) {
       return;
     }
 
-    const totalSeconds = (parseInt(hours || 0) * 3600) +
-                       (parseInt(minutes || 0) * 60) +
-                       parseInt(seconds || 0);
+    const totalSeconds =
+      parseInt(hours || 0) * 3600 +
+      parseInt(minutes || 0) * 60 +
+      parseInt(seconds || 0);
 
     if (totalSeconds === 0) {
       setError(pageData.errors.zeroTime);
@@ -55,12 +56,12 @@ export default function YoutubeTime({ pageData }) {
 
     setGeneratedUrls([
       {
-        originalTime: `${hours ? hours + ' ' + pageData.inputs.hours.label + ' ' : ''}${
-          minutes ? minutes + ' ' + pageData.inputs.minutes.label + ' ' : ''
-        }${seconds ? seconds + ' ' + pageData.inputs.seconds.label : ''}`,
-        url: newUrl
+        originalTime: `${hours ? hours + ' ' + pageData.inputs.hours.label + ' ' : ''
+          }${minutes ? minutes + ' ' + pageData.inputs.minutes.label + ' ' : ''
+          }${seconds ? seconds + ' ' + pageData.inputs.seconds.label : ''}`,
+        url: newUrl,
       },
-      ...generatedUrls
+      ...generatedUrls,
     ]);
     setError('');
   };
@@ -88,11 +89,20 @@ export default function YoutubeTime({ pageData }) {
           <LanguageSelector />
         </div>
 
-        <h1 className="text-2xl font-bold mb-6">{pageData.title}</h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold">{pageData.title}</h1>
+          {/* 가이드 페이지 링크 수정 */}
+          <Link href="/youtube-time/guide" className="text-blue-500 hover:text-blue-700 flex items-center">
+            <span>{pageData.guideLink || '유튜브 시간 링크 가이드'}</span>
+            <span className="ml-1">→</span>
+          </Link>
+        </div>
 
         <div className="space-y-6">
           <div>
-            <label className="block mb-2 font-medium">{pageData.inputs.url.label}</label>
+            <label className="block mb-2 font-medium">
+              {pageData.inputs.url.label}
+            </label>
             <input
               type="text"
               value={url}
@@ -104,7 +114,9 @@ export default function YoutubeTime({ pageData }) {
 
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block mb-2 font-medium">{pageData.inputs.hours.label}</label>
+              <label className="block mb-2 font-medium">
+                {pageData.inputs.hours.label}
+              </label>
               <input
                 type="number"
                 min="0"
@@ -115,7 +127,9 @@ export default function YoutubeTime({ pageData }) {
               />
             </div>
             <div>
-              <label className="block mb-2 font-medium">{pageData.inputs.minutes.label}</label>
+              <label className="block mb-2 font-medium">
+                {pageData.inputs.minutes.label}
+              </label>
               <input
                 type="number"
                 min="0"
@@ -127,7 +141,9 @@ export default function YoutubeTime({ pageData }) {
               />
             </div>
             <div>
-              <label className="block mb-2 font-medium">{pageData.inputs.seconds.label}</label>
+              <label className="block mb-2 font-medium">
+                {pageData.inputs.seconds.label}
+              </label>
               <input
                 type="number"
                 min="0"
@@ -155,7 +171,9 @@ export default function YoutubeTime({ pageData }) {
 
           {generatedUrls.length > 0 && (
             <div className="mt-8">
-              <h2 className="text-xl font-bold mb-4">{pageData.results.title}</h2>
+              <h2 className="text-xl font-bold mb-4">
+                {pageData.results.title}
+              </h2>
               <div className="space-y-4">
                 {copyMessage && (
                   <div className="fixed bottom-4 right-4 bg-black text-white px-4 py-2 rounded-lg shadow-lg">
@@ -165,7 +183,10 @@ export default function YoutubeTime({ pageData }) {
                 {generatedUrls.map((item, index) => (
                   <div key={index} className="bg-gray-50 p-4 rounded">
                     <div className="text-sm text-gray-600 mb-2">
-                      {pageData.results.jumpTime.replace('{time}', item.originalTime)}
+                      {pageData.results.jumpTime.replace(
+                        '{time}',
+                        item.originalTime
+                      )}
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="flex-1 break-all">
@@ -190,8 +211,9 @@ export default function YoutubeTime({ pageData }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const common = await import(`../../public/locales/${locale}/common.json`)
-    .then((module) => module.default);
+  const common = await import(`../../public/locales/${locale}/common.json`).then(
+    (module) => module.default
+  );
 
   return {
     props: {

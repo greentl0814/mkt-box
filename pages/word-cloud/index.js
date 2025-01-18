@@ -152,7 +152,17 @@ export default function WordCloudGenerator({ pageData }) {
           <LanguageSelector />
         </div>
 
-        <h1 className="text-2xl font-bold mb-6">{pageData.title}</h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold">{pageData.title}</h1>
+          <Link
+            href="/word-cloud/guide"
+            className="text-blue-500 hover:text-blue-700 flex items-center"
+          >
+            <span>{pageData.guideLink}</span>
+            <span className="ml-1">→</span>
+          </Link>
+        </div>
+
 
         <div className="space-y-6">
           <div>

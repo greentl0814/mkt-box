@@ -325,13 +325,22 @@ export default function ColorTool({ pageData }) {
           <LanguageSelector />
         </div>
 
-        <div className="flex items-center mb-8 space-x-3">
-          <div className="p-2 rounded-full bg-blue-50">
-            <Palette className="w-6 h-6 text-blue-600" />
+        <div className="flex justify-between items-center mb-8">
+          <div className="flex items-center space-x-3">
+            <div className="p-2 rounded-full bg-blue-50">
+              <Palette className="w-6 h-6 text-blue-600" />
+            </div>
+            <h1 className="text-2xl font-bold">{pageData.title}</h1>
           </div>
-          <h1 className="text-2xl font-bold">{pageData.title}</h1>
+          <Link
+            href="/colors/guide"
+            className="text-blue-500 hover:text-blue-700 flex items-center"
+          >
+            <span>{pageData.guideLink}</span>
+            <span className="ml-1">→</span>
+          </Link>
         </div>
-
+        
         <HowToUseSection t={t} />
 
         <Card className="mb-6">

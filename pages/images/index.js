@@ -219,13 +219,21 @@ const ImageConverter = () => {
                 {t('tools.imageConverter.description')}
               </p>
             </div>
-            {/* 자세한 설명 보기 버튼 추가 */}
-            <button
-              className="p-2 rounded-full hover:bg-gray-100"
-              onClick={() => alert(t('tools.imageConverter.detailedDescription'))}
-            >
-              <Info className="h-5 w-5 text-gray-500" />
-            </button>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/images/guide"
+                className="text-blue-500 hover:text-blue-700 flex items-center"
+              >
+                <span>{t('tools.imageConverter.guideLink')}</span>
+                <span className="ml-1">→</span>
+              </Link>
+              <button
+                className="p-2 rounded-full hover:bg-gray-100"
+                onClick={() => alert(t('tools.imageConverter.detailedDescription'))}
+              >
+                <Info className="h-5 w-5 text-gray-500" />
+              </button>
+            </div>
           </div>
 
           {/* 파일 업로드 영역 */}
