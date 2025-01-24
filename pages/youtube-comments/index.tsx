@@ -230,6 +230,25 @@ export default function YouTubeComments({ pageData }) {
       <Head>
         <title>{pageData.head.title}</title>
         <meta name="description" content={pageData.head.description} />
+
+        <meta name="keywords" content="유튜브 마케팅, 유튜브 마케팅 툴, 유튜브 댓글, 유튜브 댓글 다운, download youtube comments, youtube comment extractor"/>
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://mktbox.co.kr/youtube-comments" />
+        <meta property="og:title" content="유튜브 댓글 추출 전문 툴 | YouTube Comment Extractor" />
+        <meta property="og:description" content="유튜브 마케팅 분석을 위한 댓글 데이터 추출 도구, YouTube 댓글 CSV/XLSX 다운로드 지원" />
+        <meta property="og:locale" content="ko_KR" />
+        <meta property="og:locale:alternate" content="en_US" />
+
+
+
+
+        {/* 언어별 Canonical & Alternate */}
+        <link rel="canonical" href="https://mktbox.co.kr/youtube-comments" />
+        <link rel="alternate" hrefLang="ko" href="https://mktbox.co.kr/youtube-comments" />
+        <link rel="alternate" hrefLang="en" href="https://mktbox.co.kr/en/youtube-comments" />
+        <link rel="alternate" hrefLang="x-default" href="https://mktbox.co.kr/youtube-comments" />
+
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">
