@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { format } from "date-fns";
-import WordCloud from "../../components/WordCloud";
+import WordCloud from "@/components/WordCloud";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import he from "he";
 
@@ -110,7 +110,7 @@ export default function SearchTool() {
           </Link>
         </div>
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">마케팅 키워드 인사이트</h1>
+          <h1 className="text-2xl font-bold">네이버 검색 키워드 인사이트</h1>
         </div>
         <div className="mb-6">
           <p className="text-gray-700">
@@ -123,7 +123,7 @@ export default function SearchTool() {
             <span className="font-bold">소비자의 관심사</span>를 파악할 수 있습니다.<br />
             해당 툴은 기계적으로 텍스트를 취합하고 분류합니다. <span className="font-bold">사용자의 통찰력이 중요</span>합니다.
             <br />*실제 네이버 웹 검색결과와 상이할 수 있습니다.
-            
+
           </p>
         </div>
         <div className="bg-gray-100 p-4 rounded-lg mb-6">
