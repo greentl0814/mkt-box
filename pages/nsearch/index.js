@@ -114,7 +114,7 @@ export default function SearchTool() {
         </div>
         <div className="mb-6">
           <p className="text-gray-700">
-            네이버 검색 데이터 중 제목을 기반으로, 주요 키워드 트렌드와 연관어를 분석하여
+            네이버 검색 데이터 중 제목을 기반으로, 주요 연관어를 분석하여
             마케팅 전략 수립에 필요한 인사이트를 발견하세요!
           </p>
           <p className="text-sm text-gray-600 mt-2">
