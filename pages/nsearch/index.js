@@ -99,7 +99,7 @@ export default function SearchTool() {
   return (
     <>
       <Head>
-        <title>마케팅 키워드 인사이트</title>
+        <title>네이버 키워드 인사이트</title>
         <meta name="description" content="네이버 검색 API를 활용한 마케팅 키워드 분석 툴" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -173,7 +173,7 @@ export default function SearchTool() {
                   <h4 className="font-medium text-gray-800 mb-2">워드 클라우드 커스터마이징</h4>
                   <p className="text-gray-600 mb-2">원하지 않는 단어를 제외하여 더 의미 있는 분석이 가능합니다:</p>
                   <ul className="space-y-2 text-gray-600">
-                    <li>• 워드 클라우드 상단의 "제외할 단어" 입력</li>
+                    <li>• 워드 클라우드 상단의 &quot;제외할 단어&quot; 입력</li>
                     <li>• 여러 단어를 추가하여 필터링 가능</li>
                     <li>• 언제든지 제외 단어 삭제 가능</li>
                   </ul>
