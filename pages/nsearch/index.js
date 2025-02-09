@@ -1,4 +1,4 @@
-// pages/index.js
+// pages/nsearch/index.js
 import { useState, useMemo } from "react";
 import Head from "next/head";
 import Link from "next/link";
@@ -101,12 +101,13 @@ export default function SearchTool() {
       <Head>
         <title>마케팅 키워드 인사이트</title>
         <meta name="description" content="네이버 검색 API를 활용한 마케팅 키워드 분석 툴" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div className="p-8 max-w-4xl mx-auto">
+      <div className="p-4 md:p-8 max-w-4xl mx-auto">
         <div className="flex justify-between items-center mb-6">
           <Link href="/" className="text-blue-500 hover:text-blue-700">
-            뒤로가기
+            ← 메인으로 돌아가기
           </Link>
         </div>
         <div className="flex justify-between items-center mb-6">
@@ -115,14 +116,15 @@ export default function SearchTool() {
         <div className="mb-6">
           <p className="text-gray-700">
             네이버 검색 데이터 중 제목을 기반으로, 주요 연관어를 분석하여
-            마케팅 전략 수립에 필요한 인사이트를 발견하세요!
+            마케팅 전략 수립에 필요한 인사이트를 발견하세요! <br />
+            <span className="font-bold">이 페이지는 데스크탑에 최적화 되었습니다.</span>
           </p>
           <p className="text-sm text-gray-600 mt-2">
             <span className="font-bold">게시글 제목</span>은 핵심 내용을 간결하게 담고 있어,
             전체 내용을 분석하지 않고도 <span className="font-bold">빠르게 트렌드를 파악</span>하고,{" "}
             <span className="font-bold">소비자의 관심사</span>를 파악할 수 있습니다.<br />
             해당 툴은 기계적으로 텍스트를 취합하고 분류합니다. <span className="font-bold">사용자의 통찰력이 중요</span>합니다.
-            <br />*실제 네이버 웹 검색결과와 상이할 수 있습니다.
+            <br />*실제 네이버 웹 검색순위와 상이할 수 있습니다.
 
           </p>
         </div>
@@ -171,7 +173,7 @@ export default function SearchTool() {
                   <h4 className="font-medium text-gray-800 mb-2">워드 클라우드 커스터마이징</h4>
                   <p className="text-gray-600 mb-2">원하지 않는 단어를 제외하여 더 의미 있는 분석이 가능합니다:</p>
                   <ul className="space-y-2 text-gray-600">
-                    <li>• 워드 클라우드 상단의 &quot;제외할 단어&quot; 입력</li>
+                    <li>• 워드 클라우드 상단의 "제외할 단어" 입력</li>
                     <li>• 여러 단어를 추가하여 필터링 가능</li>
                     <li>• 언제든지 제외 단어 삭제 가능</li>
                   </ul>
@@ -195,29 +197,29 @@ export default function SearchTool() {
 
         <div className="space-y-6">
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className="mb-2">
               <label className="block mb-2 font-medium">검색어</label>
               <div className="flex flex-col sm:flex-row gap-2">
+                <div className="flex gap-2 w-full sm:w-auto">
+                  <select
+                    value={searchType}
+                    onChange={(e) => setSearchType(e.target.value)}
+                    className="w-24 p-2 border rounded"
+                  >
+                    <option value="blog">블로그</option>
+                    <option value="cafearticle">카페</option>
+                    <option value="news">뉴스</option>
+                  </select>
+                  <select
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value)}
+                    className="w-24 p-2 border rounded"
+                  >
+                    <option value="sim">관련도순</option>
+                    <option value="date">최신순</option>
+                  </select>
+                </div>
                 <div className="flex gap-2 w-full">
-                  <div className="flex items-center gap-2">
-                    <select
-                      value={searchType}
-                      onChange={(e) => setSearchType(e.target.value)}
-                      className="w-24 p-2 border rounded"
-                    >
-                      <option value="blog">블로그</option>
-                      <option value="cafearticle">카페</option>
-                      <option value="news">뉴스</option>
-                    </select>
-                    <select
-                      value={sort}
-                      onChange={(e) => setSort(e.target.value)}
-                      className="w-24 p-2 border rounded"
-                    >
-                      <option value="sim">관련도순</option>
-                      <option value="date">최신순</option>
-                    </select>
-                  </div>
                   <input
                     type="text"
                     value={query}
