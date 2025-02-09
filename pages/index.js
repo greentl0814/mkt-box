@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import Link from 'next/link';
 import { Image as NextImage } from 'next/image'; // Image를 NextImage로 import
-import { Link2, Youtube, Type, BarChart2, FileCode, Image } from 'lucide-react';
+import { Link2, Youtube, Type, BarChart2, FileCode, Image, Search } from 'lucide-react';
 import { Palette } from 'lucide-react';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useTranslation } from '@/lib/i18n/useTranslation';
@@ -12,6 +12,15 @@ export default function Home() {
   const { t } = useTranslation();
 
   const tools = [
+    {
+      id: 'nsearch',
+      title: '네이버 검색 분석',
+      description: '네이버 검색 데이터를 기반으로 키워드 트렌드와 인사이트를 발견하세요',
+      detailedDescription: '네이버 블로그, 카페, 뉴스의 검색 결과를 분석하여 워드 클라우드로 시각화하고, 주요 키워드를 파악할 수 있습니다. 정렬 옵션을 통해 관련도순 또는 최신순으로 결과를 확인하세요.',
+      keywords: ['네이버 검색', '키워드 분석', '트렌드 분석', '워드 클라우드', '마케팅 인사이트', '콘텐츠 전략'],
+      icon: <Search className="w-6 h-6" />,
+      link: '/nsearch'
+    },
     {
       id: 'utm',
       title: t('tools.utm.title'),
