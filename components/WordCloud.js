@@ -1,31 +1,56 @@
 // components/WordCloud.js
-import React, { useState, useEffect, useMemo } from 'react';
-import html2canvas from 'html2canvas';
+import React, { useState, useEffect, useCallback } from "react";
+import html2canvas from "html2canvas";
 
 export default function WordCloud({ text }) {
   const [wordFrequency, setWordFrequency] = useState({});
-  const [newStopWord, setNewStopWord] = useState('');
-  const [error, setError] = useState('');
-
+  const [newStopWord, setNewStopWord] = useState("");
+  const [error, setError] = useState("");
   const [customStopWords, setCustomStopWords] = useState(new Set());
+
+  const analyzeText = useCallback((inputText, currentCustomStopWords = customStopWords) => {
+    if (!inputText.trim()) {
+      setWordFrequency({});
+      return;
+    }
+
+    const words = inputText
+      .toLowerCase()
+      .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "")
+      .split(/\s+/)
+      .filter((word) => word.length > 1 && !currentCustomStopWords.has(word));
+
+    const frequency = {};
+    words.forEach((word) => {
+      frequency[word] = (frequency[word] || 0) + 1;
+    });
+
+    setWordFrequency(frequency);
+  }, [customStopWords]);
+
+  useEffect(() => {
+    if (text) {
+      analyzeText(text);
+    }
+  }, [text, analyzeText]);
 
   const addStopWord = (e) => {
     e.preventDefault();
     const trimmedWord = newStopWord.trim();
     if (!trimmedWord) {
-      setError('제외할 단어를 입력해주세요.');
+      setError("제외할 단어를 입력해주세요.");
       return;
     }
     if (customStopWords.has(trimmedWord)) {
-      setError('이미 제외된 단어입니다.');
+      setError("이미 제외된 단어입니다.");
       return;
     }
 
     const updatedStopWords = new Set(customStopWords);
     updatedStopWords.add(trimmedWord.toLowerCase());
     setCustomStopWords(updatedStopWords);
-    setNewStopWord('');
-    setError('');
+    setNewStopWord("");
+    setError("");
 
     if (text) {
       analyzeText(text, updatedStopWords);
@@ -41,36 +66,10 @@ export default function WordCloud({ text }) {
     }
   };
 
-  const analyzeText = (inputText, currentCustomStopWords = customStopWords) => {
-    if (!inputText.trim()) {
-      setWordFrequency({});
-      return;
-    }
-
-    const words = inputText
-      .toLowerCase()
-      .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '')
-      .split(/\s+/)
-      .filter((word) => word.length > 1 && !currentCustomStopWords.has(word));
-
-    const frequency = {};
-    words.forEach((word) => {
-      frequency[word] = (frequency[word] || 0) + 1;
-    });
-
-    setWordFrequency(frequency);
-  };
-
-  useEffect(() => {
-    if (text) {
-      analyzeText(text);
-    }
-  }, [text, customStopWords]);
-
   const renderWordCloud = () => {
     const words = Object.entries(wordFrequency)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 100); // 최대 100개 단어
+      .slice(0, 100);
 
     const maxFreq = Math.max(...words.map(([, freq]) => freq));
 
@@ -101,13 +100,13 @@ export default function WordCloud({ text }) {
   };
 
   const saveAsImage = () => {
-    const cloudElement = document.getElementById('word-cloud-container');
+    const cloudElement = document.getElementById("word-cloud-container");
     if (!cloudElement) return;
 
     html2canvas(cloudElement).then((canvas) => {
-      const link = document.createElement('a');
-      link.download = 'wordcloud.png';
-      link.href = canvas.toDataURL('image/png');
+      const link = document.createElement("a");
+      link.download = "wordcloud.png";
+      link.href = canvas.toDataURL("image/png");
       link.click();
     });
   };
@@ -120,8 +119,6 @@ export default function WordCloud({ text }) {
             <label className="block mb-2 font-medium">
               제외할 단어 (선택 사항)
             </label>
-
-            {/* 기본 불용어 관련 UI 제거 */}
 
             <div className="flex space-x-2 mb-2">
               <input
@@ -151,7 +148,7 @@ export default function WordCloud({ text }) {
                       onClick={() => removeStopWord(word)}
                       className="text-red-500 hover:text-red-700"
                     >
-                      X
+                      ✕
                     </button>
                   </div>
                 ))}
