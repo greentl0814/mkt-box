@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import { LanguageSelector } from '@/components/LanguageSelector';
+import WordCloud from '@/components/WordCloud';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import he from 'he';
 
 interface Comment {
   comment: string;
@@ -35,6 +38,9 @@ export default function YouTubeComments({ pageData }) {
   const [showTip, setShowTip] = useState(false);
   const [includeReplies, setIncludeReplies] = useState(true);
   const [sortBy, setSortBy] = useState<'relevance' | 'time'>('relevance');
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [isHowToUseOpen, setIsHowToUseOpen] = useState(false);
+  const [showAnalysis, setShowAnalysis] = useState(false);
 
   useEffect(() => {
     const count = localStorage.getItem('dailyRequestCount');
@@ -203,6 +209,8 @@ export default function YouTubeComments({ pageData }) {
     setCommentCount(0);
     setTotalComments(0);
     setShowTip(false);
+    setComments([]);
+    setShowAnalysis(false);
 
     try {
       const videoId = getVideoId(url);
@@ -215,9 +223,11 @@ export default function YouTubeComments({ pageData }) {
         sortBy,
       };
 
-      const comments = await fetchComments(videoId, options);
-      exportToExcel(comments);
+      const fetchedComments = await fetchComments(videoId, options);
+      setComments(fetchedComments);
+      exportToExcel(fetchedComments);
       incrementDailyCount();
+      setShowAnalysis(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : pageData.errors.unknown);
     } finally {
@@ -225,23 +235,24 @@ export default function YouTubeComments({ pageData }) {
     }
   };
 
+  // 댓글 텍스트 데이터만 추출하여 워드 클라우드에 사용
+  const commentsText = useMemo(() => {
+    return comments
+      .map((item) => he.decode(item.comment).replace(/<[^>]+>/g, ""))
+      .join(" ");
+  }, [comments]);
+
   return (
     <>
       <Head>
         <title>{pageData.head.title}</title>
         <meta name="description" content={pageData.head.description} />
 
-
-
-
-
-
         {/* 언어별 Canonical & Alternate */}
         <link rel="canonical" href="https://mktbox.co.kr/youtube-comments" />
         <link rel="alternate" hrefLang="ko" href="https://mktbox.co.kr/youtube-comments" />
         <link rel="alternate" hrefLang="en" href="https://mktbox.co.kr/en/youtube-comments" />
         <link rel="alternate" hrefLang="x-default" href="https://mktbox.co.kr/youtube-comments" />
-
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">
@@ -249,20 +260,18 @@ export default function YouTubeComments({ pageData }) {
           <Link href="/" className="text-blue-500 hover:text-blue-700">
             {t('common.backButton')}
           </Link>
-            <LanguageSelector />
-          </div>
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold">{pageData.title}</h1>
-            <Link
-              href="/youtube-comments/guide"
-              className="text-blue-500 hover:text-blue-700 flex items-center"
-            >
-              <span>{pageData.guideLink || '댓글 추출 가이드'}</span>
-              <span className="ml-1">→</span>
-            </Link>
-
+          <LanguageSelector />
         </div>
-
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold">{pageData.title}</h1>
+          <Link
+            href="/youtube-comments/guide"
+            className="text-blue-500 hover:text-blue-700 flex items-center"
+          >
+            <span>{pageData.guideLink || '댓글 추출 가이드'}</span>
+            <span className="ml-1">→</span>
+          </Link>
+        </div>
 
         <div className="bg-blue-50 border border-blue-200 text-blue-600 px-4 py-2 rounded mb-6">
           <div>
@@ -274,6 +283,74 @@ export default function YouTubeComments({ pageData }) {
           <div className="mt-2">
             {pageData.notice.limits.policy}
           </div>
+        </div>
+
+        {/* How to Use 섹션 (두번째 코드 참고) */}
+        <div className="bg-gray-100 p-4 rounded-lg mb-6">
+          <button
+            className="flex items-center justify-between w-full font-bold text-lg"
+            onClick={() => setIsHowToUseOpen(!isHowToUseOpen)}
+          >
+            <span>{pageData.howToUse?.title || 'How to Use (이 페이지는 pc에 최적화 되었습니다)'}</span>
+            {isHowToUseOpen ? (
+              <ChevronUp className="w-5 h-5" />
+            ) : (
+              <ChevronDown className="w-5 h-5" />
+            )}
+          </button>
+          {isHowToUseOpen && (
+            <div className="mt-4 space-y-6">
+              {/* 기본 사용법 섹션 */}
+              <div className="space-y-3">
+                <h3 className="font-medium text-gray-900">{pageData.howToUse?.basicUsage?.title || '기본 사용법'}</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                    <div className="font-medium text-gray-800 mb-2">{pageData.howToUse?.basicUsage?.step1?.title || '1. 검색 설정'}</div>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• {pageData.howToUse?.basicUsage?.step1?.items?.[0] || '유튜브 URL을 입력하세요'}</li>
+                      <li>• {pageData.howToUse?.basicUsage?.step1?.items?.[1] || '정렬 방식을 선택하세요'}</li>
+                      <li>• {pageData.howToUse?.basicUsage?.step1?.items?.[2] || '댓글/답글 설정을 선택하세요'}</li>
+                      <li>• {pageData.howToUse?.basicUsage?.step1?.items?.[3] || '추출 버튼을 클릭하세요'}</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                    <div className="font-medium text-gray-800 mb-2">{pageData.howToUse?.basicUsage?.step2?.title || '2. 결과 확인'}</div>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• {pageData.howToUse?.basicUsage?.step2?.items?.[0] || '엑셀 파일로 자동 다운로드'}</li>
+                      <li>• {pageData.howToUse?.basicUsage?.step2?.items?.[1] || '워드 클라우드로 주요 키워드 파악'}</li>
+                      <li>• {pageData.howToUse?.basicUsage?.step2?.items?.[2] || '댓글 분석 인사이트'}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* 고급 기능 섹션 */}
+              <div className="space-y-3">
+                <h3 className="font-medium text-gray-900">{pageData.howToUse?.advancedFeatures?.title || '고급 기능'}</h3>
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                  <h4 className="font-medium text-gray-800 mb-2">{pageData.howToUse?.advancedFeatures?.wordcloud?.title || '워드 클라우드 분석'}</h4>
+                  <p className="text-gray-600 mb-2">{pageData.howToUse?.advancedFeatures?.wordcloud?.description || '댓글에서 자주 언급되는 키워드를 시각적으로 확인하여 주요 이슈나 관심사를 파악할 수 있습니다:'}</p>
+                  <ul className="space-y-2 text-gray-600">
+                    <li>• {pageData.howToUse?.advancedFeatures?.wordcloud?.items?.[0] || '댓글에서 자주 등장하는 단어를 시각화'}</li>
+                    <li>• {pageData.howToUse?.advancedFeatures?.wordcloud?.items?.[1] || '단어의 크기는 언급 빈도에 비례'}</li>
+                    <li>• {pageData.howToUse?.advancedFeatures?.wordcloud?.items?.[2] || '제외할 단어를 설정하여 더 의미 있는 분석 가능'}</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* 분석 팁 섹션 */}
+              <div className="space-y-3">
+                <h3 className="font-medium text-gray-900">{pageData.howToUse?.analysisTips?.title || '분석 팁'}</h3>
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                  <ul className="space-y-2 text-gray-600">
+                    <li>• {pageData.howToUse?.analysisTips?.items?.[0] || '댓글의 키워드로 시청자의 관심사를 파악하세요'}</li>
+                    <li>• {pageData.howToUse?.analysisTips?.items?.[1] || '자주 언급되는 키워드로 콘텐츠 개선 아이디어를 얻으세요'}</li>
+                    <li>• {pageData.howToUse?.analysisTips?.items?.[2] || '시청자 피드백을 바탕으로 다음 콘텐츠를 기획해보세요'}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="space-y-6">
@@ -354,6 +431,65 @@ export default function YouTubeComments({ pageData }) {
             {loading ? pageData.buttons.extracting : pageData.buttons.extract}
           </button>
         </div>
+
+        {/* 워드 클라우드 및 분석 결과 섹션 */}
+        {showAnalysis && commentsText && (
+          <div className="mt-8">
+            <h3 className="text-xl font-semibold mb-4">
+              {pageData.analysis?.title || '댓글 키워드 분석'}
+            </h3>
+            <div className="bg-gray-50 p-4 rounded">
+              <div className="mb-4">
+                <p className="text-gray-700">
+                  {pageData.analysis?.description || '다음은 댓글에서 자주 등장하는 키워드를 시각화한 워드 클라우드입니다. 단어의 크기는 등장 빈도에 비례합니다.'}
+                </p>
+              </div>
+
+              {/* 워드 클라우드 컴포넌트 */}
+              <div className="border p-4 rounded bg-white mb-4">
+                <WordCloud text={commentsText} />
+              </div>
+
+              {/* 간단한 통계 정보 */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div className="bg-blue-50 p-4 rounded">
+                  <div className="text-lg font-semibold text-blue-700">
+                    {commentCount.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    {pageData.analysis?.stats?.total || '수집된 댓글 수'}
+                  </div>
+                </div>
+                <div className="bg-green-50 p-4 rounded">
+                  <div className="text-lg font-semibold text-green-700">
+                    {comments.filter(c => !c.isReply).length.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    {pageData.analysis?.stats?.comments || '댓글 수'}
+                  </div>
+                </div>
+                <div className="bg-purple-50 p-4 rounded">
+                  <div className="text-lg font-semibold text-purple-700">
+                    {comments.filter(c => c.isReply).length.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    {pageData.analysis?.stats?.replies || '답글 수'}
+                  </div>
+                </div>
+              </div>
+
+              {/* 분석 인사이트 */}
+              <div className="bg-yellow-50 p-4 rounded">
+                <h4 className="font-medium text-gray-800 mb-2">
+                  {pageData.analysis?.insights?.title || '분석 인사이트'}
+                </h4>
+                <p className="text-gray-700">
+                  {pageData.analysis?.insights?.description || '워드 클라우드에 나타난 주요 키워드를 통해 시청자들의 관심사와 의견을 파악할 수 있습니다. 이를 바탕으로 다음 콘텐츠를 계획하거나 기존 영상에 대한 개선점을 찾아볼 수 있습니다.'}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
