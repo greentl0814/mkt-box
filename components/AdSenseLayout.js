@@ -30,9 +30,9 @@ export default function AdSenseLayout({ children }) {
   return (
     <>
       {/* 상단 광고 */}
-      <div className="flex justify-center mb-6">
+      <div className="w-full max-w-4xl mx-auto mb-6 px-4">
         <ins className="adsbygoogle"
-             style={{display: 'block'}}
+             style={{display: 'block', width: '100%', minHeight: '250px'}}
              data-ad-client="ca-pub-6071061687711848"
              data-ad-slot="auto"
              data-ad-format="auto"
@@ -40,12 +40,14 @@ export default function AdSenseLayout({ children }) {
       </div>
       
       {/* 메인 콘텐츠 */}
-      {children}
+      <div className="w-full">
+        {children}
+      </div>
       
       {/* 하단 광고 */}
-      <div className="flex justify-center mt-6">
+      <div className="w-full max-w-4xl mx-auto mt-6 px-4">
         <ins className="adsbygoogle"
-             style={{display: 'block'}}
+             style={{display: 'block', width: '100%', minHeight: '250px'}}
              data-ad-client="ca-pub-6071061687711848"
              data-ad-slot="auto"
              data-ad-format="auto"

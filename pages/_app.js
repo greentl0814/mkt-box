@@ -55,11 +55,6 @@ function MyApp({ Component, pageProps }) {
          rel="canonical"
          href={`https://www.mktbox.co.kr${router.asPath}`}
        />
-       <script
-         async
-         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6071061687711848"
-         crossOrigin="anonymous"
-       />
      </Head>
      {/* Google Analytics */}
      <Script
@@ -75,6 +70,12 @@ function MyApp({ Component, pageProps }) {
        `}
      </Script>
 
+     {/* Google AdSense */}
+     <Script
+       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6071061687711848"
+       strategy="afterInteractive"
+       crossOrigin="anonymous"
+     />
 
      <main className="flex-grow">
        <AdSenseLayout>
