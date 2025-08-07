@@ -12,50 +12,48 @@ function MyApp({ Component, pageProps }) {
    const handleRouteChange = (url) => {
      console.log('🔄 Route changed to:', url);
      
-     try {
-       if (typeof window !== 'undefined') {
-         // 기존 광고 요소들의 data-adsbygoogle-status 초기화
-         const existingAds = document.querySelectorAll('.adsbygoogle');
-         console.log('📢 Found existing ads:', existingAds.length);
-         
-         existingAds.forEach((ad, index) => {
-           console.log(`🔧 Processing ad ${index + 1}:`, {
-             hasStatus: ad.hasAttribute('data-adsbygoogle-status'),
-             status: ad.getAttribute('data-adsbygoogle-status'),
-             innerHTML: ad.innerHTML.length
-           });
+     // 페이지 로드 후 충분한 시간 대기
+     setTimeout(() => {
+       try {
+         if (typeof window !== 'undefined' && window.adsbygoogle) {
+           const existingAds = document.querySelectorAll('.adsbygoogle');
+           console.log('📢 Found existing ads:', existingAds.length);
            
-           // 광고 상태 초기화
-           ad.removeAttribute('data-adsbygoogle-status');
-           ad.innerHTML = '';
-         });
-         
-         // 잠시 대기 후 AdSense 새로고침
-         setTimeout(() => {
-           if (window.adsbygoogle) {
-             // 각 광고 요소에 대해 개별적으로 push
+           if (existingAds.length > 0) {
              existingAds.forEach((ad, index) => {
-               try {
-                 console.log(`🔄 Refreshing ad ${index + 1}...`);
-                 (window.adsbygoogle = window.adsbygoogle || []).push({});
-               } catch (e) {
-                 console.error(`❌ Error refreshing ad ${index + 1}:`, e);
+               const hasStatus = ad.hasAttribute('data-adsbygoogle-status');
+               console.log(`🔧 Processing ad ${index + 1}: status=${hasStatus}`);
+               
+               // 이미 처리된 광고만 초기화
+               if (hasStatus) {
+                 ad.removeAttribute('data-adsbygoogle-status');
+                 ad.innerHTML = '';
                }
              });
-             console.log('✅ AdSense refresh completed for all ads');
+             
+             // AdSense 자동광고 새로고침
+             setTimeout(() => {
+               try {
+                 console.log('🔄 Refreshing AdSense...');
+                 (window.adsbygoogle = window.adsbygoogle || []).push({});
+                 console.log('✅ AdSense refresh completed');
+               } catch (e) {
+                 console.error('❌ AdSense refresh error:', e);
+               }
+             }, 200);
            }
-         }, 100);
+         } else {
+           console.log('❌ AdSense not ready yet');
+         }
+       } catch (e) {
+         console.error('❌ Route change handler error:', e);
        }
-     } catch (e) {
-       console.error('❌ AdSense refresh error:', e);
-     }
+     }, 500);
    };
 
-   console.log('🎯 Setting up route change listener');
    router.events.on('routeChangeComplete', handleRouteChange);
    
    return () => {
-     console.log('🧹 Cleaning up route change listener');
      router.events.off('routeChangeComplete', handleRouteChange);
    };
  }, [router.events]);
@@ -68,6 +66,11 @@ function MyApp({ Component, pageProps }) {
        <link
          rel="canonical"
          href={`https://www.mktbox.co.kr${router.asPath}`}
+       />
+       <script
+         async
+         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6071061687711848"
+         crossOrigin="anonymous"
        />
      </Head>
      {/* Google Analytics */}
@@ -84,12 +87,6 @@ function MyApp({ Component, pageProps }) {
        `}
      </Script>
 
-     {/* Google AdSense */}
-     <script
-       async
-       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6071061687711848"
-       crossOrigin="anonymous"
-     />
 
      <main className="flex-grow">
        <Component {...pageProps} />
