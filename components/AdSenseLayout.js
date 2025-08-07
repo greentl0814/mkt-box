@@ -29,12 +29,12 @@ export default function AdSenseLayout({ children }) {
 
   return (
     <>
-      {/* 상단 광고 */}
+      {/* 상단 광고 - mktbox_top */}
       <div className="w-full max-w-4xl mx-auto mb-6 px-4">
         <ins className="adsbygoogle"
-             style={{display: 'block', width: '100%', minHeight: '250px'}}
+             style={{display: 'block'}}
              data-ad-client="ca-pub-6071061687711848"
-             data-ad-slot="auto"
+             data-ad-slot="2535513393"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
       </div>
@@ -44,12 +44,12 @@ export default function AdSenseLayout({ children }) {
         {children}
       </div>
       
-      {/* 하단 광고 */}
+      {/* 하단 광고 - mktbox_bottom */}
       <div className="w-full max-w-4xl mx-auto mt-6 px-4">
         <ins className="adsbygoogle"
-             style={{display: 'block', width: '100%', minHeight: '250px'}}
+             style={{display: 'block'}}
              data-ad-client="ca-pub-6071061687711848"
-             data-ad-slot="auto"
+             data-ad-slot="4008361250"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
       </div>
