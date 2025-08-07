@@ -32,10 +32,17 @@ function MyApp({ Component, pageProps }) {
          
          // 잠시 대기 후 AdSense 새로고침
          setTimeout(() => {
-           if (window.adsbygoogle && existingAds.length > 0) {
-             console.log('🔄 Pushing to AdSense...');
-             (window.adsbygoogle = window.adsbygoogle || []).push({});
-             console.log('✅ AdSense refresh completed');
+           if (window.adsbygoogle) {
+             // 각 광고 요소에 대해 개별적으로 push
+             existingAds.forEach((ad, index) => {
+               try {
+                 console.log(`🔄 Refreshing ad ${index + 1}...`);
+                 (window.adsbygoogle = window.adsbygoogle || []).push({});
+               } catch (e) {
+                 console.error(`❌ Error refreshing ad ${index + 1}:`, e);
+               }
+             });
+             console.log('✅ AdSense refresh completed for all ads');
            }
          }, 100);
        }
@@ -57,6 +64,7 @@ function MyApp({ Component, pageProps }) {
    <div className="min-h-screen flex flex-col">
      <Head>
        <meta name="viewport" content="width=device-width, initial-scale=1" />
+       <meta name="google-adsense-account" content="ca-pub-6071061687711848" />
        <link
          rel="canonical"
          href={`https://www.mktbox.co.kr${router.asPath}`}
@@ -77,11 +85,10 @@ function MyApp({ Component, pageProps }) {
      </Script>
 
      {/* Google AdSense */}
-     <Script
+     <script
+       async
        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6071061687711848"
-       strategy="afterInteractive"
        crossOrigin="anonymous"
-       data-nscript="exclude"
      />
 
      <main className="flex-grow">
