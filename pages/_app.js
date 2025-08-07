@@ -11,19 +11,33 @@ function MyApp({ Component, pageProps }) {
  useEffect(() => {
    const handleRouteChange = (url) => {
      console.log('🔄 Route changed to:', url);
-     console.log('🪟 Window object exists:', typeof window !== 'undefined');
-     console.log('📢 AdSense object exists:', !!(typeof window !== 'undefined' && window.adsbygoogle));
      
      try {
        if (typeof window !== 'undefined') {
-         if (window.adsbygoogle) {
-           console.log('📢 AdSense array length before push:', window.adsbygoogle.length);
-           (window.adsbygoogle = window.adsbygoogle || []).push({});
-           console.log('✅ AdSense push executed successfully');
-           console.log('📢 AdSense array length after push:', window.adsbygoogle.length);
-         } else {
-           console.log('❌ AdSense not loaded yet');
-         }
+         // 기존 광고 요소들의 data-adsbygoogle-status 초기화
+         const existingAds = document.querySelectorAll('.adsbygoogle');
+         console.log('📢 Found existing ads:', existingAds.length);
+         
+         existingAds.forEach((ad, index) => {
+           console.log(`🔧 Processing ad ${index + 1}:`, {
+             hasStatus: ad.hasAttribute('data-adsbygoogle-status'),
+             status: ad.getAttribute('data-adsbygoogle-status'),
+             innerHTML: ad.innerHTML.length
+           });
+           
+           // 광고 상태 초기화
+           ad.removeAttribute('data-adsbygoogle-status');
+           ad.innerHTML = '';
+         });
+         
+         // 잠시 대기 후 AdSense 새로고침
+         setTimeout(() => {
+           if (window.adsbygoogle && existingAds.length > 0) {
+             console.log('🔄 Pushing to AdSense...');
+             (window.adsbygoogle = window.adsbygoogle || []).push({});
+             console.log('✅ AdSense refresh completed');
+           }
+         }, 100);
        }
      } catch (e) {
        console.error('❌ AdSense refresh error:', e);
@@ -67,6 +81,7 @@ function MyApp({ Component, pageProps }) {
        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6071061687711848"
        strategy="afterInteractive"
        crossOrigin="anonymous"
+       data-nscript="exclude"
      />
 
      <main className="flex-grow">
