@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import Footer from "../components/Footer";
+import AdSenseLayout from "../components/AdSenseLayout";
 import Script from "next/script";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -12,43 +13,30 @@ function MyApp({ Component, pageProps }) {
    const handleRouteChange = (url) => {
      console.log('🔄 Route changed to:', url);
      
-     // 페이지 로드 후 충분한 시간 대기
      setTimeout(() => {
        try {
          if (typeof window !== 'undefined' && window.adsbygoogle) {
            const existingAds = document.querySelectorAll('.adsbygoogle');
-           console.log('📢 Found existing ads:', existingAds.length);
+           console.log('📢 Found existing ads for refresh:', existingAds.length);
            
-           if (existingAds.length > 0) {
-             existingAds.forEach((ad, index) => {
-               const hasStatus = ad.hasAttribute('data-adsbygoogle-status');
-               console.log(`🔧 Processing ad ${index + 1}: status=${hasStatus}`);
+           existingAds.forEach((ad, index) => {
+             const hasStatus = ad.hasAttribute('data-adsbygoogle-status');
+             if (hasStatus) {
+               console.log(`🔄 Refreshing ad ${index + 1}`);
+               ad.removeAttribute('data-adsbygoogle-status');
+               ad.innerHTML = '';
                
-               // 이미 처리된 광고만 초기화
-               if (hasStatus) {
-                 ad.removeAttribute('data-adsbygoogle-status');
-                 ad.innerHTML = '';
-               }
-             });
-             
-             // AdSense 자동광고 새로고침
-             setTimeout(() => {
-               try {
-                 console.log('🔄 Refreshing AdSense...');
+               // 개별 광고 새로고침
+               setTimeout(() => {
                  (window.adsbygoogle = window.adsbygoogle || []).push({});
-                 console.log('✅ AdSense refresh completed');
-               } catch (e) {
-                 console.error('❌ AdSense refresh error:', e);
-               }
-             }, 200);
-           }
-         } else {
-           console.log('❌ AdSense not ready yet');
+               }, 100);
+             }
+           });
          }
        } catch (e) {
-         console.error('❌ Route change handler error:', e);
+         console.error('❌ AdSense refresh error:', e);
        }
-     }, 500);
+     }, 300);
    };
 
    router.events.on('routeChangeComplete', handleRouteChange);
@@ -89,7 +77,9 @@ function MyApp({ Component, pageProps }) {
 
 
      <main className="flex-grow">
-       <Component {...pageProps} />
+       <AdSenseLayout>
+         <Component {...pageProps} />
+       </AdSenseLayout>
      </main>
      <Footer />
    </div>
