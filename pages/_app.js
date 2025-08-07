@@ -71,9 +71,9 @@ function MyApp({ Component, pageProps }) {
      </Script>
 
      {/* Google AdSense */}
-     <Script
+     <script
+       async
        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6071061687711848"
-       strategy="afterInteractive"
        crossOrigin="anonymous"
      />
 
