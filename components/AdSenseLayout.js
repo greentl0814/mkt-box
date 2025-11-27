@@ -6,7 +6,7 @@ export default function AdSenseLayout({ children }) {
       <div className="flex gap-6">
         {/* 왼쪽 사이드바 - 데스크탑에서만 표시 */}
         <aside className="hidden xl:block w-[160px] flex-shrink-0">
-          <div className="sticky top-4">
+          <div className="sticky top-8">
             {/* 왼쪽 광고 공간 예약 */}
           </div>
         </aside>
@@ -18,7 +18,7 @@ export default function AdSenseLayout({ children }) {
 
         {/* 오른쪽 사이드바 - 데스크탑에서만 표시 */}
         <aside className="hidden xl:block w-[160px] flex-shrink-0">
-          <div className="sticky top-4">
+          <div className="sticky top-8">
             <ins className="kakao_ad_area" style={{ display: 'none' }}
               data-ad-unit="DAN-nSdQcn9jHBDrIfwf"
               data-ad-width="160"
