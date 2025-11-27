@@ -32,6 +32,13 @@ function MyApp({ Component, pageProps }) {
        `}
      </Script>
 
+     {/* Kakao Ad Script */}
+     <Script
+       src="//t1.daumcdn.net/kas/static/ba.min.js"
+       strategy="afterInteractive"
+       async
+     />
+
      <Header />
      <main className="flex-grow">
        <AdSenseLayout>

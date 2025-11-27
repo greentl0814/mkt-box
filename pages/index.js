@@ -147,47 +147,28 @@ export default function Home() {
         <meta property="og:description" content={t('meta.ogDescription')} />
       </Head>
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex gap-6">
-          {/* 왼쪽 사이드바 - 데스크탑에서만 표시 */}
-          <aside className="hidden xl:block w-[160px] flex-shrink-0">
-            <div className="sticky top-4">
-              {/* 나중에 애드센스 코드 추가 예정 (160x600) */}
-            </div>
-          </aside>
-
-          {/* 메인 컨텐츠 */}
-          <div className="flex-1 min-w-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {tools.map((tool) => (
-                <div
-                  key={tool.id}
-                  className="border rounded-lg p-6 hover:shadow-lg transition-shadow bg-white"
-                >
-                  <div className="flex items-center mb-4">
-                    <div className={`p-2 rounded-full ${colorClasses[tool.color]}`}>
-                      {tool.icon}
-                    </div>
-                    <h2 className="text-xl font-semibold ml-3">{tool.title}</h2>
-                  </div>
-                  <p className="text-gray-600 mb-4 min-h-[48px]">{tool.description}</p>
-                  <Link
-                    href={tool.link}
-                    className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors w-full text-center"
-                  >
-                    {t('main.useButton')}
-                  </Link>
+      <main className="py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {tools.map((tool) => (
+            <div
+              key={tool.id}
+              className="border rounded-lg p-6 hover:shadow-lg transition-shadow bg-white"
+            >
+              <div className="flex items-center mb-4">
+                <div className={`p-2 rounded-full ${colorClasses[tool.color]}`}>
+                  {tool.icon}
                 </div>
-              ))}
+                <h2 className="text-xl font-semibold ml-3">{tool.title}</h2>
+              </div>
+              <p className="text-gray-600 mb-4 min-h-[48px]">{tool.description}</p>
+              <Link
+                href={tool.link}
+                className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors w-full text-center"
+              >
+                {t('main.useButton')}
+              </Link>
             </div>
-          </div>
-
-          {/* 오른쪽 사이드바 - 데스크탑에서만 표시 */}
-          <aside className="hidden xl:block w-[160px] flex-shrink-0">
-            <div className="sticky top-4">
-              {/* 나중에 애드센스 코드 추가 예정 (160x600) */}
-            </div>
-          </aside>
+          ))}
         </div>
       </main>
     </>
