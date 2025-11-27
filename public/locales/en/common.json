@@ -13,6 +13,14 @@
   "common": {
     "backButton": "← Back to Main"
   },
+  "header": {
+    "categories": {
+      "youtube": "YouTube",
+      "marketing": "Marketing",
+      "text": "Text",
+      "tools": "Other Tools"
+    }
+  },
   "tools": {
     "utm": {
       "title": "UTM Generator",
@@ -1013,7 +1021,7 @@
       "detailedDescription": "Convert image file formats and adjust quality. Supported formats are JPEG, PNG, and WebP.",
       "keywords": ["image conversion", "JPEG conversion", "PNG conversion", "WebP conversion", "image compression", "quality adjustment"],
       "uploadText": "Upload Images by Dragging or Clicking",
-      "supportedFormats": "Supported Formats: JPEG, PNG, WebP",
+      "supportedFormats": "Supported Formats: JPEG, PNG, GIF, WebP, BMP, etc.",
       "errors": {
         "fileType": "Only Supported Image Formats Can Be Uploaded.",
         "conversion": "Error Occurred During Image Conversion"
@@ -1095,7 +1103,7 @@
   },
   "qualityExplanation": {
     "heading": "Detailed Explanation of Quality Settings",
-    "description": "The quality setting only applies when the output format is JPEG or WebP (lossy compression mode). The lower the value, the smaller the file size, but the image quality may be degraded.",
+    "description": "The quality setting only applies when the output format is JPEG or WebP (lossy compression formats). PNG is a lossless format, so quality settings do not apply. The lower the value, the smaller the file size, but the image quality may be degraded.",
     "link": "See detailed explanation",
     "pngWarning": "PNG is a lossless compression format, so the output quality is always maintained at 100%. Therefore, PNG → PNG conversion does not affect the quality.",
     "jpegWarning1": "JPEG is a lossy compression format, so image quality may degrade as the quality value decreases. but",

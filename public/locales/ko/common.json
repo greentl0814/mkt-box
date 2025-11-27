@@ -13,6 +13,14 @@
   "common": {
     "backButton": "← 메인으로 돌아가기"
   },
+  "header": {
+    "categories": {
+      "youtube": "유튜브",
+      "marketing": "마케팅",
+      "text": "텍스트",
+      "tools": "기타 도구"
+    }
+  },
   "tools": {
     "utm": {
       "title": "UTM 생성기",
@@ -1018,7 +1026,7 @@
         "품질 조정"
       ],
       "uploadText": "이미지를 드래그하거나 클릭하여 업로드",
-      "supportedFormats": "지원 형식: JPEG, PNG, WebP",
+      "supportedFormats": "지원 형식: JPEG, PNG, GIF, WebP, BMP 등",
       "errors": {
         "fileType": "지원되는 이미지 파일만 업로드 가능합니다.",
         "conversion": "이미지 변환 중 오류가 발생했습니다."
@@ -1100,7 +1108,7 @@
   },
   "qualityExplanation": {
     "heading": "품질 설정에 대한 자세한 설명",
-    "description": "품질 설정은 출력 형식이 JPEG 또는 WebP(손실 압축 모드)인 경우에만 적용됩니다. 값이 낮을수록 파일 크기는 작아지지만 이미지 품질이 저하될 수 있습니다.",
+    "description": "품질 설정은 출력 형식이 JPEG 또는 WebP(손실 압축 형식)인 경우에만 적용됩니다. PNG는 무손실 압축 형식이므로 품질 설정이 적용되지 않습니다. 값이 낮을수록 파일 크기는 작아지지만 이미지 품질이 저하될 수 있습니다.",
     "link": "자세한 설명 보기",
     "pngWarning": "PNG는 무손실 압축 포맷이므로 출력 품질이 항상 100%로 유지됩니다. 따라서 PNG → PNG 변환은 품질에 영향을 미치지 않습니다.",
     "jpegWarning1": "JPEG는 손실 압축 포맷이므로 품질 값이 낮아지면 이미지 품질이 저하될 수 있습니다. 단",

@@ -4,17 +4,15 @@ import Link from 'next/link';
 import { Download, Plus, X } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { useTranslation } from '@/lib/i18n/useTranslation';
-import { LanguageSelector } from '@/components/LanguageSelector';
 
 export default function WordCloudGenerator({ pageData }) {
-  const { t, locale } = useTranslation(); // locale 추가
+  const { t, locale } = useTranslation();
   const [text, setText] = useState('');
   const [wordFrequency, setWordFrequency] = useState({});
   const [newStopWord, setNewStopWord] = useState('');
   const [error, setError] = useState('');
   const [copyMessage, setCopyMessage] = useState('');
 
-  // defaultStopWords를 useMemo 안에서 locale에 따라 다르게 생성
   const defaultStopWords = useMemo(() => {
     const englishStopWords = ['a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with'];
     const koreanStopWords = ['이', '그', '저', '이것', '저것', '그것', '을', '를', '이다', '있다', '하다', '및', '또는'];
@@ -144,55 +142,53 @@ export default function WordCloudGenerator({ pageData }) {
         <meta property="og:url" content="https://mktbox.co.kr/word-cloud" />
       </Head>
 
-      <div className="p-8 max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <Link href="/" className="text-blue-500 hover:text-blue-700">
-            {t('common.backButton')}
-          </Link>
-          <LanguageSelector />
+      <div className="p-4 md:p-8 max-w-4xl mx-auto">
+        <div className="mb-6">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-3">
+            <h1 className="text-3xl font-bold">{pageData.title}</h1>
+            <Link
+              href="/word-cloud/guide"
+              className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
+            >
+              <span>{pageData.guideLink}</span>
+              <span>→</span>
+            </Link>
+          </div>
+          <p className="text-gray-600">
+            텍스트에서 자주 등장하는 단어를 시각화하세요.
+          </p>
         </div>
 
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">{pageData.title}</h1>
-          <Link
-            href="/word-cloud/guide"
-            className="text-blue-500 hover:text-blue-700 flex items-center"
-          >
-            <span>{pageData.guideLink}</span>
-            <span className="ml-1">→</span>
-          </Link>
-        </div>
-
-
-        <div className="space-y-6">
+        {/* 제외 단어 설정 */}
+        <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-6">
           <div>
-            <label className="block mb-2 font-medium">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               {pageData.stopword.label}
               <span className="text-sm text-gray-500 ml-2">{pageData.stopword.subLabel}</span>
             </label>
 
-            <div className="mb-4 p-4 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-600 mb-2">{pageData.stopword.defaultTitle}</p>
+            <div className="mb-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <p className="text-xs text-gray-600 mb-2">{pageData.stopword.defaultTitle}</p>
               <div className="flex flex-wrap gap-2">
                 {Array.from(defaultStopWords).map(word => (
-                  <span key={word} className="bg-gray-200 px-2 py-1 rounded text-sm">
+                  <span key={word} className="bg-gray-200 px-2 py-1 rounded text-xs">
                     {word}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="flex space-x-2 mb-2">
+            <div className="flex gap-2 mb-2">
               <input
                 type="text"
                 value={newStopWord}
                 onChange={(e) => setNewStopWord(e.target.value)}
                 placeholder={pageData.stopword.placeholder}
-                className="flex-1 p-2 border rounded"
+                className="flex-1 p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               <button
                 onClick={addStopWord}
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center gap-1"
+                className="px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 font-medium whitespace-nowrap"
               >
                 <Plus className="w-4 h-4" />
                 {pageData.buttons.add}
@@ -200,16 +196,16 @@ export default function WordCloudGenerator({ pageData }) {
             </div>
 
             {customStopWords.size > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2">
                 {Array.from(customStopWords).map(word => (
                   <div
                     key={word}
-                    className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded"
+                    className="flex items-center gap-1 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-lg"
                   >
-                    {word}
+                    <span className="text-sm">{word}</span>
                     <button
                       onClick={() => removeStopWord(word)}
-                      className="text-red-500 hover:text-red-700"
+                      className="text-red-500 hover:text-red-700 transition-colors"
                     >
                       <X className="w-4 h-4" />
                     </button>
@@ -218,63 +214,76 @@ export default function WordCloudGenerator({ pageData }) {
               </div>
             )}
           </div>
+        </div>
 
+        {/* 텍스트 입력 */}
+        <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-6">
           <div>
-            <label className="block mb-2 font-medium">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               <span className="text-red-500">*</span> {pageData.inputs.text.label}
             </label>
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder={pageData.inputs.text.placeholder}
-              className="w-full p-2 border rounded min-h-[200px]"
+              className="w-full p-4 border border-gray-300 rounded-lg min-h-[200px] focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
+        </div>
 
-          {error && (
-            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-2 rounded">
-              {error}
-            </div>
-          )}
+        {/* 에러 메시지 */}
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+            {error}
+          </div>
+        )}
 
-          {Object.keys(wordFrequency).length > 0 && (
-            <div className="space-y-6">
-              <div className="flex justify-between items-center">
-                <h2 className="text-xl font-bold">{pageData.result.title}</h2>
+        {/* 워드 클라우드 결과 */}
+        {Object.keys(wordFrequency).length > 0 && (
+          <div className="space-y-6">
+            {/* 워드 클라우드 */}
+            <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+              <div className="bg-gray-50 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                <h3 className="font-semibold text-gray-900">{pageData.result.title}</h3>
                 <button
                   onClick={saveAsImage}
-                  className="flex items-center gap-2 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                  className="flex items-center gap-2 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors font-medium text-sm"
                 >
                   <Download className="w-4 h-4" />
                   {pageData.buttons.saveImage}
                 </button>
               </div>
 
-              <div id="word-cloud-container">
+              <div id="word-cloud-container" className="p-6">
                 {renderWordCloud()}
               </div>
+            </div>
 
-              <div>
-                <h2 className="text-xl font-bold mb-4">{pageData.result.subTitle}</h2>
+            {/* 빈도수 목록 */}
+            <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+              <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
+                <h3 className="font-semibold text-gray-900">{pageData.result.subTitle}</h3>
+              </div>
+              <div className="p-6">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {Object.entries(wordFrequency)
                     .sort((a, b) => b[1] - a[1])
                     .slice(0, 20)
                     .map(([word, freq]) => (
-                      <div key={word} className="flex justify-between p-2 bg-gray-50 rounded">
-                        <span>{word}</span>
+                      <div key={word} className="flex justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+                        <span className="font-medium text-gray-900">{word}</span>
                         <span className="text-gray-600">{freq}{pageData.result.frequency}</span>
                       </div>
                     ))}
                 </div>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       {copyMessage && (
-        <div className="fixed bottom-4 right-4 bg-black text-white px-4 py-2 rounded-lg shadow-lg">
+        <div className="fixed bottom-4 right-4 bg-black text-white px-4 py-2 rounded-lg shadow-lg z-50">
           {copyMessage}
         </div>
       )}

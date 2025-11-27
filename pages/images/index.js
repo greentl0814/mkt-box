@@ -2,7 +2,6 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useTranslation } from '@/lib/i18n/useTranslation';
-import { LanguageSelector } from '@/components/LanguageSelector';
 import {
   Upload,
   Image as ImageIcon,
@@ -201,40 +200,20 @@ const ImageConverter = () => {
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <Link href="/" className="text-blue-500 hover:text-blue-700">
-            {t('common.backButton')}
-          </Link>
-          <LanguageSelector />
+        <div className="mb-8">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+            <h1 className="text-3xl font-bold">{t('tools.imageConverter.title')}</h1>
+            <Link
+              href="/images/guide"
+              className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
+            >
+              <span>{t('tools.imageConverter.guideLink')}</span>
+              <span>→</span>
+            </Link>
+          </div>
         </div>
 
         <div className="w-full bg-white rounded-lg shadow-md p-6">
-          {/* 헤더 */}
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-2xl font-bold">
-                {t('tools.imageConverter.title')}
-              </h2>
-              <p className="text-gray-600 mt-1">
-                {t('tools.imageConverter.description')}
-              </p>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link
-                href="/images/guide"
-                className="text-blue-500 hover:text-blue-700 flex items-center"
-              >
-                <span>{t('tools.imageConverter.guideLink')}</span>
-                <span className="ml-1">→</span>
-              </Link>
-              <button
-                className="p-2 rounded-full hover:bg-gray-100"
-                onClick={() => alert(t('tools.imageConverter.detailedDescription'))}
-              >
-                <Info className="h-5 w-5 text-gray-500" />
-              </button>
-            </div>
-          </div>
 
           {/* 파일 업로드 영역 */}
           <div
@@ -290,33 +269,35 @@ const ImageConverter = () => {
                     </select>
                   </div>
 
-                  {/* 품질 설정 */}
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">
-                      {t('tools.imageConverter.quality')}: {quality}%
-                    </label>
-                    <input
-                      type="range"
-                      min="1"
-                      max="100"
-                      value={quality}
-                      onChange={(e) => setQuality(Number(e.target.value))}
-                      className="w-full"
-                    />
-                    <p className="text-xs text-gray-500">
-                      ℹ️ {t('qualityExplanation.description')}
-                      <Link href="/images/quality-explanation" legacyBehavior>
-                        <a
-                          className="text-blue-500 hover:underline ml-1"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {t('qualityExplanation.link')}
-                        </a>
-                      </Link>
-                      <br />
-                    </p>
-                  </div>
+                  {/* 품질 설정 - JPEG, WebP일 때만 표시 */}
+                  {(format === 'jpeg' || format === 'webp') && (
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">
+                        {t('tools.imageConverter.quality')}: {quality}%
+                      </label>
+                      <input
+                        type="range"
+                        min="1"
+                        max="100"
+                        value={quality}
+                        onChange={(e) => setQuality(Number(e.target.value))}
+                        className="w-full"
+                      />
+                      <p className="text-xs text-gray-500">
+                        ℹ️ {t('qualityExplanation.description')}
+                        <Link href="/images/quality-explanation" legacyBehavior>
+                          <a
+                            className="text-blue-500 hover:underline ml-1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {t('qualityExplanation.link')}
+                          </a>
+                        </Link>
+                        <br />
+                      </p>
+                    </div>
+                  )}
 
                   {/* 최대 너비 설정 */}
                   <div className="space-y-2">

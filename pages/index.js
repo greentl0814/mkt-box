@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Image as NextImage } from 'next/image'; // Image를 NextImage로 import
 import { Link2, Youtube, Type, BarChart2, FileCode, Image, Search } from 'lucide-react';
 import { Palette } from 'lucide-react';
-import { LanguageSelector } from '@/components/LanguageSelector';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 
 export default function Home() {
@@ -124,13 +123,6 @@ export default function Home() {
       </Head>
 
       <main className="container mx-auto px-4 py-8">
-        <div className="flex flex-col items-center mb-8">
-          <h1 className="text-3xl font-bold text-center mb-4">
-            {t('main.heading')}
-          </h1>
-          <LanguageSelector />
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {tools.map((tool) => (
             <div

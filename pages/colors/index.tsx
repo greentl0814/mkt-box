@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useTranslation } from '@/lib/i18n/useTranslation';
-import { LanguageSelector } from '@/components/LanguageSelector';
 import { Palette, Paintbrush, Copy, RefreshCw, Check } from 'lucide-react';
 import { Card, CardContent } from '../../components/ui/card';
 
@@ -318,27 +317,22 @@ export default function ColorTool({ pageData }) {
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <Link href="/" className="text-blue-500 hover:text-blue-700">
-            {t('common.backButton')}
-          </Link>
-          <LanguageSelector />
-        </div>
-
-        <div className="flex justify-between items-center mb-8">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-full bg-blue-50">
-              <Palette className="w-6 h-6 text-blue-600" />
+        <div className="mb-8">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+            <div className="flex items-center space-x-3">
+              <div className="p-2 rounded-full bg-blue-50">
+                <Palette className="w-6 h-6 text-blue-600" />
+              </div>
+              <h1 className="text-3xl font-bold">{pageData.title}</h1>
             </div>
-            <h1 className="text-2xl font-bold">{pageData.title}</h1>
+            <Link
+              href="/colors/guide"
+              className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
+            >
+              <span>{pageData.guideLink}</span>
+              <span>→</span>
+            </Link>
           </div>
-          <Link
-            href="/colors/guide"
-            className="text-blue-500 hover:text-blue-700 flex items-center"
-          >
-            <span>{pageData.guideLink}</span>
-            <span className="ml-1">→</span>
-          </Link>
         </div>
         
         <HowToUseSection t={t} />
