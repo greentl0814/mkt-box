@@ -39,6 +39,13 @@ function MyApp({ Component, pageProps }) {
        crossOrigin="anonymous"
      />
 
+     {/* Kakao Ad Script */}
+     <Script
+       src="//t1.daumcdn.net/kas/static/ba.min.js"
+       strategy="afterInteractive"
+       async
+     />
+
      <Header />
      <main className="flex-grow">
        <AdSenseLayout>
