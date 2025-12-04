@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from '@/lib/i18n/useTranslation';
-import Link from 'next/link';
 
 const QualityExplanation = () => {
   const { t } = useTranslation();
@@ -106,11 +105,9 @@ const QualityExplanation = () => {
         </tbody>
       </table>
       {/* 뒤로가기 버튼 */}
-      <Link href="/images" legacyBehavior>
-        <a className="mt-8 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">
-          {t('common.backButton')}
-        </a>
-      </Link>
+      <a href="/images" className="mt-8 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">
+        {t('common.backButton')}
+      </a>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import {
@@ -32,13 +32,13 @@ export default function AnalyticsGuide({ pageData = {} }) {
        <div className="max-w-6xl mx-auto px-4 py-8">
          {/* Header */}
          <div className="flex justify-between items-center mb-8">
-           <Link
+           <a
              href="/analytics"
              className="flex items-center text-gray-600 hover:text-blue-500 transition-colors"
            >
              <ArrowLeftCircle className="w-5 h-5 mr-2" />
              <span>{t('common.backButton')}</span>
-           </Link>
+           </a>
            <LanguageSelector />
          </div>
 
@@ -51,13 +51,13 @@ export default function AnalyticsGuide({ pageData = {} }) {
              <p className="text-xl text-gray-600 mb-8">
                {pageData.description}
              </p>
-             <Link
+             <a
                href="/analytics"
                className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
              >
                {pageData.cta}
                <ArrowRight className="ml-2 w-5 h-5" />
-             </Link>
+             </a>
            </div>
          </div>
 
@@ -186,13 +186,13 @@ export default function AnalyticsGuide({ pageData = {} }) {
          <div className="text-center bg-white rounded-xl p-12 shadow-md">
            <h2 className="text-2xl font-bold mb-4">{pageData.title}</h2>
            <p className="text-gray-600 mb-8">{pageData.description}</p>
-           <Link
+           <a
              href="/analytics"
              className="inline-flex items-center px-8 py-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
            >
              {pageData.cta}
              <ArrowRight className="ml-2 w-5 h-5" />
-           </Link>
+           </a>
          </div>
        </div>
      </div>

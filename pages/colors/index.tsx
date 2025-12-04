@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import { Palette, Paintbrush, Copy, RefreshCw, Check } from 'lucide-react';
 import { Card, CardContent } from '../../components/ui/card';
@@ -325,13 +325,12 @@ export default function ColorTool({ pageData }) {
               </div>
               <h1 className="text-3xl font-bold">{pageData.title}</h1>
             </div>
-            <Link
-              href="/colors/guide"
+            <a href="/colors/guide"
               className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
             >
               <span>{pageData.guideLink}</span>
               <span>→</span>
-            </Link>
+            </a>
           </div>
         </div>
         

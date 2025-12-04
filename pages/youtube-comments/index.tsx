@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { useTranslation } from '@/lib/i18n/useTranslation';
@@ -258,13 +258,12 @@ export default function YouTubeComments({ pageData }) {
         <div className="mb-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-3">
             <h1 className="text-3xl font-bold">{pageData.title}</h1>
-            <Link
-              href="/youtube-comments/guide"
+            <a href="/youtube-comments/guide"
               className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
             >
               <span>{pageData.guideLink || '댓글 추출 가이드'}</span>
               <span>→</span>
-            </Link>
+            </a>
           </div>
           <p className="text-gray-600">
             유튜브 영상의 댓글을 엑셀로 추출하고 키워드를 분석하세요.

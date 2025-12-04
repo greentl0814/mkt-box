@@ -1,7 +1,7 @@
 // pages/nsearch/index.js
 import { useState, useMemo } from "react";
 import Head from "next/head";
-import Link from "next/link";
+
 import { format } from "date-fns";
 import WordCloud from "@/components/WordCloud";
 import { ChevronDown, ChevronUp, Search, Loader2 } from "lucide-react";

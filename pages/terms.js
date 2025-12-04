@@ -1,6 +1,5 @@
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import Head from 'next/head';
-import Link from 'next/link';
 import { LanguageSelector } from '@/components/LanguageSelector';
 
 export default function TermsOfService({ pageData }) {
@@ -14,9 +13,9 @@ export default function TermsOfService({ pageData }) {
       </Head>
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="flex justify-between items-center mb-6">
-          <Link href="/" className="text-blue-500 hover:text-blue-700">
+          <a href="/" className="text-blue-500 hover:text-blue-700">
             {t('common.backButton')}
-          </Link>
+          </a>
           <LanguageSelector />
         </div>
         <h1 className="text-3xl font-bold mb-4">{pageData.termsOfServicePage.title}</h1>

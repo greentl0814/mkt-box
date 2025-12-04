@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import { Copy, Download, Plus, X } from 'lucide-react';
 
@@ -189,13 +189,13 @@ export default function UTMGenerator({ pageData = {} }) {
         <div className="mb-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-3">
             <h1 className="text-3xl font-bold">{pageData.title || 'UTM 생성기'}</h1>
-            <Link
+            <a
               href="/utm/guide"
               className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
             >
               <span>{pageData.guideLink || 'UTM 태그 가이드'}</span>
               <span>→</span>
-            </Link>
+            </a>
           </div>
           <p className="text-gray-600">
             마케팅 캠페인 추적을 위한 UTM 파라미터를 쉽게 생성하세요.

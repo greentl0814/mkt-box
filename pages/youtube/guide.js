@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import {
@@ -59,10 +58,10 @@ export default function YoutubeThumbnailGuide({ pageData = {} }) {
         <div className="max-w-6xl mx-auto px-4 py-8">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
-            <Link href="/youtube" className="flex items-center text-gray-600 hover:text-red-500 transition-colors">
+            <a href="/youtube" className="flex items-center text-gray-600 hover:text-red-500 transition-colors">
               <ArrowLeftCircle className="w-5 h-5 mr-2" />
               <span>{t('common.backButton')}</span>
-            </Link>
+            </a>
             <LanguageSelector />
           </div>
 
@@ -78,14 +77,14 @@ export default function YoutubeThumbnailGuide({ pageData = {} }) {
               <p className="text-xl text-gray-600 mb-8">
                 {pageData.description || 'YouTube 동영상의 썸네일을 다양한 해상도로 추출하고 활용하는 방법을 알아보세요.'}
               </p>
-              <Link
+              <a
                 href="/youtube"
                 className="inline-flex items-center px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
               >
                 {/* 썸네일 추출하기 -> 썸네일 추출기로 이동 */}
                 {t("tools.youtube.buttons.extract")}
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -192,14 +191,14 @@ export default function YoutubeThumbnailGuide({ pageData = {} }) {
             <p className="text-gray-600 mb-8">
               {t("tools.youtube.youtubeThumbnailGuide.sections.cta.description")}
             </p>
-            <Link
+            <a
               href="/youtube"
               className="inline-flex items-center px-8 py-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
             >
               {/* 썸네일 추출기 사용하기 -> 썸네일 추출기로 이동 */}
               {t("tools.youtube.buttons.extract")}
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>

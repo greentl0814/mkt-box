@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import { Download } from 'lucide-react';
 
@@ -82,13 +82,12 @@ export default function YoutubeThumbnail({ pageData }) {
         <div className="mb-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-3">
             <h1 className="text-3xl font-bold">{pageData.title || 'YouTube 썸네일 추출기'}</h1>
-            <Link
-              href="/youtube/guide"
+            <a href="/youtube/guide"
               className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
             >
               <span>{pageData.guideLink || '썸네일 추출 가이드'}</span>
               <span>→</span>
-            </Link>
+            </a>
           </div>
           <p className="text-gray-600">
             유튜브 영상의 썸네일 이미지를 다양한 해상도로 추출할 수 있습니다.

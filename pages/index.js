@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
-import Link from 'next/link';
 import { Image as NextImage } from 'next/image'; // Image를 NextImage로 import
 import { Link2, Youtube, Type, BarChart2, FileCode, Image, Search } from 'lucide-react';
 import { Palette } from 'lucide-react';
@@ -161,12 +160,12 @@ export default function Home() {
                 <h2 className="text-xl font-semibold ml-3">{tool.title}</h2>
               </div>
               <p className="text-gray-600 mb-4 min-h-[48px]">{tool.description}</p>
-              <Link
+              <a
                 href={tool.link}
                 className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors w-full text-center"
               >
                 {t('main.useButton')}
-              </Link>
+              </a>
             </div>
           ))}
         </div>

@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useTranslation } from '@/lib/i18n/useTranslation';
@@ -81,9 +80,9 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* 로고 */}
-          <Link href="/" className="flex items-center space-x-2">
+          <a href="/" className="flex items-center space-x-2">
             <span className="text-2xl font-bold text-blue-600">MKTBOX</span>
-          </Link>
+          </a>
 
           {/* 데스크톱 메뉴 */}
           <nav className="hidden md:flex items-center space-x-1" ref={dropdownRef}>
@@ -101,13 +100,13 @@ export default function Header() {
                 {activeDropdown === category.id && (
                   <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-gray-200 rounded-lg shadow-lg py-2">
                     {category.items.map((item) => (
-                      <Link
+                      <a
                         key={item.id}
                         href={item.link}
                         className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                       >
                         {item.label}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 )}
@@ -141,13 +140,13 @@ export default function Header() {
                   {category.label}
                 </div>
                 {category.items.map((item) => (
-                  <Link
+                  <a
                     key={item.id}
                     href={item.link}
                     className="block px-6 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 ))}
               </div>
             ))}

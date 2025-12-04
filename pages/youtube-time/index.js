@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import { Copy, Clock } from 'lucide-react';
 
@@ -85,13 +85,12 @@ export default function YoutubeTime({ pageData }) {
         <div className="mb-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-3">
             <h1 className="text-3xl font-bold">{pageData.title}</h1>
-            <Link
-              href="/youtube-time/guide"
+            <a href="/youtube-time/guide"
               className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
             >
               <span>{pageData.guideLink || '유튜브 시간 링크 가이드'}</span>
               <span>→</span>
-            </Link>
+            </a>
           </div>
           <p className="text-gray-600">
             유튜브 영상의 특정 시간대로 바로 이동하는 링크를 생성하세요.

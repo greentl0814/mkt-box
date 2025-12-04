@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import { Copy, Link as LinkIcon } from 'lucide-react';
 
@@ -72,13 +72,12 @@ export default function URLShortener({ pageData }) {
         <div className="mb-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-3">
             <h1 className="text-3xl font-bold">{pageData.title}</h1>
-            <Link
-              href="/url/guide"
+            <a href="/url/guide"
               className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
             >
               <span>{pageData.guideLink}</span>
               <span>→</span>
-            </Link>
+            </a>
           </div>
           <p className="text-gray-600">
             긴 URL을 짧고 간단하게 변환하여 공유하세요.

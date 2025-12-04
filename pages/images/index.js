@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import {
   Upload,
@@ -203,13 +202,13 @@ const ImageConverter = () => {
         <div className="mb-8">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
             <h1 className="text-3xl font-bold">{t('tools.imageConverter.title')}</h1>
-            <Link
+            <a
               href="/images/guide"
               className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
             >
               <span>{t('tools.imageConverter.guideLink')}</span>
               <span>→</span>
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -285,15 +284,14 @@ const ImageConverter = () => {
                       />
                       <p className="text-xs text-gray-500">
                         ℹ️ {t('qualityExplanation.description')}
-                        <Link href="/images/quality-explanation" legacyBehavior>
-                          <a
-                            className="text-blue-500 hover:underline ml-1"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {t('qualityExplanation.link')}
-                          </a>
-                        </Link>
+                        <a
+                          href="/images/quality-explanation"
+                          className="text-blue-500 hover:underline ml-1"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {t('qualityExplanation.link')}
+                        </a>
                         <br />
                       </p>
                     </div>
