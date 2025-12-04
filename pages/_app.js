@@ -32,11 +32,11 @@ function MyApp({ Component, pageProps }) {
        `}
      </Script>
 
-     {/* Kakao Ad Script */}
+     {/* Google AdSense */}
      <Script
-       src="//t1.daumcdn.net/kas/static/ba.min.js"
+       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6071061687711848"
        strategy="afterInteractive"
-       async
+       crossOrigin="anonymous"
      />
 
      <Header />
