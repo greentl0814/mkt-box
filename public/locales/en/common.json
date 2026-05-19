@@ -414,8 +414,25 @@
       "title": "YouTube Comment Extractor",
       "description": "Export YouTube video comments to Excel files.",
       "head": {
-        "title": "YouTube Comment Extractor - Marketing Tools",
-        "description": "Export YouTube video comments to Excel files."
+        "title": "YouTube Comment Extractor - Free Excel Download | Marketing Tools",
+        "description": "Extract up to 2,000 YouTube video comments for free and download them as Excel files. Sort by top or newest, include replies, and get keyword word cloud analysis — all in one tool.",
+        "keywords": "youtube comment extractor, youtube comments download, youtube comments to excel, youtube comment analysis, youtube comment scraper free, download youtube comments, youtube comment collector",
+        "ogTitle": "YouTube Comment Extractor - Free Excel Download",
+        "ogDescription": "Just enter a YouTube URL to automatically extract up to 2,000 comments to Excel! Includes replies, keyword word cloud analysis — 100% free.",
+        "ogImage": "https://mktbox.co.kr/og-youtube-comments.png"
+      },
+      "analysis": {
+        "title": "Comment Keyword Analysis",
+        "description": "The word cloud below visualizes frequently appearing keywords from the comments. Word size is proportional to frequency.",
+        "stats": {
+          "total": "Total Comments Collected",
+          "comments": "Comments",
+          "replies": "Replies"
+        },
+        "insights": {
+          "title": "Analysis Insights",
+          "description": "The key keywords in the word cloud reveal viewers' interests and opinions. Use this to plan your next content or identify improvements for existing videos."
+        }
       },
       "notice": {
         "limits": {

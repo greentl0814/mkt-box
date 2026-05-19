@@ -246,12 +246,93 @@ export default function YouTubeComments({ pageData }) {
       <Head>
         <title>{pageData.head.title}</title>
         <meta name="description" content={pageData.head.description} />
+        <meta name="keywords" content={pageData.head.keywords} />
+        <meta name="robots" content="index, follow" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageData.head.ogTitle} />
+        <meta property="og:description" content={pageData.head.ogDescription} />
+        <meta property="og:url" content="https://mktbox.co.kr/youtube-comments" />
+        <meta property="og:image" content={pageData.head.ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="MKT Box" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageData.head.ogTitle} />
+        <meta name="twitter:description" content={pageData.head.ogDescription} />
+        <meta name="twitter:image" content={pageData.head.ogImage} />
 
         {/* 언어별 Canonical & Alternate */}
         <link rel="canonical" href="https://mktbox.co.kr/youtube-comments" />
         <link rel="alternate" hrefLang="ko" href="https://mktbox.co.kr/youtube-comments" />
         <link rel="alternate" hrefLang="en" href="https://mktbox.co.kr/en/youtube-comments" />
         <link rel="alternate" hrefLang="x-default" href="https://mktbox.co.kr/youtube-comments" />
+
+        {/* JSON-LD: WebApplication */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": pageData.head.ogTitle,
+              "description": pageData.head.description,
+              "url": "https://mktbox.co.kr/youtube-comments",
+              "applicationCategory": "UtilitiesApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "KRW"
+              },
+              "featureList": [
+                "YouTube 댓글 최대 2,000개 추출",
+                "엑셀(XLSX) 파일 다운로드",
+                "인기순 / 최신순 정렬",
+                "대댓글 포함 추출",
+                "워드 클라우드 키워드 분석"
+              ],
+              "inLanguage": ["ko", "en"]
+            })
+          }}
+        />
+
+        {/* JSON-LD: HowTo */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "name": "YouTube 댓글 추출하는 방법",
+              "description": "유튜브 영상 URL을 입력해 댓글을 엑셀로 추출하는 3단계 방법",
+              "totalTime": "PT1M",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "position": 1,
+                  "name": "URL 입력",
+                  "text": "댓글을 추출할 유튜브 영상의 URL을 입력창에 붙여넣습니다."
+                },
+                {
+                  "@type": "HowToStep",
+                  "position": 2,
+                  "name": "옵션 설정",
+                  "text": "정렬 방식(인기순/최신순)과 대댓글 포함 여부를 선택합니다."
+                },
+                {
+                  "@type": "HowToStep",
+                  "position": 3,
+                  "name": "추출 및 다운로드",
+                  "text": "'댓글 추출하기' 버튼을 클릭하면 자동으로 엑셀 파일이 다운로드됩니다."
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <div className="p-4 md:p-8 max-w-4xl mx-auto">
@@ -266,7 +347,7 @@ export default function YouTubeComments({ pageData }) {
             </a>
           </div>
           <p className="text-gray-600">
-            유튜브 영상의 댓글을 엑셀로 추출하고 키워드를 분석하세요.
+            {pageData.description}
           </p>
         </div>
 
@@ -299,16 +380,16 @@ export default function YouTubeComments({ pageData }) {
           {isHowToUseOpen && (
             <div className="p-4 pt-0 space-y-3 text-sm text-gray-700">
               <div>
-                <p className="font-medium mb-1">1. URL 입력 및 설정</p>
-                <p className="text-gray-600">유튜브 URL을 입력하고 정렬 방식(관련도/최신순)과 답글 포함 여부를 선택하세요.</p>
+                <p className="font-medium mb-1">1. {pageData.howToUse?.step1?.title || 'URL 입력 및 설정'}</p>
+                <p className="text-gray-600">{pageData.howToUse?.step1?.content || '유튜브 URL을 입력하고 정렬 방식(관련도/최신순)과 답글 포함 여부를 선택하세요.'}</p>
               </div>
               <div>
-                <p className="font-medium mb-1">2. 댓글 추출</p>
-                <p className="text-gray-600">추출 버튼을 클릭하면 엑셀 파일로 자동 다운로드되며, 워드 클라우드 분석이 표시됩니다.</p>
+                <p className="font-medium mb-1">2. {pageData.howToUse?.step2?.title || '댓글 추출'}</p>
+                <p className="text-gray-600">{pageData.howToUse?.step2?.content || '추출 버튼을 클릭하면 엑셀 파일로 자동 다운로드되며, 워드 클라우드 분석이 표시됩니다.'}</p>
               </div>
               <div>
-                <p className="font-medium mb-1">💡 Tip</p>
-                <p className="text-gray-600">워드 클라우드를 통해 댓글에서 자주 언급되는 키워드를 파악하여 콘텐츠 개선에 활용하세요.</p>
+                <p className="font-medium mb-1">💡 {pageData.howToUse?.tip?.title || 'Tip'}</p>
+                <p className="text-gray-600">{pageData.howToUse?.tip?.content || '워드 클라우드를 통해 댓글에서 자주 언급되는 키워드를 파악하여 콘텐츠 개선에 활용하세요.'}</p>
               </div>
             </div>
           )}
@@ -417,10 +498,10 @@ export default function YouTubeComments({ pageData }) {
         {/* 워드 클라우드 및 분석 결과 */}
         {showAnalysis && commentsText && (
           <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
               <span className="w-1 h-6 bg-blue-600 rounded"></span>
               {pageData.analysis?.title || '댓글 키워드 분석'}
-            </h3>
+            </h2>
 
             <div className="mb-4">
               <p className="text-sm text-gray-600">
