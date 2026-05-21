@@ -259,20 +259,9 @@ export default function SearchTool() {
             </div>
           )}
 
-          {/* 워드 클라우드 (결과 위에 위치하여 트렌드 요약 먼저 제공) */}
-          {titlesText && (
-            <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 md:p-8 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 mb-8">
-              <h3 className="text-xl font-bold text-slate-850 mb-6 flex items-center gap-2">
-                <span className="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
-                키워드 워드 클라우드
-              </h3>
-              <WordCloud text={titlesText} />
-            </div>
-          )}
-
-          {/* 검색 결과 */}
+          {/* 검색 결과 (더보기 버튼을 계속해서 원활하게 클릭할 수 있도록 상단에 위치) */}
           {results.length > 0 && (
-            <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 overflow-hidden">
+            <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 overflow-hidden mb-8">
               <div className="px-6 md:px-8 py-5 border-b border-slate-100/80 bg-slate-50/50">
                 <h3 className="font-bold text-slate-850">검색 결과 ({results.length}개)</h3>
               </div>
@@ -335,6 +324,17 @@ export default function SearchTool() {
                   </button>
                 </div>
               )}
+            </div>
+          )}
+
+          {/* 워드 클라우드 (검색 결과를 먼저 보여주고, 하단에서 전체 트렌드 제공) */}
+          {titlesText && (
+            <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 md:p-8 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 mb-8">
+              <h3 className="text-xl font-bold text-slate-850 mb-6 flex items-center gap-2">
+                <span className="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
+                키워드 워드 클라우드
+              </h3>
+              <WordCloud text={titlesText} />
             </div>
           )}
         </div>
