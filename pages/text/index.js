@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 
 import { useTranslation } from '@/lib/i18n/useTranslation';
-import { FileText } from 'lucide-react';
+import { FileText, ArrowRight, HelpCircle } from 'lucide-react';
 
 export default function TextCounter({ pageData }) {
   const { t } = useTranslation();
@@ -36,7 +36,7 @@ export default function TextCounter({ pageData }) {
       <Head>
         <title>{pageData.head.title}</title>
         <meta name="description" content={pageData.head.description} />
-        <meta name="keywords" content="글자수 세기, 문자 수 계산, 바이트 계산, 텍스트 분석, 글자수 제한, 한글 바이트, 복사 글자수, 관고 문구 작성" />
+        <meta name="keywords" content="글자수 세기, 문자 수 계산, 바이트 계산, 텍스트 분석, 글자수 제한, 한글 바이트, 복사 글자수, 광고 문구 작성" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.mktbox.co.kr/text" />
         <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/text" />
@@ -59,7 +59,7 @@ export default function TextCounter({ pageData }) {
             "@type": "WebApplication",
             "name": "텍스트 분석기 - 글자수 세기",
             "url": "https://www.mktbox.co.kr/text",
-            "description": "텍스트의 글자 수와 바이트를 실시간으로 계산합니다. UTF-8, EUC-KR 바이트 학인 가능.",
+            "description": "텍스트의 글자 수와 바이트를 실시간으로 계산합니다. UTF-8, EUC-KR 바이트 확인 가능.",
             "applicationCategory": "UtilityApplication",
             "operatingSystem": "Web",
             "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
@@ -69,88 +69,134 @@ export default function TextCounter({ pageData }) {
         />
       </Head>
 
-      <div className="p-4 md:p-8 max-w-4xl mx-auto">
-        <div className="mb-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-3">
-            <h1 className="text-3xl font-bold">{pageData.title}</h1>
+      <div className="relative min-h-screen overflow-hidden pb-16">
+        {/* 몽환적인 파스텔 백그라운드 메시 블러 데코레이션 */}
+        <div className="absolute top-[-10%] left-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full bg-blue-400/10 blur-[100px] md:blur-[140px] pointer-events-none"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[500px] md:w-[700px] h-[500px] md:h-[700px] rounded-full bg-purple-400/10 blur-[120px] md:blur-[160px] pointer-events-none"></div>
+        <div className="absolute bottom-[-5%] left-[15%] w-[450px] md:w-[650px] h-[450px] md:h-[650px] rounded-full bg-pink-400/10 blur-[110px] md:blur-[150px] pointer-events-none"></div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 py-8 md:py-12">
+          {/* Header Section */}
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+            <div>
+              <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight flex items-center gap-2.5">
+                <FileText className="w-8 h-8 text-blue-600" />
+                {pageData.title}
+              </h1>
+              <p className="text-slate-500 font-medium mt-2 leading-relaxed">
+                텍스트의 글자 수와 바이트를 실시간으로 편리하게 계산하세요.
+              </p>
+            </div>
             <a href="/text/guide"
-              className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-slate-600 hover:text-blue-600 bg-white/80 border border-slate-100/80 backdrop-blur rounded-2xl hover:shadow-[0_8px_16px_rgba(0,0,0,0.02)] transition-all duration-300 self-start md:self-auto"
             >
               <span>{pageData.guideLink}</span>
-              <span>→</span>
+              <ArrowRight className="w-4 h-4" />
             </a>
           </div>
-          <p className="text-gray-600">
-            텍스트의 글자 수와 바이트를 실시간으로 계산하세요.
-          </p>
-        </div>
 
-        {/* 텍스트 입력 */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-              <FileText className="w-4 h-4" />
-              텍스트 입력
-            </label>
+          {/* 통계 결과 대시보드 */}
+          <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 md:p-8 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="bg-blue-50/50 rounded-2xl p-4 text-center transition-all duration-300 hover:bg-blue-50">
+                <div className="text-xs font-bold text-slate-500 mb-1">{pageData.stats.total}</div>
+                <div className="text-2xl md:text-3xl font-black text-blue-600">{totalCount.toLocaleString()}</div>
+              </div>
+              <div className="bg-emerald-50/50 rounded-2xl p-4 text-center transition-all duration-300 hover:bg-emerald-50">
+                <div className="text-xs font-bold text-slate-500 mb-1">{pageData.stats.noSpace}</div>
+                <div className="text-2xl md:text-3xl font-black text-emerald-600">{noSpaceCount.toLocaleString()}</div>
+              </div>
+              <div className="bg-purple-50/50 rounded-2xl p-4 text-center transition-all duration-300 hover:bg-purple-50">
+                <div className="text-xs font-bold text-slate-500 mb-1">{pageData.stats.byte2}</div>
+                <div className="text-2xl md:text-3xl font-black text-purple-600">{byteCount2.toLocaleString()}</div>
+              </div>
+              <div className="bg-orange-50/50 rounded-2xl p-4 text-center transition-all duration-300 hover:bg-orange-50">
+                <div className="text-xs font-bold text-slate-500 mb-1">{pageData.stats.byte3}</div>
+                <div className="text-2xl md:text-3xl font-black text-orange-600">{byteCount3.toLocaleString()}</div>
+              </div>
+            </div>
+          </div>
+
+          {/* 텍스트 입력 영역 */}
+          <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 mb-8">
+            <div className="flex justify-between items-center mb-4">
+              <label className="text-base font-bold text-slate-800 flex items-center gap-2">
+                <FileText className="w-5 h-5 text-blue-500" />
+                텍스트 입력
+              </label>
+              {text && (
+                <button
+                  onClick={() => setText('')}
+                  className="text-xs font-semibold text-slate-400 hover:text-red-500 transition-colors"
+                >
+                  초기화
+                </button>
+              )}
+            </div>
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder={pageData.placeholder}
-              className="w-full h-60 p-4 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full h-80 p-5 bg-slate-50/50 border border-slate-200/80 rounded-2xl resize-none text-slate-800 placeholder-slate-400 font-medium text-sm leading-relaxed transition-all focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500/80"
             />
           </div>
-        </div>
 
-        {/* 통계 결과 */}
-        <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden mb-6">
-          <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
-            <h3 className="font-semibold text-gray-900">텍스트 통계</h3>
-          </div>
-          <div className="p-6 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="text-sm text-gray-600 mb-1">{pageData.stats.total}</div>
-              <div className="text-3xl font-bold text-blue-600">{totalCount.toLocaleString()}</div>
+          {/* 바이트 계산 설명 가이드 */}
+          <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 md:p-8 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 grid md:grid-cols-3 gap-6">
+            <div className="bg-blue-50/20 rounded-2xl p-5 border border-blue-50/50">
+              <div className="flex items-center gap-2 text-blue-900 font-bold mb-3">
+                <HelpCircle className="w-4 h-4 shrink-0 text-blue-500" />
+                <p className="text-sm">{pageData.info.byteStandard.title}</p>
+              </div>
+              <ul className="space-y-2 text-xs font-semibold text-slate-600 leading-relaxed">
+                <li className="flex items-start gap-1.5">
+                  <span className="text-blue-500">•</span>
+                  <span>{pageData.info.byteStandard.basic}</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-blue-500">•</span>
+                  <span>{pageData.info.byteStandard.korean}</span>
+                </li>
+              </ul>
             </div>
-            <div className="text-center">
-              <div className="text-sm text-gray-600 mb-1">{pageData.stats.noSpace}</div>
-              <div className="text-3xl font-bold text-green-600">{noSpaceCount.toLocaleString()}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-sm text-gray-600 mb-1">{pageData.stats.byte2}</div>
-              <div className="text-3xl font-bold text-purple-600">{byteCount2.toLocaleString()}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-sm text-gray-600 mb-1">{pageData.stats.byte3}</div>
-              <div className="text-3xl font-bold text-orange-600">{byteCount3.toLocaleString()}</div>
-            </div>
-          </div>
-        </div>
 
-        {/* 바이트 계산 설명 */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 space-y-3 text-sm text-gray-700">
-          <div>
-            <p className="font-medium text-blue-900 mb-1">{pageData.info.byteStandard.title}</p>
-            <ul className="list-disc list-inside space-y-1 text-blue-800">
-              <li>{pageData.info.byteStandard.basic}</li>
-              <li>{pageData.info.byteStandard.korean}</li>
-            </ul>
-          </div>
+            <div className="bg-purple-50/20 rounded-2xl p-5 border border-purple-50/50">
+              <div className="flex items-center gap-2 text-purple-900 font-bold mb-3">
+                <HelpCircle className="w-4 h-4 shrink-0 text-purple-500" />
+                <p className="text-sm">{pageData.info.encoding.title}</p>
+              </div>
+              <ul className="space-y-2 text-xs font-semibold text-slate-600 leading-relaxed">
+                <li className="flex items-start gap-1.5">
+                  <span className="text-purple-500">•</span>
+                  <span>{pageData.info.encoding.utf8}</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-purple-500">•</span>
+                  <span>{pageData.info.encoding.euckr}</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-purple-500">•</span>
+                  <span>{pageData.info.encoding.utf16}</span>
+                </li>
+              </ul>
+            </div>
 
-          <div>
-            <p className="font-medium text-blue-900 mb-1">{pageData.info.encoding.title}</p>
-            <ul className="list-disc list-inside space-y-1 text-blue-800">
-              <li>{pageData.info.encoding.utf8}</li>
-              <li>{pageData.info.encoding.euckr}</li>
-              <li>{pageData.info.encoding.utf16}</li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="font-medium text-blue-900 mb-1">{pageData.info.platform.title}</p>
-            <ul className="list-disc list-inside space-y-1 text-blue-800">
-              <li>{pageData.info.platform.naver}</li>
-              <li>{pageData.info.platform.google}</li>
-            </ul>
+            <div className="bg-orange-50/20 rounded-2xl p-5 border border-orange-50/50">
+              <div className="flex items-center gap-2 text-orange-900 font-bold mb-3">
+                <HelpCircle className="w-4 h-4 shrink-0 text-orange-500" />
+                <p className="text-sm">{pageData.info.platform.title}</p>
+              </div>
+              <ul className="space-y-2 text-xs font-semibold text-slate-600 leading-relaxed">
+                <li className="flex items-start gap-1.5">
+                  <span className="text-orange-500">•</span>
+                  <span>{pageData.info.platform.naver}</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-orange-500">•</span>
+                  <span>{pageData.info.platform.google}</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

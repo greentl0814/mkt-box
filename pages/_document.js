@@ -74,7 +74,6 @@ export default function Document(props) {
       <Head>
         {/* 기본 메타태그 */}
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="robots" content="index, follow" />

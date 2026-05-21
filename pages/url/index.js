@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 
 import { useTranslation } from '@/lib/i18n/useTranslation';
-import { Copy, Link as LinkIcon } from 'lucide-react';
+import { Copy, Link as LinkIcon, ArrowRight, Sparkles } from 'lucide-react';
 
 export default function URLShortener({ pageData }) {
   const { t } = useTranslation();
@@ -66,7 +66,7 @@ export default function URLShortener({ pageData }) {
       <Head>
         <title>{pageData.head.title}</title>
         <meta name="description" content={pageData.head.description} />
-        <meta name="keywords" content="URL 단축, 단축 URL, 링크 단축, 간단URL, URL 증단축기, 단축 링크 생성, 링크 관리, URL shortener" />
+        <meta name="keywords" content="URL 단축, 단축 URL, 링크 단축, 간단URL, URL 단축기, 단축 링크 생성, 링크 관리, URL shortener" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.mktbox.co.kr/url" />
         <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/url" />
@@ -89,7 +89,7 @@ export default function URLShortener({ pageData }) {
             "@type": "WebApplication",
             "name": "URL 단축기",
             "url": "https://www.mktbox.co.kr/url",
-            "description": "기닥 URL을 짧게 줄여서 관리와 공유를 편리하게 하세요.",
+            "description": "긴 URL을 짧게 줄여서 관리와 공유를 편리하게 하세요.",
             "applicationCategory": "UtilityApplication",
             "operatingSystem": "Web",
             "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
@@ -98,84 +98,97 @@ export default function URLShortener({ pageData }) {
         />
       </Head>
 
-      <div className="p-4 md:p-8 max-w-4xl mx-auto">
-        <div className="mb-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-3">
-            <h1 className="text-3xl font-bold">{pageData.title}</h1>
+      <div className="relative min-h-screen overflow-hidden pb-16">
+        {/* 몽환적인 파스텔 백그라운드 메시 블러 데코레이션 */}
+        <div className="absolute top-[-10%] left-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full bg-blue-400/10 blur-[100px] md:blur-[140px] pointer-events-none"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[500px] md:w-[700px] h-[500px] md:h-[700px] rounded-full bg-purple-400/10 blur-[120px] md:blur-[160px] pointer-events-none"></div>
+        <div className="absolute bottom-[-5%] left-[15%] w-[450px] md:w-[650px] h-[450px] md:h-[650px] rounded-full bg-pink-400/10 blur-[110px] md:blur-[150px] pointer-events-none"></div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 py-8 md:py-12">
+          {/* Header Section */}
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+            <div>
+              <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight flex items-center gap-2.5">
+                <LinkIcon className="w-8 h-8 text-blue-600 animate-pulse" />
+                {pageData.title}
+              </h1>
+              <p className="text-slate-500 font-medium mt-2 leading-relaxed">
+                복잡하고 긴 URL을 클릭 한 번으로 간결하고 깔끔한 단축 링크로 변환하세요.
+              </p>
+            </div>
             <a href="/url/guide"
-              className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-slate-600 hover:text-blue-600 bg-white/80 border border-slate-100/80 backdrop-blur rounded-2xl hover:shadow-[0_8px_16px_rgba(0,0,0,0.02)] transition-all duration-300 self-start md:self-auto"
             >
               <span>{pageData.guideLink}</span>
-              <span>→</span>
+              <ArrowRight className="w-4 h-4" />
             </a>
           </div>
-          <p className="text-gray-600">
-            긴 URL을 짧고 간단하게 변환하여 공유하세요.
-          </p>
-        </div>
 
-        {/* 입력 폼 */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              {pageData.inputs.urlLabel}
-            </label>
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                placeholder={pageData.inputs.placeholder}
-                className="flex-1 p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <button
-                onClick={shortenUrl}
-                className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium whitespace-nowrap flex items-center gap-2"
-              >
-                <LinkIcon className="w-4 h-4" />
-                {pageData.buttons.shorten}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* 에러 메시지 */}
-        {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
-            {error}
-          </div>
-        )}
-
-        {/* 결과 */}
-        {shortUrl && (
-          <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-            <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
-              <h3 className="font-semibold text-gray-900">{pageData.results.title}</h3>
-            </div>
-            <div className="p-6">
-              <div className="flex gap-3 items-center">
+          {/* 입력 폼 */}
+          <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 md:p-8 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 mb-8">
+            <div>
+              <label className="block text-base font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-blue-500" />
+                {pageData.inputs.urlLabel}
+              </label>
+              <div className="flex flex-col md:flex-row gap-3">
                 <input
                   type="text"
-                  value={shortUrl}
-                  readOnly
-                  className="flex-1 p-2.5 border border-gray-300 rounded-lg bg-gray-50 text-gray-700"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  placeholder={pageData.inputs.placeholder}
+                  className="flex-1 p-4 bg-slate-50/50 border border-slate-200/80 rounded-2xl text-slate-800 placeholder-slate-400 font-semibold text-sm transition-all focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500/80"
                 />
                 <button
-                  onClick={copyToClipboard}
-                  className="px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium whitespace-nowrap flex items-center gap-2"
+                  onClick={shortenUrl}
+                  className="px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl hover:shadow-[0_8px_16px_rgba(79,70,229,0.15)] transition-all duration-300 shadow-sm flex items-center justify-center gap-2 whitespace-nowrap"
                 >
-                  <Copy className="w-4 h-4" />
-                  {pageData.buttons.copy}
+                  <LinkIcon className="w-4 h-4" />
+                  {pageData.buttons.shorten}
                 </button>
               </div>
-              {copyMessage && (
-                <div className="mt-2 text-sm text-green-600">
-                  {copyMessage}
-                </div>
-              )}
             </div>
           </div>
-        )}
+
+          {/* 에러 메시지 */}
+          {error && (
+            <div className="bg-red-50/80 border border-red-200/80 backdrop-blur text-red-600 px-5 py-4 rounded-2xl mb-8 font-semibold text-sm shadow-sm">
+              {error}
+            </div>
+          )}
+
+          {/* 결과 */}
+          {shortUrl && (
+            <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 overflow-hidden">
+              <div className="px-6 md:px-8 py-5 border-b border-slate-100/80 bg-slate-50/50">
+                <h3 className="font-bold text-slate-850">{pageData.results.title}</h3>
+              </div>
+              <div className="p-6 md:p-8">
+                <div className="flex flex-col md:flex-row gap-3 items-center">
+                  <input
+                    type="text"
+                    value={shortUrl}
+                    readOnly
+                    className="w-full md:flex-1 p-4 bg-slate-100/60 border border-slate-200/80 rounded-2xl text-slate-700 font-bold text-sm select-all focus:outline-none"
+                  />
+                  <button
+                    onClick={copyToClipboard}
+                    className="w-full md:w-auto px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold rounded-2xl hover:shadow-[0_8px_16px_rgba(16,185,129,0.15)] transition-all duration-300 shadow-sm flex items-center justify-center gap-2 whitespace-nowrap"
+                  >
+                    <Copy className="w-4 h-4" />
+                    {pageData.buttons.copy}
+                  </button>
+                </div>
+                {copyMessage && (
+                  <div className="mt-3 text-sm font-bold text-emerald-600 flex items-center gap-1">
+                    <span>✓</span>
+                    <span>{copyMessage}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

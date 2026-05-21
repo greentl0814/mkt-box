@@ -7,54 +7,87 @@ import {
   ArrowLeftCircle,
   ArrowRight,
   Palette,
-
   Copy,
   RefreshCw,
-  Droplet,
-  Download,
   Settings
 } from 'lucide-react';
 
 export default function Guide({ pageData = {} }) {
   const { t } = useTranslation();
 
+  const FeatureCard = ({ icon, title, description }) => (
+    <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300">
+      <div className="flex items-start space-x-4">
+        <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+          {icon}
+        </div>
+        <div>
+          <h3 className="font-bold text-slate-800 text-lg mb-2">{title}</h3>
+          <p className="text-slate-500 font-medium text-sm leading-relaxed">{description}</p>
+        </div>
+      </div>
+    </div>
+  );
+
+  const UsageStep = ({ number, title, description }) => (
+    <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300">
+      <div className="flex items-start space-x-4">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">
+          {number}
+        </div>
+        <div>
+          <h3 className="font-bold text-slate-800 text-lg mb-2">{title}</h3>
+          <p className="text-slate-500 font-medium text-sm leading-relaxed">{description}</p>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <Head>
-        <title>{pageData.head?.title}</title>
-        <meta name="description" content={pageData.head?.description} />
-        <meta name="keywords" content={pageData.head?.keywords} />
-        <meta property="og:title" content={pageData.head?.ogTitle} />
-        <meta property="og:description" content={pageData.head?.ogDescription} />
+        <title>{pageData.head?.title || '컬러 팔레트 추출기 가이드 - Marketing Tools'}</title>
+        <meta name="description" content={pageData.head?.description || '이미지에서 메인 색상을 손쉽게 추출하고 팔레트를 구성해보세요.'} />
+        <meta name="keywords" content={pageData.head?.keywords || '색상 추출, 컬러 팔레트, 디자인 도구, 웹 디자인'} />
+        <meta property="og:title" content={pageData.head?.ogTitle || '컬러 팔레트 추출기 가이드'} />
+        <meta property="og:description" content={pageData.head?.ogDescription || '이미지 색상 추출 방법과 활용 가이드'} />
         <meta property="og:type" content="article" />
       </Head>
 
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="relative min-h-screen overflow-hidden pb-16">
+        {/* 몽환적인 파스텔 백그라운드 메시 블러 데코레이션 */}
+        <div className="absolute top-[-10%] left-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full bg-blue-400/10 blur-[100px] md:blur-[140px] pointer-events-none"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[500px] md:w-[700px] h-[500px] md:h-[700px] rounded-full bg-purple-400/10 blur-[120px] md:blur-[160px] pointer-events-none"></div>
+        <div className="absolute bottom-[-5%] left-[15%] w-[450px] md:w-[650px] h-[450px] md:h-[650px] rounded-full bg-pink-400/10 blur-[110px] md:blur-[150px] pointer-events-none"></div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 py-8">
           {/* Header */}
-          <div className="flex justify-between items-center mb-8">
+          <div className="flex justify-between items-center mb-8 pt-4">
             <a href="/colors"
-              className="flex items-center text-gray-600 hover:text-blue-500 transition-colors"
+              className="flex items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors"
             >
-              <ArrowLeftCircle className="w-5 h-5 mr-2" />
+              <ArrowLeftCircle className="w-5 h-5" />
               <span>{t('common.backButton')}</span>
             </a>
             <LanguageSelector />
           </div>
 
           {/* Hero Section */}
-          <div className="bg-white rounded-xl p-8 mb-12 shadow-md">
+          <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-8 mb-12 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300">
             <div className="max-w-3xl">
-              <h1 className="text-4xl font-bold mb-6 text-gray-900">
-                {pageData.title}
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <div className="flex items-center space-x-3 mb-6">
+                <Palette className="w-10 h-10 text-pink-500" />
+                <h1 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight">
+                  {pageData.title}
+                </h1>
+              </div>
+              <p className="text-base md:text-lg text-slate-600 font-medium leading-relaxed mb-8">
                 {pageData.description}
               </p>
               <a href="/colors"
-                className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                className="inline-flex items-center px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl hover:shadow-[0_12px_24px_rgba(79,70,229,0.15)] transition-all duration-300 shadow-sm"
               >
-                {pageData.cta}
+                <span>{pageData.cta}</span>
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </div>
@@ -63,132 +96,91 @@ export default function Guide({ pageData = {} }) {
           {/* What Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-4">
                 {pageData.sections?.what.title}
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <div className="w-12 h-1 bg-blue-600 rounded-full mx-auto mb-6"></div>
+              <p className="text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
                 {pageData.sections?.what.content}
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <Settings className="w-10 h-10 text-blue-500 mr-4 shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1">
-                    {pageData.sections?.what.card1.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {pageData.sections?.what.card1.content}
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <Palette className="w-10 h-10 text-blue-500 mr-4 shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1">
-                    {pageData.sections?.what.card2.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {pageData.sections?.what.card2.content}
-                  </p>
-                </div>
-              </div>
+              <FeatureCard
+                icon={<Settings className="w-6 h-6" />}
+                title={pageData.sections?.what.card1.title}
+                description={pageData.sections?.what.card1.content}
+              />
+              <FeatureCard
+                icon={<Palette className="w-6 h-6" />}
+                title={pageData.sections?.what.card2.title}
+                description={pageData.sections?.what.card2.content}
+              />
             </div>
           </div>
 
           {/* How Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-4">
                 {pageData.sections?.how.title}
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <div className="w-12 h-1 bg-blue-600 rounded-full mx-auto mb-6"></div>
+              <p className="text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
                 {pageData.sections?.how.content}
               </p>
             </div>
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center mr-4 shrink-0">
-                  1
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold mb-1">
-                    {pageData.sections?.how.step1.title}
-                  </h3>
-                  <p className="text-gray-600">{pageData.sections?.how.step1.content}</p>
-                </div>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center mr-4 shrink-0">
-                  2
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold mb-1">
-                    {pageData.sections?.how.step2.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {pageData.sections?.how.step2.content}
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center mr-4 shrink-0">
-                  3
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold mb-1">
-                    {pageData.sections?.how.step3.title}
-                  </h3>
-                  <p className="text-gray-600">{pageData.sections?.how.step3.content}</p>
-                </div>
-              </div>
+            <div className="grid gap-5">
+              <UsageStep
+                number="1"
+                title={pageData.sections?.how.step1.title}
+                description={pageData.sections?.how.step1.content}
+              />
+              <UsageStep
+                number="2"
+                title={pageData.sections?.how.step2.title}
+                description={pageData.sections?.how.step2.content}
+              />
+              <UsageStep
+                number="3"
+                title={pageData.sections?.how.step3.title}
+                description={pageData.sections?.how.step3.content}
+              />
             </div>
           </div>
 
           {/* Features Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-4">
                 {pageData.sections?.features.title}
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <div className="w-12 h-1 bg-blue-600 rounded-full mx-auto mb-6"></div>
+              <p className="text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
                 {pageData.sections?.features.content}
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <RefreshCw className="w-10 h-10 text-blue-500 mr-4 shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1">
-                    {pageData.sections?.features.card1.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {pageData.sections?.features.card1.content}
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <Copy className="w-10 h-10 text-blue-500 mr-4 shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1">
-                    {pageData.sections?.features.card2.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {pageData.sections?.features.card2.content}
-                  </p>
-                </div>
-              </div>
+              <FeatureCard
+                icon={<RefreshCw className="w-6 h-6" />}
+                title={pageData.sections?.features.card1.title}
+                description={pageData.sections?.features.card1.content}
+              />
+              <FeatureCard
+                icon={<Copy className="w-6 h-6" />}
+                title={pageData.sections?.features.card2.title}
+                description={pageData.sections?.features.card2.content}
+              />
             </div>
           </div>
 
           {/* CTA Section */}
-          <div className="text-center bg-white rounded-xl p-12 shadow-md">
-            <h2 className="text-2xl font-bold mb-4">{pageData.title}</h2>
-            <p className="text-gray-600 mb-8">{pageData.description}</p>
+          <div className="text-center bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-8 md:p-12 shadow-sm">
+            <h2 className="text-2xl font-black text-slate-900 mb-4">{pageData.title}</h2>
+            <p className="text-slate-600 font-medium mb-8 leading-relaxed max-w-xl mx-auto">{pageData.description}</p>
             <a href="/colors"
-              className="inline-flex items-center px-8 py-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl hover:shadow-[0_12px_24px_rgba(79,70,229,0.15)] transition-all duration-300 shadow-sm"
             >
-              {pageData.cta}
+              <span>{pageData.cta}</span>
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
           </div>

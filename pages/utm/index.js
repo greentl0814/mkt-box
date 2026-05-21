@@ -7,6 +7,7 @@ import { Copy, Download, Plus, X } from 'lucide-react';
 export default function UTMGenerator({ pageData = {} }) {
   console.log("pageData:", pageData);
   const { t } = useTranslation();
+  
   const defaultSources = [
     { label: pageData.sources?.google || 'Google', value: 'google', checked: false },
     { label: pageData.sources?.naver || 'Naver', value: 'naver', checked: false },
@@ -79,7 +80,7 @@ export default function UTMGenerator({ pageData = {} }) {
     setCustomMediums(customMediums.filter((_, i) => i !== index));
   };
 
-  const generateUrls = () => {
+  const handleGenerateUrls = () => {
     if (!url) {
       setError(pageData.errors?.urlRequired || '랜딩페이지 주소를 입력해주세요');
       return;
@@ -161,7 +162,6 @@ export default function UTMGenerator({ pageData = {} }) {
       )
     ].join('\n');
 
-    // BOM 추가
     const BOM = '\uFEFF';
     const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
@@ -188,256 +188,315 @@ export default function UTMGenerator({ pageData = {} }) {
         <link rel="alternate" hrefLang="en" href="https://www.mktbox.co.kr/en/utm" />
       </Head>
 
-      <div className="p-4 md:p-8 max-w-4xl mx-auto">
-        <div className="mb-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-3">
-            <h1 className="text-3xl font-bold">{pageData.title || 'UTM 생성기'}</h1>
-            <a
-              href="/utm/guide"
-              className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium"
-            >
-              <span>{pageData.guideLink || 'UTM 태그 가이드'}</span>
-              <span>→</span>
-            </a>
-          </div>
-          <p className="text-gray-600">
-            마케팅 캠페인 추적을 위한 UTM 파라미터를 쉽게 생성하세요.
-          </p>
-        </div>
+      <div className="relative min-h-screen overflow-hidden pb-16">
+        {/* 몽환적인 파스텔 백그라운드 메시 블러 데코레이션 */}
+        <div className="absolute top-[-10%] left-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full bg-blue-400/10 blur-[100px] md:blur-[140px] pointer-events-none"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[500px] md:w-[700px] h-[500px] md:h-[700px] rounded-full bg-purple-400/10 blur-[120px] md:blur-[160px] pointer-events-none"></div>
+        <div className="absolute bottom-[-5%] left-[15%] w-[450px] md:w-[650px] h-[450px] md:h-[650px] rounded-full bg-pink-400/10 blur-[110px] md:blur-[150px] pointer-events-none"></div>
 
-        {/* 입력 폼 */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-6">
-          <div className="space-y-6">
-            {/* 랜딩페이지 주소 */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                <span className="text-red-500">*</span> {urlData.label || '랜딩페이지 주소'}
-              </label>
-              <input
-                type="text"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                placeholder={urlData.placeholder || 'http:// 또는 https://를 포함한 전체 URL을 입력해주세요'}
-                className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-
-            {/* UTM Source */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                <span className="text-red-500">*</span> {pageData.inputs?.sources.label || 'UTM Source (유입 채널)'}
-                <span className="text-sm text-gray-500 ml-2">{pageData.inputs?.sources.subLabel || '(중복 체크 가능)'}</span>
-              </label>
-              <div className="space-y-2 mb-4">
-                {sources.map((source, index) => (
-                  <label key={source.value} className="flex items-center space-x-2 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={source.checked}
-                      onChange={() => handleSourceCheck(index)}
-                      className="rounded w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500"
-                    />
-                    <span className="text-sm text-gray-700">{source.label}</span>
-                  </label>
-                ))}
-              </div>
-              <div className="flex gap-2 mb-2">
-                <input
-                  type="text"
-                  value={newSource}
-                  onChange={(e) => setNewSource(e.target.value)}
-                  placeholder={pageData.inputs?.sources.placeholder || '기타 소스 입력'}
-                  className="flex-1 p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-                <button
-                  onClick={addCustomSource}
-                  className="px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 font-medium whitespace-nowrap"
-                >
-                  <Plus className="w-4 h-4" />
-                  {pageData.buttons?.add || '추가'}
-                </button>
-              </div>
-              {customSources.length > 0 && (
-                <div className="space-y-2">
-                  {customSources.map((source, index) => (
-                    <div key={index} className="flex items-center justify-between bg-gray-50 px-3 py-2 rounded-lg">
-                      <span className="text-sm text-gray-700">{source}</span>
-                      <button
-                        onClick={() => removeCustomSource(index)}
-                        className="text-red-500 hover:text-red-700 transition-colors"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* UTM Medium */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                <span className="text-red-500">*</span> {pageData.inputs?.mediums.label || 'UTM Medium (유입 매체)'}
-                <span className="text-sm text-gray-500 ml-2">{pageData.inputs?.mediums.subLabel || '(중복 체크 가능)'}</span>
-              </label>
-              <div className="space-y-2 mb-4">
-                {mediums.map((medium, index) => (
-                  <label key={medium.value} className="flex items-center space-x-2 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={medium.checked}
-                      onChange={() => handleMediumCheck(index)}
-                      className="rounded w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500"
-                    />
-                    <span className="text-sm text-gray-700">{medium.label}</span>
-                  </label>
-                ))}
-              </div>
-              <div className="flex gap-2 mb-2">
-                <input
-                  type="text"
-                  value={newMedium}
-                  onChange={(e) => setNewMedium(e.target.value)}
-                  placeholder={pageData.inputs?.mediums.placeholder || '기타 매체 입력'}
-                  className="flex-1 p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-                <button
-                  onClick={addCustomMedium}
-                  className="px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 font-medium whitespace-nowrap"
-                >
-                  <Plus className="w-4 h-4" />
-                  {pageData.buttons?.add || '추가'}
-                </button>
-              </div>
-              {customMediums.length > 0 && (
-                <div className="space-y-2">
-                  {customMediums.map((medium, index) => (
-                    <div key={index} className="flex items-center justify-between bg-gray-50 px-3 py-2 rounded-lg">
-                      <span className="text-sm text-gray-700">{medium}</span>
-                      <button
-                        onClick={() => removeCustomMedium(index)}
-                        className="text-red-500 hover:text-red-700 transition-colors"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* 선택적 파라미터 */}
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {pageData.inputs?.campaign || 'Campaign (캠페인명)'}
-                </label>
-                <input
-                  type="text"
-                  value={campaign}
-                  onChange={(e) => setCampaign(e.target.value)}
-                  placeholder={pageData.inputs?.campaignPlaceholder || 'campaign_name'}
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {pageData.inputs?.content || 'Content (소재)'}
-                </label>
-                <input
-                  type="text"
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  placeholder={pageData.inputs?.contentPlaceholder || 'banner_a'}
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {pageData.inputs?.term || 'Term (검색어)'}
-                </label>
-                <input
-                  type="text"
-                  value={term}
-                  onChange={(e) => setTerm(e.target.value)}
-                  placeholder={pageData.inputs?.termPlaceholder || 'keyword'}
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 에러 메시지 */}
-        {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
-            {error}
-          </div>
-        )}
-
-        {/* 생성 버튼 */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-6">
-          <button
-            onClick={generateUrls}
-            className="w-full bg-blue-600 text-white py-2.5 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-          >
-            {pageData.buttons?.generate || 'UTM URL 생성하기'}
-          </button>
-        </div>
-
-        {/* 생성된 URL 결과 */}
-        {generatedUrls.length > 0 && (
-          <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-            <div className="bg-gray-50 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-              <h3 className="font-semibold text-gray-900">
-                {pageData.results?.title || '생성된 URL 목록'} ({generatedUrls.length}개)
-              </h3>
-              <button
-                onClick={downloadExcel}
-                className="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2 font-medium text-sm"
+        <div className="relative z-10 p-4 md:p-8 max-w-4xl mx-auto">
+          {/* 헤더 히어로 배너 */}
+          <div className="mb-8 md:mb-12 pt-6">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-3">
+              <h1 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 leading-tight">
+                {pageData.title || 'UTM 생성기'}
+              </h1>
+              <a
+                href="/utm/guide"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
               >
-                <Download className="w-4 h-4" />
-                {pageData.buttons?.excel || '엑셀 다운로드'}
-              </button>
+                <span>{pageData.guideLink || 'UTM 태그 가이드'}</span>
+                <span>→</span>
+              </a>
             </div>
-            <div className="divide-y divide-gray-100">
+            <p className="text-slate-600 font-medium leading-relaxed max-w-2xl">
+              {pageData.description || '마케팅 캠페인 추적을 위한 UTM 파라미터를 쉽고 빠르게 생성하세요.'}
+            </p>
+          </div>
+
+          {/* 입력 폼 (3XL 글라스모피즘 카드) */}
+          <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 md:p-8 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-shadow duration-300 mb-6">
+            <div className="space-y-6">
+              {/* 랜딩페이지 주소 */}
+              <div>
+                <label className="block text-sm font-bold text-slate-800 mb-2.5">
+                  <span className="text-red-500 font-black mr-1">*</span> {urlData.label || '랜딩페이지 주소'}
+                </label>
+                <input
+                  type="text"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  placeholder={urlData.placeholder || 'http:// 또는 https://를 포함한 전체 URL을 입력해주세요'}
+                  className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:outline-none transition-all duration-200 bg-white/50 backdrop-blur font-medium text-slate-800 placeholder-slate-400"
+                />
+              </div>
+
+              {/* UTM Source */}
+              <div>
+                <label className="block text-sm font-bold text-slate-800 mb-2.5">
+                  <span className="text-red-500 font-black mr-1">*</span> {pageData.inputs?.sources?.label || 'UTM Source (유입 채널)'}
+                  <span className="text-xs font-bold text-slate-400 ml-2">{pageData.inputs?.sources?.subLabel || '(중복 체크 가능)'}</span>
+                </label>
+                
+                {/* 칩 스타일의 소스 선택 */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-4">
+                  {sources.map((source, index) => (
+                    <label
+                      key={source.value}
+                      className={`flex items-center justify-between px-4 py-3 rounded-2xl border transition-all duration-200 cursor-pointer select-none ${
+                        source.checked
+                          ? 'bg-blue-50/80 border-blue-200 text-blue-700 font-bold shadow-sm shadow-blue-500/5'
+                          : 'bg-white/50 border-slate-200/60 text-slate-600 hover:bg-slate-50/80 hover:border-slate-300'
+                      }`}
+                    >
+                      <span className="text-sm">{source.label}</span>
+                      <input
+                        type="checkbox"
+                        checked={source.checked}
+                        onChange={() => handleSourceCheck(index)}
+                        className="rounded text-blue-600 focus:ring-blue-500/10 border-slate-300 w-4 h-4 cursor-pointer"
+                      />
+                    </label>
+                  ))}
+                </div>
+
+                {/* 커스텀 소스 추가 */}
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={newSource}
+                    onChange={(e) => setNewSource(e.target.value)}
+                    placeholder={pageData.inputs?.sources?.placeholder || '기타 소스 입력'}
+                    className="flex-1 p-3 border border-slate-200 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:outline-none transition-all duration-200 bg-white/50 backdrop-blur font-medium text-slate-800 placeholder-slate-400"
+                  />
+                  <button
+                    onClick={addCustomSource}
+                    className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 flex items-center gap-2 font-bold whitespace-nowrap shadow-sm"
+                  >
+                    <Plus className="w-4 h-4" />
+                    {pageData.buttons?.add || '추가'}
+                  </button>
+                </div>
+
+                {/* 커스텀 소스 뱃지 */}
+                {customSources.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {customSources.map((source, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 px-3.5 py-1.5 rounded-full text-xs font-bold border border-blue-100 animate-fade-in"
+                      >
+                        {source}
+                        <button
+                          onClick={() => removeCustomSource(index)}
+                          className="text-blue-500 hover:text-blue-700 transition-colors p-0.5 hover:bg-blue-100/50 rounded-full"
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* UTM Medium */}
+              <div>
+                <label className="block text-sm font-bold text-slate-800 mb-2.5">
+                  <span className="text-red-500 font-black mr-1">*</span> {pageData.inputs?.mediums?.label || 'UTM Medium (유입 매체)'}
+                  <span className="text-xs font-bold text-slate-400 ml-2">{pageData.inputs?.mediums?.subLabel || '(중복 체크 가능)'}</span>
+                </label>
+                
+                {/* 칩 스타일의 매체 선택 */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                  {mediums.map((medium, index) => (
+                    <label
+                      key={medium.value}
+                      className={`flex items-center justify-between px-4 py-3 rounded-2xl border transition-all duration-200 cursor-pointer select-none ${
+                        medium.checked
+                          ? 'bg-blue-50/80 border-blue-200 text-blue-700 font-bold shadow-sm shadow-blue-500/5'
+                          : 'bg-white/50 border-slate-200/60 text-slate-600 hover:bg-slate-50/80 hover:border-slate-300'
+                      }`}
+                    >
+                      <span className="text-sm">{medium.label}</span>
+                      <input
+                        type="checkbox"
+                        checked={medium.checked}
+                        onChange={() => handleMediumCheck(index)}
+                        className="rounded text-blue-600 focus:ring-blue-500/10 border-slate-300 w-4 h-4 cursor-pointer"
+                      />
+                    </label>
+                  ))}
+                </div>
+
+                {/* 커스텀 매체 추가 */}
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={newMedium}
+                    onChange={(e) => setNewMedium(e.target.value)}
+                    placeholder={pageData.inputs?.mediums?.placeholder || '기타 매체 입력'}
+                    className="flex-1 p-3 border border-slate-200 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:outline-none transition-all duration-200 bg-white/50 backdrop-blur font-medium text-slate-800 placeholder-slate-400"
+                  />
+                  <button
+                    onClick={addCustomMedium}
+                    className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 flex items-center gap-2 font-bold whitespace-nowrap shadow-sm"
+                  >
+                    <Plus className="w-4 h-4" />
+                    {pageData.buttons?.add || '추가'}
+                  </button>
+                </div>
+
+                {/* 커스텀 매체 뱃지 */}
+                {customMediums.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {customMediums.map((medium, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 px-3.5 py-1.5 rounded-full text-xs font-bold border border-blue-100 animate-fade-in"
+                      >
+                        {medium}
+                        <button
+                          onClick={() => removeCustomMedium(index)}
+                          className="text-blue-500 hover:text-blue-700 transition-colors p-0.5 hover:bg-blue-100/50 rounded-full"
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* 선택적 파라미터 (캠페인, 소재, 키워드) */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 border-t border-slate-100/80 pt-6">
+                <div>
+                  <label className="block text-sm font-bold text-slate-800 mb-2.5">
+                    {pageData.inputs?.campaign || 'Campaign (캠페인명)'}
+                  </label>
+                  <input
+                    type="text"
+                    value={campaign}
+                    onChange={(e) => setCampaign(e.target.value)}
+                    placeholder={pageData.inputs?.campaignPlaceholder || 'campaign_name'}
+                    className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:outline-none transition-all duration-200 bg-white/50 backdrop-blur font-medium text-slate-800 placeholder-slate-400"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-slate-800 mb-2.5">
+                    {pageData.inputs?.content || 'Content (소재)'}
+                  </label>
+                  <input
+                    type="text"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder={pageData.inputs?.contentPlaceholder || 'banner_a'}
+                    className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:outline-none transition-all duration-200 bg-white/50 backdrop-blur font-medium text-slate-800 placeholder-slate-400"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-slate-800 mb-2.5">
+                    {pageData.inputs?.term || 'Term (검색어)'}
+                  </label>
+                  <input
+                    type="text"
+                    value={term}
+                    onChange={(e) => setTerm(e.target.value)}
+                    placeholder={pageData.inputs?.termPlaceholder || 'keyword'}
+                    className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:outline-none transition-all duration-200 bg-white/50 backdrop-blur font-medium text-slate-800 placeholder-slate-400"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 에러 메시지 */}
+          {error && (
+            <div className="bg-red-50/80 backdrop-blur border border-red-100 text-red-700 px-5 py-4 rounded-2xl font-semibold mb-6 shadow-sm animate-fade-in">
+              {error}
+            </div>
+          )}
+
+          {/* 생성 버튼 */}
+          <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm mb-6">
+            <button
+              onClick={handleGenerateUrls}
+              className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 px-5 rounded-2xl hover:shadow-[0_12px_24px_rgba(79,70,229,0.15)] transition-all duration-300 font-bold flex items-center justify-center gap-2 shadow-sm"
+            >
+              {pageData.buttons?.generate || 'UTM URL 생성하기'}
+            </button>
+          </div>
+
+          {/* 생성 결과 목록 */}
+          {generatedUrls.length > 0 && (
+            <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 md:p-8 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-shadow duration-300 animate-fade-in">
+              <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6 pb-4 border-b border-slate-100">
+                <h2 className="text-xl md:text-2xl font-black text-slate-900 flex items-center gap-2.5">
+                  <span className="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                  {pageData.results?.title || '생성된 URL 목록'} ({generatedUrls.length}개)
+                </h2>
+                <button
+                  onClick={downloadExcel}
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 rounded-xl hover:shadow-[0_8px_16px_rgba(16,185,129,0.15)] transition-all duration-300 flex items-center gap-2 font-bold text-sm shadow-sm self-start sm:self-auto"
+                >
+                  <Download className="w-4 h-4" />
+                  {pageData.buttons?.excel || '엑셀 다운로드'}
+                </button>
+              </div>
+
               {copyMessage && (
-                <div className="fixed bottom-4 right-4 bg-black text-white px-4 py-2 rounded-lg shadow-lg z-50">
+                <div className="fixed bottom-4 right-4 bg-slate-900/95 backdrop-blur text-white text-sm font-semibold px-5 py-3 rounded-2xl shadow-xl z-50 border border-slate-800 animate-slide-up flex items-center gap-2">
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
                   {copyMessage}
                 </div>
               )}
-              {generatedUrls.map((item, index) => (
-                <div key={index} className="p-4 hover:bg-gray-50 transition-colors">
-                  <div className="flex items-start gap-3">
-                    <div className="flex-1 break-all text-sm text-gray-700">
-                      {item.url}
+
+              <div className="space-y-3 max-h-[500px] overflow-y-auto pr-1">
+                {generatedUrls.map((item, index) => (
+                  <div
+                    key={index}
+                    className="p-4 rounded-2xl border border-slate-100 bg-slate-50/30 backdrop-blur hover:bg-slate-50/80 transition-all duration-200 flex items-start gap-4 justify-between"
+                  >
+                    <div className="flex-1 break-all text-sm font-medium text-slate-700 leading-relaxed pr-2">
+                      <div className="flex flex-wrap gap-1.5 mb-1.5">
+                        <span className="px-2 py-0.5 bg-blue-50 text-blue-700 rounded-md text-[10px] font-extrabold border border-blue-100/50">
+                          {item.source}
+                        </span>
+                        <span className="px-2 py-0.5 bg-indigo-50 text-indigo-700 rounded-md text-[10px] font-extrabold border border-indigo-100/50">
+                          {item.medium}
+                        </span>
+                        {item.campaign && (
+                          <span className="px-2 py-0.5 bg-slate-100 text-slate-600 rounded-md text-[10px] font-extrabold">
+                            {item.campaign}
+                          </span>
+                        )}
+                      </div>
+                      <span className="select-all">{item.url}</span>
                     </div>
                     <button
                       onClick={() => copyToClipboard(item.url)}
-                      className="text-blue-600 hover:text-blue-700 p-2 hover:bg-blue-50 rounded-lg transition-colors flex-shrink-0"
+                      className="text-blue-600 hover:text-blue-700 p-2.5 bg-blue-50/50 hover:bg-blue-50 rounded-xl transition-all duration-200 flex-shrink-0 border border-blue-100/20 shadow-sm"
                       title="URL 복사"
                     >
                       <Copy className="w-4 h-4" />
                     </button>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );
 }
 
 export async function getStaticProps({ locale }) {
-
   const common = await import(`../../public/locales/${locale}/common.json`)
     .then((module) => module.default);
 
   return {
     props: {
-      pageData: common.tools.utm || {}, // 수정된 부분
+      pageData: common.tools.utm || {},
     },
   };
 }

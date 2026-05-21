@@ -31,32 +31,37 @@ export default function YoutubeTimeGuide({ pageData = {} }) {
         <meta property="og:type" content="article" />
       </Head>
 
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="relative min-h-screen overflow-hidden pb-16">
+        {/* 몽환적인 파스텔 백그라운드 메시 블러 데코레이션 */}
+        <div className="absolute top-[-10%] left-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full bg-blue-400/10 blur-[100px] md:blur-[140px] pointer-events-none"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[500px] md:w-[700px] h-[500px] md:h-[700px] rounded-full bg-purple-400/10 blur-[120px] md:blur-[160px] pointer-events-none"></div>
+        <div className="absolute bottom-[-5%] left-[15%] w-[450px] md:w-[650px] h-[450px] md:h-[650px] rounded-full bg-pink-400/10 blur-[110px] md:blur-[150px] pointer-events-none"></div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 py-8">
           {/* Header */}
-          <div className="flex justify-between items-center mb-8">
+          <div className="flex justify-between items-center mb-8 pt-4">
             <a href="/youtube-time"
-              className="flex items-center text-gray-600 hover:text-blue-500 transition-colors"
+              className="flex items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors"
             >
-              <ArrowLeftCircle className="w-5 h-5 mr-2" />
+              <ArrowLeftCircle className="w-5 h-5" />
               <span>{t('common.backButton')}</span>
             </a>
             <LanguageSelector />
           </div>
 
           {/* Hero Section */}
-          <div className="bg-white rounded-xl p-8 mb-12 shadow-md">
+          <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-8 mb-12 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300">
             <div className="max-w-3xl">
-              <h1 className="text-4xl font-bold mb-6 text-gray-900">
+              <h1 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-6">
                 {pageData.title}
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-base md:text-lg text-slate-600 font-medium leading-relaxed mb-8">
                 {pageData.description}
               </p>
               <a href="/youtube-time"
-                className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                className="inline-flex items-center px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl hover:shadow-[0_12px_24px_rgba(79,70,229,0.15)] transition-all duration-300 shadow-sm"
               >
-                {pageData.cta}
+                <span>{pageData.cta}</span>
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </div>
@@ -65,32 +70,37 @@ export default function YoutubeTimeGuide({ pageData = {} }) {
           {/* What Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-4">
                 {pageData.sections?.what.title}
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <div className="w-12 h-1 bg-blue-600 rounded-full mx-auto mb-6"></div>
+              <p className="text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
                 {pageData.sections?.what.content}
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <PlayCircle className="w-10 h-10 text-blue-500 mr-4 shrink-0" />
+              <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 flex items-center">
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold shrink-0 mr-4">
+                  <PlayCircle className="w-6 h-6" />
+                </div>
                 <div>
-                  <h3 className="font-semibold mb-1">
+                  <h3 className="font-bold text-slate-800 text-lg mb-1">
                     {pageData.sections?.what.card1.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-slate-500 font-medium text-sm leading-relaxed">
                     {pageData.sections?.what.card1.content}
                   </p>
                 </div>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <Clock className="w-10 h-10 text-blue-500 mr-4 shrink-0" />
+              <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 flex items-center">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold shrink-0 mr-4">
+                  <Clock className="w-6 h-6" />
+                </div>
                 <div>
-                  <h3 className="font-semibold mb-1">
+                  <h3 className="font-bold text-slate-800 text-lg mb-1">
                     {pageData.sections?.what.card2.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-slate-500 font-medium text-sm leading-relaxed">
                     {pageData.sections?.what.card2.content}
                   </p>
                 </div>
@@ -101,42 +111,43 @@ export default function YoutubeTimeGuide({ pageData = {} }) {
           {/* How Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-4">
                 {pageData.sections?.how.title}
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <div className="w-12 h-1 bg-blue-600 rounded-full mx-auto mb-6"></div>
+              <p className="text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
                 {pageData.sections?.how.content}
               </p>
             </div>
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center mr-4 shrink-0">
+            <div className="space-y-5">
+              <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 flex items-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold mr-4 shrink-0">
                   1
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold mb-1">
+                  <h3 className="font-bold text-slate-800 text-lg mb-1">
                     {pageData.sections?.how.step1.title}
                   </h3>
-                  <p className="text-gray-600">{pageData.sections?.how.step1.content}</p>
+                  <p className="text-slate-500 font-medium text-sm leading-relaxed">{pageData.sections?.how.step1.content}</p>
                 </div>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center mr-4 shrink-0">
+              <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 flex items-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold mr-4 shrink-0">
                   2
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold mb-1">
+                  <h3 className="font-bold text-slate-800 text-lg mb-1">
                     {pageData.sections?.how.step2.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-slate-500 font-medium text-sm leading-relaxed mb-3">
                     {pageData.sections?.how.step2.content}
                   </p>
-                  <div className="mt-2 flex items-center space-x-4">
+                  <div className="flex items-center space-x-3 max-w-sm">
                     <input
                       type="number"
                       min="0"
                       placeholder="0"
-                      className="w-24 p-2 border rounded"
+                      className="w-full p-2.5 border border-slate-200 rounded-xl bg-slate-50/50 text-slate-400 font-bold text-center"
                       disabled
                     />
                     <input
@@ -144,7 +155,7 @@ export default function YoutubeTimeGuide({ pageData = {} }) {
                       min="0"
                       max="59"
                       placeholder="0"
-                      className="w-24 p-2 border rounded"
+                      className="w-full p-2.5 border border-slate-200 rounded-xl bg-slate-50/50 text-slate-400 font-bold text-center"
                       disabled
                     />
                     <input
@@ -152,21 +163,21 @@ export default function YoutubeTimeGuide({ pageData = {} }) {
                       min="0"
                       max="59"
                       placeholder="0"
-                      className="w-24 p-2 border rounded"
+                      className="w-full p-2.5 border border-slate-200 rounded-xl bg-slate-50/50 text-slate-400 font-bold text-center"
                       disabled
                     />
                   </div>
                 </div>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
-                <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center mr-4 shrink-0">
+              <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 flex items-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold mr-4 shrink-0">
                   3
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold mb-1">
+                  <h3 className="font-bold text-slate-800 text-lg mb-1">
                     {pageData.sections?.how.step3.title}
                   </h3>
-                  <p className="text-gray-600">{pageData.sections?.how.step3.content}</p>
+                  <p className="text-slate-500 font-medium text-sm leading-relaxed">{pageData.sections?.how.step3.content}</p>
                 </div>
               </div>
             </div>
@@ -175,24 +186,22 @@ export default function YoutubeTimeGuide({ pageData = {} }) {
           {/* Example Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-4">
                 {pageData.sections?.example.title}
               </h2>
+              <div className="w-12 h-1 bg-blue-600 rounded-full mx-auto mb-6"></div>
             </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-center space-x-4 mb-4">
-                <Link2 className="w-6 h-6 text-blue-500 shrink-0" />
-                <div className="text-gray-600 break-all">
+            <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] shadow-sm p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                  <Link2 className="w-5 h-5" />
+                </div>
+                <div className="text-slate-700 font-bold text-sm md:text-base break-all">
                   https://www.youtube.com/watch?v=VIDEO_ID&t=123s
                 </div>
-                <button className="px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200">
-                  <Copy className="w-4 h-4 text-gray-600" />
-                </button>
               </div>
-              <div className="text-sm text-gray-600">
-                <span className="text-blue-500 font-semibold">
-                  {pageData.sections?.example.description}
-                </span>
+              <div className="text-sm font-semibold text-blue-600 bg-blue-50/50 border border-blue-100/30 px-4 py-2 rounded-2xl md:self-auto self-start">
+                <span>{pageData.sections?.example.description}</span>
               </div>
             </div>
           </div>
@@ -200,29 +209,34 @@ export default function YoutubeTimeGuide({ pageData = {} }) {
           {/* Tips Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-4">
                 {pageData.sections?.tips.title}
               </h2>
+              <div className="w-12 h-1 bg-blue-600 rounded-full mx-auto mb-6"></div>
             </div>
             <div className="space-y-4">
-              <div className="bg-white rounded-lg p-6 shadow-md flex items-center">
-                <CheckCircle className="w-6 h-6 text-blue-500 mr-4 shrink-0" />
+              <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 flex items-center">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mr-4 shrink-0">
+                  <CheckCircle className="w-5 h-5" />
+                </div>
                 <div>
-                  <h3 className="font-semibold mb-1">
+                  <h3 className="font-bold text-slate-800 text-base mb-1">
                     {pageData.sections?.tips.tip1.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-slate-500 font-medium text-sm leading-relaxed">
                     {pageData.sections?.tips.tip1.content}
                   </p>
                 </div>
               </div>
-              <div className="bg-white rounded-lg p-6 shadow-md flex items-center">
-                <AlertTriangle className="w-6 h-6 text-blue-500 mr-4 shrink-0" />
+              <div className="bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-6 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.01)] transition-all duration-300 flex items-center">
+                <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mr-4 shrink-0">
+                  <AlertTriangle className="w-5 h-5" />
+                </div>
                 <div>
-                  <h3 className="font-semibold mb-1">
+                  <h3 className="font-bold text-slate-800 text-base mb-1">
                     {pageData.sections?.tips.tip2.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-slate-500 font-medium text-sm leading-relaxed">
                     {pageData.sections?.tips.tip2.content}
                   </p>
                 </div>
@@ -231,13 +245,13 @@ export default function YoutubeTimeGuide({ pageData = {} }) {
           </div>
 
           {/* CTA Section */}
-          <div className="text-center bg-white rounded-xl p-12 shadow-md">
-            <h2 className="text-2xl font-bold mb-4">{pageData.title}</h2>
-            <p className="text-gray-600 mb-8">{pageData.description}</p>
+          <div className="text-center bg-white/90 backdrop-blur border border-slate-100/80 rounded-[32px] p-8 md:p-12 shadow-sm">
+            <h2 className="text-2xl font-black text-slate-900 mb-4">{pageData.title}</h2>
+            <p className="text-slate-600 font-medium mb-8 leading-relaxed max-w-xl mx-auto">{pageData.description}</p>
             <a href="/youtube-time"
-              className="inline-flex items-center px-8 py-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl hover:shadow-[0_12px_24px_rgba(79,70,229,0.15)] transition-all duration-300 shadow-sm"
             >
-              {pageData.cta}
+              <span>{pageData.cta}</span>
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
           </div>
