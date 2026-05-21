@@ -168,8 +168,12 @@
       "title": "YouTube Thumbnail Extractor",
       "description": "Extract thumbnail images from YouTube videos in various resolutions.",
       "head": {
-        "title": "YouTube Thumbnail Extractor - Marketing Tools",
-        "description": "Extract thumbnail images from YouTube videos in different resolutions."
+        "title": "YouTube Thumbnail Extractor - Free HD Download | Marketing Tools",
+        "description": "Enter any YouTube video URL to instantly download thumbnails in up to 4 resolutions (max 1280x720). No login, no API key required.",
+        "keywords": "youtube thumbnail extractor, youtube thumbnail downloader, youtube thumbnail download, download youtube thumbnail, youtube thumbnail free, youtube thumbnail HD, youtube image extractor",
+        "ogTitle": "YouTube Thumbnail Extractor - Free HD Download",
+        "ogDescription": "Download YouTube thumbnails in HD instantly! 4 resolutions, no login required.",
+        "ogImage": "https://www.mktbox.co.kr/og-youtube.png"
       },
       "inputs": {
         "urlLabel": "YouTube URL",
@@ -319,8 +323,12 @@
       "title": "YouTube Timestamp URL Generator",
       "description": "Generate URLs that jump to specific timestamps in YouTube videos.",
       "head": {
-        "title": "YouTube Timestamp URL Generator - Marketing Tools",
-        "description": "Generate URLs that jump to specific timestamps in YouTube videos."
+        "title": "YouTube Timestamp URL Generator - Free Link Creator | Marketing Tools",
+        "description": "Generate timestamp URLs that jump directly to a specific time in any YouTube video. Enter hours, minutes, seconds — copy link instantly.",
+        "keywords": "youtube timestamp url, youtube timestamp link, youtube time link, youtube chapter link, YouTube timestamp generator, video timestamp, youtube start time url",
+        "ogTitle": "YouTube Timestamp URL Generator - Free Link Creator",
+        "ogDescription": "Generate YouTube timestamp links for free. Set hours, minutes, seconds — copy instantly!",
+        "ogImage": "https://www.mktbox.co.kr/og-youtube-time.png"
       },
       "inputs": {
         "url": {
@@ -548,8 +556,12 @@
       "title": "URL Shortener",
       "description": "Simplify management and sharing by shortening long URLs.",
       "head": {
-        "title": "URL Shortener - Marketing Tools",
-        "description": "Shorten long URLs simply and easily."
+        "title": "URL Shortener - Shorten Long Links Free | Marketing Tools",
+        "description": "Shorten any long URL into a clean, shareable link for free. One click to generate, one click to copy.",
+        "keywords": "url shortener, link shortener, shorten url, short link generator, url shortener free, url shortening, make short url, link reducer",
+        "ogTitle": "URL Shortener - Shorten Long Links Free",
+        "ogDescription": "Shorten long URLs for free. Generate & copy instantly!",
+        "ogImage": "https://www.mktbox.co.kr/og-url.png"
       },
       "inputs": {
         "urlLabel": "Enter URL",
@@ -630,8 +642,12 @@
       "title": "Text Analyzer",
       "description": "Check and analyze text character count and bytes in real-time.",
       "head": {
-        "title": "Text Analyzer - Marketing Tools",
-        "description": "Check total characters, characters excluding spaces, and byte count in real-time."
+        "title": "Character Counter - Real-time Byte Calculator Free | Marketing Tools",
+        "description": "Count characters, words, and bytes in real-time for free. Includes UTF-8, EUC-KR byte calculations and platform-specific character limits.",
+        "keywords": "character counter, character count, word counter, byte calculator, text analyzer, letter counter, online character counter, ad character limit",
+        "ogTitle": "Character Counter - Real-time Byte Calculator Free",
+        "ogDescription": "Count characters & bytes in real-time for free. Platform-specific ad limits included.",
+        "ogImage": "https://www.mktbox.co.kr/og-text.png"
       },
       "placeholder": "Enter text to analyze.",
       "stats": {
@@ -718,8 +734,12 @@
       "title": "Ad Performance Analytics",
       "description": "Analyze and measure key advertising metrics including ROAS, CPC, and CTR.",
       "head": {
-        "title": "Ad Performance Analytics - Marketing Tools",
-        "description": "Analyze and measure key advertising metrics including ROAS, CPC, and CTR."
+        "title": "Ad Performance Analytics - Free ROAS CPC CTR Calculator | Marketing Tools",
+        "description": "Calculate ROAS, CPC, CPM, CTR, CVR, CPA and other key ad metrics for free. Instant results as soon as you enter your data.",
+        "keywords": "ROAS calculator, CPC calculator, CTR analysis, ad performance analytics, CPM calculator, conversion rate calculator, ad efficiency, marketing metrics",
+        "ogTitle": "Ad Performance Analytics - Free ROAS CPC CTR Calculator",
+        "ogDescription": "Calculate ROAS, CPC, CTR, CVR, CPA for free. Instant ad performance analysis!",
+        "ogImage": "https://www.mktbox.co.kr/og-analytics.png"
       },
       "tabs": {
         "roas": "ROAS Analysis",
@@ -837,8 +857,12 @@
       "title": "Word Cloud Generator",
       "description": "Generate word clouds visualizing word frequency from text analysis.",
       "head": {
-        "title": "Word Cloud Generator - Marketing Tools",
-        "description": "Generate word clouds visualizing word frequency from text analysis."
+        "title": "Word Cloud Generator - Free Text Visualization | Marketing Tools",
+        "description": "Paste any text to instantly generate a word cloud visualizing the most frequent keywords. Customize stopwords, export as PNG image — free.",
+        "keywords": "word cloud generator, word cloud maker, text visualization, word frequency analysis, keyword extractor, word cloud free, text mining, stopword filter",
+        "ogTitle": "Word Cloud Generator - Free Text Visualization",
+        "ogDescription": "Turn text into a word cloud instantly! Customize stopwords, save as image — free.",
+        "ogImage": "https://www.mktbox.co.kr/og-word-cloud.png"
       },
       "stopword": {
         "label": "Stopword Settings",
@@ -925,7 +949,12 @@
       "title": "Color Tools",
       "description": "Find and utilize perfect color combinations.",
       "head": {
-        "title": "Color Tools - Marketing Tools"
+        "title": "Color Palette Generator - Free HEX RGB Color Combinations | Marketing Tools",
+        "description": "Pick a main color and instantly generate complementary, analogous, triadic, and 3 more palette types. One-click HEX & RGB copy — free.",
+        "keywords": "color palette generator, color combinations, complementary colors, HEX color code, RGB color, color palette maker, brand colors, analogous colors",
+        "ogTitle": "Color Palette Generator - Free HEX RGB Color Combinations",
+        "ogDescription": "Generate complementary, analogous palettes from any color. Copy HEX & RGB instantly — free!",
+        "ogImage": "https://www.mktbox.co.kr/og-colors.png"
       },
       "howToUse": {
         "title": "How to Use",
@@ -1030,12 +1059,31 @@
         }
       }
     },
-
+    "nsearch": {
+      "title": "Naver Search Keyword Insights",
+      "description": "Discover marketing insights by analyzing key associated keywords from Naver search data.",
+      "head": {
+        "title": "Naver Search Analytics - Keyword Insights Word Cloud Free | Marketing Tools",
+        "description": "Analyze Naver blog, cafe, and news search results to visualize frequently appearing keywords as a word cloud. Ideal for discovering marketing insights.",
+        "keywords": "naver search analytics, naver keyword analysis, naver trend analysis, keyword insights, naver blog analysis, related search terms, marketing keywords, word cloud analysis",
+        "ogTitle": "Naver Search Analytics - Keyword Insights Word Cloud Free",
+        "ogDescription": "Turn Naver search results into keyword insights via word cloud! Blog, cafe, news analysis — free.",
+        "ogImage": "https://www.mktbox.co.kr/og-nsearch.png"
+      }
+    },
     "imageConverter": {
       "guideLink": "Image Converter Guide",
       "title": "Image Converter",
       "description": "Convert image file formats and adjust quality.",
       "detailedDescription": "Convert image file formats and adjust quality. Supported formats are JPEG, PNG, and WebP.",
+      "head": {
+        "title": "Image Converter - Free JPG PNG WebP Conversion | Marketing Tools",
+        "description": "Convert any image to JPG, PNG, or WebP for free. Adjust quality, resize resolution, and compress file size — all in one click.",
+        "keywords": "image converter, jpg converter, png converter, webp converter, image format converter, image quality adjuster, image compressor, free image converter",
+        "ogTitle": "Image Converter - Free JPG PNG WebP Conversion",
+        "ogDescription": "Convert images to JPG, PNG, WebP for free! Adjust quality, resolution, and file size.",
+        "ogImage": "https://www.mktbox.co.kr/og-images.png"
+      },
       "keywords": ["image conversion", "JPEG conversion", "PNG conversion", "WebP conversion", "image compression", "quality adjustment"],
       "uploadText": "Upload Images by Dragging or Clicking",
       "supportedFormats": "Supported Formats: JPEG, PNG, GIF, WebP, BMP, etc.",

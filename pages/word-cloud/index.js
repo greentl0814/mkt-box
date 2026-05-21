@@ -139,7 +139,31 @@ export default function WordCloudGenerator({ pageData }) {
         <meta property="og:title" content={pageData.head.ogTitle} />
         <meta property="og:description" content={pageData.head.ogDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mktbox.co.kr/word-cloud" />
+        <meta property="og:url" content="https://www.mktbox.co.kr/word-cloud" />
+        <meta property="og:site_name" content="MKT Box" />
+        <link rel="canonical" href="https://www.mktbox.co.kr/word-cloud" />
+        <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/word-cloud" />
+        <link rel="alternate" hrefLang="en" href="https://www.mktbox.co.kr/en/word-cloud" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={pageData.head.ogTitle} />
+        <meta name="twitter:description" content={pageData.head.ogDescription} />
+        {/* JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "워드클라우드 생성기",
+            "url": "https://www.mktbox.co.kr/word-cloud",
+            "description": "텍스트 데이터를 시각적인 워드클라우드로 변환하세요. 단어 빈도 분석 제공.",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+            "featureList": ["단어 빈도 분석", "워드클라우드 시각화", "정지어 설정", "이미지 다운로드"],
+            "inLanguage": ["ko", "en"]
+          })}}
+        />
       </Head>
 
       <div className="p-4 md:p-8 max-w-4xl mx-auto">

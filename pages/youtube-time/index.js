@@ -79,6 +79,36 @@ export default function YoutubeTime({ pageData }) {
       <Head>
         <title>{pageData.head.title}</title>
         <meta name="description" content={pageData.head.description} />
+        <meta name="keywords" content="유튜브 타임스탬프, 유튜브 시간 링크, 동영상 구간 공유, 유튜브 특정 시간대, youtube timestamp, 유튜브 챗터, 동영상 타임라인" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.mktbox.co.kr/youtube-time" />
+        <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/youtube-time" />
+        <link rel="alternate" hrefLang="en" href="https://www.mktbox.co.kr/en/youtube-time" />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.mktbox.co.kr/youtube-time" />
+        <meta property="og:title" content={pageData.head.title} />
+        <meta property="og:description" content={pageData.head.description} />
+        <meta property="og:site_name" content="MKT Box" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={pageData.head.title} />
+        <meta name="twitter:description" content={pageData.head.description} />
+        {/* JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "유튜브 타임스탬프 링크 생성기",
+            "url": "https://www.mktbox.co.kr/youtube-time",
+            "description": "유튜브 동영상의 특정 시간대로 바로 이동하는 링크를 생성하세요.",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+            "inLanguage": ["ko", "en"]
+          })}}
+        />
       </Head>
 
       <div className="p-4 md:p-8 max-w-4xl mx-auto">

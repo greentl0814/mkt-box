@@ -263,6 +263,37 @@ export default function Analytics() {
       <Head>
         <title>{t('tools.analytics.head.title')}</title>
         <meta name="description" content={t('tools.analytics.head.description')} />
+        <meta name="keywords" content="ROAS 계산기, 광고 성과 분석, CPC 계산, CTR 계산, CPM 계산, CVR 계산, CPA 계산, 마케팅 지표, 광고 효율, 광고비 계산" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.mktbox.co.kr/analytics" />
+        <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/analytics" />
+        <link rel="alternate" hrefLang="en" href="https://www.mktbox.co.kr/en/analytics" />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.mktbox.co.kr/analytics" />
+        <meta property="og:title" content={t('tools.analytics.head.title')} />
+        <meta property="og:description" content={t('tools.analytics.head.description')} />
+        <meta property="og:site_name" content="MKT Box" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={t('tools.analytics.head.title')} />
+        <meta name="twitter:description" content={t('tools.analytics.head.description')} />
+        {/* JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "광고 성과 분석기",
+            "url": "https://www.mktbox.co.kr/analytics",
+            "description": "ROAS, CPC, CPM, CTR, CVR, CPA 등 광고 성과 지표를 무료로 계산하세요.",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+            "featureList": ["ROAS 계산", "CPC/CPM 계산", "CTR 분석", "CVR/CPA 계산"],
+            "inLanguage": ["ko", "en"]
+          })}}
+        />
       </Head>
 
       <div className="p-4 md:p-8 max-w-4xl mx-auto">

@@ -36,6 +36,37 @@ export default function TextCounter({ pageData }) {
       <Head>
         <title>{pageData.head.title}</title>
         <meta name="description" content={pageData.head.description} />
+        <meta name="keywords" content="글자수 세기, 문자 수 계산, 바이트 계산, 텍스트 분석, 글자수 제한, 한글 바이트, 복사 글자수, 관고 문구 작성" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.mktbox.co.kr/text" />
+        <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/text" />
+        <link rel="alternate" hrefLang="en" href="https://www.mktbox.co.kr/en/text" />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.mktbox.co.kr/text" />
+        <meta property="og:title" content={pageData.head.title} />
+        <meta property="og:description" content={pageData.head.description} />
+        <meta property="og:site_name" content="MKT Box" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={pageData.head.title} />
+        <meta name="twitter:description" content={pageData.head.description} />
+        {/* JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "텍스트 분석기 - 글자수 세기",
+            "url": "https://www.mktbox.co.kr/text",
+            "description": "텍스트의 글자 수와 바이트를 실시간으로 계산합니다. UTF-8, EUC-KR 바이트 학인 가능.",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+            "featureList": ["전체 글자수", "공백 제외 글자수", "2바이트 계산 (EUC-KR)", "3바이트 계산 (UTF-8)"],
+            "inLanguage": ["ko", "en"]
+          })}}
+        />
       </Head>
 
       <div className="p-4 md:p-8 max-w-4xl mx-auto">

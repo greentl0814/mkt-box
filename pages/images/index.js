@@ -196,6 +196,37 @@ const ImageConverter = () => {
           name="description"
           content={t('tools.imageConverter.description')}
         />
+        <meta name="keywords" content="이미지 변환, JPG를 WebP로, PNG 변환, 이미지 압축, 용량 줄이기, 이미지 화질 조절, 이미지 리사이즈, image converter, WebP converter" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.mktbox.co.kr/images" />
+        <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/images" />
+        <link rel="alternate" hrefLang="en" href="https://www.mktbox.co.kr/en/images" />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.mktbox.co.kr/images" />
+        <meta property="og:title" content={t('tools.imageConverter.title')} />
+        <meta property="og:description" content={t('tools.imageConverter.description')} />
+        <meta property="og:site_name" content="MKT Box" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={t('tools.imageConverter.title')} />
+        <meta name="twitter:description" content={t('tools.imageConverter.description')} />
+        {/* JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "이미지 변환기",
+            "url": "https://www.mktbox.co.kr/images",
+            "description": "이미지를 JPEG, PNG, WebP 형식으로 변환하고 쪩량을 줄이세요. 로여 및 내는거 기능 지원.",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+            "featureList": ["JPEG/PNG/WebP 변환", "화질 조절", "최대 너버 설정", "이미지 정보 확인"],
+            "inLanguage": ["ko", "en"]
+          })}}
+        />
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">

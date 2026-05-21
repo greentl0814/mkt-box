@@ -182,7 +182,10 @@ export default function UTMGenerator({ pageData = {} }) {
         <meta property="og:title" content={pageData.head?.ogTitle || 'UTM 생성기 - Marketing Tools'} />
         <meta property="og:description" content={pageData.head?.ogDescription || 'UTM 태그를 쉽고 빠르게 생성하세요. 여러 소스와 매체를 한 번에 처리할 수 있는 무료 UTM 생성기입니다.'} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mktbox.co.kr/utm" />
+        <meta property="og:url" content="https://www.mktbox.co.kr/utm" />
+        <link rel="canonical" href="https://www.mktbox.co.kr/utm" />
+        <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/utm" />
+        <link rel="alternate" hrefLang="en" href="https://www.mktbox.co.kr/en/utm" />
       </Head>
 
       <div className="p-4 md:p-8 max-w-4xl mx-auto">

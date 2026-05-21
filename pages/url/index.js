@@ -66,6 +66,36 @@ export default function URLShortener({ pageData }) {
       <Head>
         <title>{pageData.head.title}</title>
         <meta name="description" content={pageData.head.description} />
+        <meta name="keywords" content="URL 단축, 단축 URL, 링크 단축, 간단URL, URL 증단축기, 단축 링크 생성, 링크 관리, URL shortener" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.mktbox.co.kr/url" />
+        <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/url" />
+        <link rel="alternate" hrefLang="en" href="https://www.mktbox.co.kr/en/url" />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.mktbox.co.kr/url" />
+        <meta property="og:title" content={pageData.head.title} />
+        <meta property="og:description" content={pageData.head.description} />
+        <meta property="og:site_name" content="MKT Box" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={pageData.head.title} />
+        <meta name="twitter:description" content={pageData.head.description} />
+        {/* JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "URL 단축기",
+            "url": "https://www.mktbox.co.kr/url",
+            "description": "기닥 URL을 짧게 줄여서 관리와 공유를 편리하게 하세요.",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+            "inLanguage": ["ko", "en"]
+          })}}
+        />
       </Head>
 
       <div className="p-4 md:p-8 max-w-4xl mx-auto">

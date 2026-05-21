@@ -314,6 +314,37 @@ export default function ColorTool({ pageData }) {
       <Head>
         <title>{pageData.head.title}</title>
         <meta name="description" content={pageData.head.description} />
+        <meta name="keywords" content="콜러 팔레트, 색상 조합, 브랜드 콜러, 보색, HEX 코드, RGB 코드, 색상 코드, 컴플멘터리, 유사색, color palette" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.mktbox.co.kr/colors" />
+        <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/colors" />
+        <link rel="alternate" hrefLang="en" href="https://www.mktbox.co.kr/en/colors" />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.mktbox.co.kr/colors" />
+        <meta property="og:title" content={pageData.head.title} />
+        <meta property="og:description" content={pageData.head.description} />
+        <meta property="og:site_name" content="MKT Box" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={pageData.head.title} />
+        <meta name="twitter:description" content={pageData.head.description} />
+        {/* JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "콜러 팔레트 생성기",
+            "url": "https://www.mktbox.co.kr/colors",
+            "description": "브랜드에 맞는 완벽한 콜러 조합을 생성하세요. HEX, RGB 코드를 제공하며 보색, 유사색, 삼원색 등 다양한 컴비네이션을 지원합니다.",
+            "applicationCategory": "DesignApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+            "featureList": ["컴플맨터리 컴비네이션", "유사색 컴비네이션", "삼원색 컴비네이션", "HEX/RGB 코드 복사"],
+            "inLanguage": ["ko", "en"]
+          })}}
+        />
       </Head>
 
       <div className="p-8 max-w-4xl mx-auto">

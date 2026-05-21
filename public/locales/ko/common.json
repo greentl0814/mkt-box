@@ -168,8 +168,12 @@
       "title": "유튜브 썸네일 추출기",
       "description": "유튜브 영상의 썸네일 이미지를 다양한 해상도로 추출할 수 있습니다.",
       "head": {
-        "title": "유튜브 썸네일 추출기 - Marketing Tools",
-        "description": "유튜브 동영상의 썸네일 이미지를 다양한 해상도로 추출하세요."
+        "title": "유튜브 썸네일 추출기 - 고화질 무료 다운로드 | Marketing Tools",
+        "description": "유튜브 영상 URL만 입력하면 최대 해상도(1280×720)부터 기본 해상도까지 4가지 썸네일을 무료로 즉시 다운로드. API 불필요, 로그인 없이 사용 가능.",
+        "keywords": "유튜브 썸네일 추출, 유튜브 썸네일 다운로드, 유튜브 썸네일 저장, 유튜브 이미지 추출, 유튜브 고화질 썸네일, YouTube thumbnail download, 유튜브 썸네일 추출기 무료",
+        "ogTitle": "유튜브 썸네일 추출기 - 고화질 무료 다운로드",
+        "ogDescription": "유튜브 영상 URL만 입력하면 고화질 썸네일을 즉시 다운로드! 4가지 해상도 지원, 로그인 불필요.",
+        "ogImage": "https://www.mktbox.co.kr/og-youtube.png"
       },
       "inputs": {
         "urlLabel": "유튜브 URL",
@@ -318,8 +322,12 @@
       "title": "YouTube 타임스탬프 URL 생성기",
       "description": "유튜브 동영상의 특정 시간대로 바로 이동하는 URL을 생성합니다.",
       "head": {
-        "title": "YouTube 타임스탬프 URL 생성기 - Marketing Tools",
-        "description": "YouTube 동영상의 특정 시간대로 바로 이동하는 URL을 생성합니다."
+        "title": "유튜브 타임스탬프 URL 생성기 - 구간 링크 무료 제작 | Marketing Tools",
+        "description": "유튜브 영상의 특정 시간대로 바로 이동하는 타임스탬프 URL을 무료로 생성하세요. 시·분·초 단위 입력, 즉시 복사 가능.",
+        "keywords": "유튜브 타임스탬프, 유튜브 시간 링크, 유튜브 구간 공유, 유튜브 URL 생성기, YouTube timestamp, 유튜브 특정 시간 링크, 동영상 시간 공유",
+        "ogTitle": "유튜브 타임스탬프 URL 생성기 - 구간 링크 무료 제작",
+        "ogDescription": "유튜브 영상의 특정 시간대 링크를 무료로 생성하세요. 시·분·초 입력 후 바로 복사!",
+        "ogImage": "https://www.mktbox.co.kr/og-youtube-time.png"
       },
       "inputs": {
         "url": {
@@ -548,8 +556,12 @@
       "description": "긴 URL을 간단하게 줄여서 관리와 공유를 더 쉽게 만들어줍니다.",
       "guideLink": "URL 단축 가이드",
       "head": {
-        "title": "URL 단축기 - Marketing Tools",
-        "description": "긴 URL을 짧고 간단하게 줄여보세요."
+        "title": "URL 단축기 - 긴 링크를 짧게 무료로 | Marketing Tools",
+        "description": "긴 URL을 짧고 깔끔한 링크로 무료 변환하세요. 단 한 번 클릭으로 단축 URL 생성 후 즉시 복사 가능.",
+        "keywords": "URL 단축, URL 단축기, 링크 단축, 짧은 URL 만들기, 단축 URL, URL shortener, 링크 줄이기, 무료 URL 단축",
+        "ogTitle": "URL 단축기 - 긴 링크를 짧게 무료로",
+        "ogDescription": "긴 URL을 짧게 줄여 간편하게 공유하세요. 무료, 즉시 복사!",
+        "ogImage": "https://www.mktbox.co.kr/og-url.png"
       },
       "inputs": {
         "urlLabel": "URL 입력",
@@ -630,8 +642,12 @@
       "description": "텍스트의 글자수와 바이트를 실시간으로 체크하고 분석합니다.",
       "guideLink": "글자수 세기 가이드",
       "head": {
-        "title": "글자수 세기 - Marketing Tools",
-        "description": "텍스트의 전체 글자수, 공백 제외 글자수, 바이트 수를 실시간으로 확인하세요."
+        "title": "글자수 세기 - 바이트 계산 실시간 무료 | Marketing Tools",
+        "description": "텍스트의 전체 글자수, 공백 제외 글자수, UTF-8/EUC-KR 바이트 수를 실시간으로 무료 확인. 네이버·카카오 광고 기준 참고 포함.",
+        "keywords": "글자수 세기, 글자수 계산, 글자 수 카운터, 바이트 계산, 텍스트 분석, 문자 수 세기, 공백 제외 글자수, 광고 글자수 제한",
+        "ogTitle": "글자수 세기 - 바이트 계산 실시간 무료",
+        "ogDescription": "글자수·바이트를 실시간으로 계산하세요. 네이버·카카오·구글 광고 기준 참고 가능.",
+        "ogImage": "https://www.mktbox.co.kr/og-text.png"
       },
       "placeholder": "텍스트를 입력하세요.",
       "stats": {
@@ -717,8 +733,12 @@
       "title": "광고 성과 분석",
       "description": "ROAS, CPC, CTR 등 주요 광고 지표를 분석하고 성과를 측정합니다.",
       "head": {
-        "title": "광고 성과 분석 - Marketing Tools",
-        "description": "ROAS, CPC, CTR 등 주요 광고 지표를 분석하고 성과를 측정합니다."
+        "title": "광고 성과 분석 - ROAS·CPC·CTR 계산기 무료 | Marketing Tools",
+        "description": "ROAS, CPC, CPM, CTR, CVR, CPA 등 주요 광고 지표를 무료로 계산하세요. 데이터 입력 즉시 자동 분석.",
+        "keywords": "ROAS 계산기, CPC 계산, CTR 분석, 광고 성과 분석, CPM 계산, 전환율 계산, 광고 효율 측정, 마케팅 지표",
+        "ogTitle": "광고 성과 분석 - ROAS·CPC·CTR 계산기 무료",
+        "ogDescription": "ROAS, CPC, CTR, CVR, CPA를 무료로 계산하세요. 데이터 입력 즉시 분석!",
+        "ogImage": "https://www.mktbox.co.kr/og-analytics.png"
       },
       "tabs": {
         "roas": "ROAS 분석",
@@ -837,8 +857,12 @@
       "description": "텍스트를 분석하여 단어 빈도수를 시각화하는 워드클라우드를 생성합니다.",
       "guideLink": "워드클라우드 가이드",
       "head": {
-        "title": "워드클라우드 생성기 - Marketing Tools",
-        "description": "텍스트를 분석하여 단어 빈도수를 시각화하는 워드클라우드를 생성합니다."
+        "title": "워드클라우드 생성기 - 텍스트 키워드 시각화 무료 | Marketing Tools",
+        "description": "텍스트를 붙여넣으면 자주 등장하는 단어를 워드클라우드로 시각화합니다. 불용어 설정, PNG 이미지 저장 무료 제공.",
+        "keywords": "워드클라우드 생성기, 워드클라우드 만들기, 텍스트 시각화, 단어 빈도 분석, 키워드 추출, word cloud, 텍스트 마이닝, 불용어 설정",
+        "ogTitle": "워드클라우드 생성기 - 텍스트 키워드 시각화",
+        "ogDescription": "텍스트를 넣으면 키워드를 워드클라우드로! 불용어 설정, 이미지 저장 무료.",
+        "ogImage": "https://www.mktbox.co.kr/og-word-cloud.png"
       },
       "stopword": {
         "label": "제외할 단어 설정",
@@ -925,7 +949,12 @@
       "description": "완벽한 색상 조합을 찾고 활용하세요.",
       "guideLink": "컬러 도구 가이드",
       "head": {
-        "title": "컬러 도구 - Marketing Tools"
+        "title": "컬러 팔레트 - HEX·RGB 색상 조합 생성기 무료 | Marketing Tools",
+        "description": "메인 색상을 선택하면 보색·유사색·3색 배합 등 6가지 팔레트를 자동 생성합니다. HEX·RGB 코드 원클릭 복사 무료.",
+        "keywords": "컬러 팔레트, 색상 조합, 보색 생성, HEX 색상 코드, RGB 색상, 색상 팔레트 생성기, 브랜드 컬러, 유사색 조합",
+        "ogTitle": "컬러 팔레트 - HEX·RGB 색상 조합 생성기 무료",
+        "ogDescription": "색상 선택만으로 보색·유사색 팔레트 자동 생성! HEX·RGB 코드 즉시 복사.",
+        "ogImage": "https://www.mktbox.co.kr/og-colors.png"
       },
       "howToUse": {
         "title": "How to Use",
@@ -1034,6 +1063,14 @@
       "title": "이미지 변환 도구",
       "description": "이미지 파일 형식을 변환하고 품질을 조정합니다.",
       "detailedDescription": "이미지 파일 형식을 변환하고 품질을 조정합니다. 지원하는 형식은 JPEG, PNG, WebP입니다.",
+      "head": {
+        "title": "이미지 변환기 - JPG·PNG·WebP 무료 변환 | Marketing Tools",
+        "description": "이미지 파일을 JPG, PNG, WebP로 무료 변환하세요. 품질 조정, 해상도 리사이즈, 용량 압축을 원클릭으로.",
+        "keywords": "이미지 변환, JPG 변환, PNG 변환, WebP 변환, 이미지 형식 변환, 이미지 품질 조정, 이미지 압축, 무료 이미지 변환기",
+        "ogTitle": "이미지 변환기 - JPG·PNG·WebP 무료 변환",
+        "ogDescription": "이미지를 JPG, PNG, WebP로 무료 변환! 품질·해상도·용량 조정 가능.",
+        "ogImage": "https://www.mktbox.co.kr/og-images.png"
+      },
       "keywords": [
         "이미지 변환",
         "JPEG 변환",
@@ -1121,8 +1158,21 @@
           }
         }
       }
+    },
+    "nsearch": {
+      "title": "네이버 검색 키워드 인사이트",
+      "description": "네이버 검색 데이터를 기반으로 주요 연관어를 분석하여 마케팅 인사이트를 발견하세요.",
+      "head": {
+        "title": "네이버 검색 분석 - 키워드 인사이트 워드클라우드 무료 | Marketing Tools",
+        "description": "네이버 블로그·카페·뉴스 검색 결과를 분석하여 자주 등장하는 키워드를 워드클라우드로 시각화합니다. 마케팅 인사이트 발견에 최적.",
+        "keywords": "네이버 검색 분석, 네이버 키워드 분석, 네이버 트렌드 분석, 키워드 인사이트, 네이버 블로그 분석, 검색 연관어, 마케팅 키워드, 워드클라우드 분석",
+        "ogTitle": "네이버 검색 분석 - 키워드 인사이트 워드클라우드 무료",
+        "ogDescription": "네이버 검색 결과에서 핵심 키워드를 워드클라우드로! 블로그·카페·뉴스 분석 무료.",
+        "ogImage": "https://www.mktbox.co.kr/og-nsearch.png"
+      }
     }
   },
+
   "qualityExplanation": {
     "heading": "품질 설정에 대한 자세한 설명",
     "description": "품질 설정은 출력 형식이 JPEG 또는 WebP(손실 압축 형식)인 경우에만 적용됩니다. PNG는 무손실 압축 형식이므로 품질 설정이 적용되지 않습니다. 값이 낮을수록 파일 크기는 작아지지만 이미지 품질이 저하될 수 있습니다.",

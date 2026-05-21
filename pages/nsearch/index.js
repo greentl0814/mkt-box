@@ -99,9 +99,39 @@ export default function SearchTool() {
   return (
     <>
       <Head>
-        <title>네이버 키워드 인사이트</title>
-        <meta name="description" content="네이버 검색 API를 활용한 마케팅 키워드 분석 툴" />
+        <title>네이버 검색 키워드 인사이트 | MKT Box</title>
+        <meta name="description" content="네이버 블로그, 카페, 뉴스 검색 결과를 분석하여 주요 키워드를 워드 클라우드로 시각화하세요. 마케팅 인사이트를 발견하세요." />
+        <meta name="keywords" content="네이버 키워드 분석, 네이버 검색 분석, 키워드 트렌드, 연관 키워드, 블로그 키워드, 워드 클라우드, 마케팅 인사이트, 콘텐츠 전략" />
+        <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://www.mktbox.co.kr/nsearch" />
+        <link rel="alternate" hrefLang="ko" href="https://www.mktbox.co.kr/nsearch" />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.mktbox.co.kr/nsearch" />
+        <meta property="og:title" content="네이버 검색 키워드 인사이트 | MKT Box" />
+        <meta property="og:description" content="네이버 검색 데이터를 기반으로 콘텐츠 트렌드와 주요 키워드를 분석하세요." />
+        <meta property="og:site_name" content="MKT Box" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="네이버 검색 키워드 인사이트 | MKT Box" />
+        <meta name="twitter:description" content="네이버 검색 데이터를 기반으로 콘텐츠 트렌드와 주요 키워드를 분석하세요." />
+        {/* JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "네이버 검색 키워드 인사이트",
+            "url": "https://www.mktbox.co.kr/nsearch",
+            "description": "네이버 검색 API를 활용해 블로그, 카페, 뉴스의 주요 키워드를 워드 클라우드로 시각화합니다.",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+            "featureList": ["네이버 블로그 검색", "네이버 카페 검색", "네이버 뉴스 검색", "워드 클라우드 시각화"],
+            "inLanguage": ["ko"]
+          })}}
+        />
       </Head>
 
       <div className="p-4 md:p-8 max-w-4xl mx-auto">

@@ -76,6 +76,33 @@ export default function YoutubeThumbnail({ pageData }) {
       <Head>
         <title>{pageData.head.title}</title>
         <meta name="description" content={pageData.head.description} />
+        <meta name="keywords" content={pageData.head.keywords} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.mktbox.co.kr/youtube" />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.mktbox.co.kr/youtube" />
+        <meta property="og:title" content={pageData.head.ogTitle} />
+        <meta property="og:description" content={pageData.head.ogDescription} />
+        <meta property="og:image" content={pageData.head.ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageData.head.ogTitle} />
+        <meta name="twitter:description" content={pageData.head.ogDescription} />
+        <meta name="twitter:image" content={pageData.head.ogImage} />
+        {/* JSON-LD */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": pageData.head.ogTitle,
+          "url": "https://www.mktbox.co.kr/youtube",
+          "description": pageData.head.ogDescription,
+          "applicationCategory": "UtilityApplication",
+          "operatingSystem": "Web",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+        })}} />
       </Head>
 
       <div className="p-4 md:p-8 max-w-4xl mx-auto">
