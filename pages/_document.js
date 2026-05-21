@@ -1,6 +1,9 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
-export default function Document() {
+export default function Document(props) {
+  // 현재 로캘 안전하게 가져오기 (옵셔널 체이닝으로 런타임 오류 방지)
+  const locale = props?.__NEXT_DATA__?.locale || 'ko'
+
   // 도메인 설정 중앙화
   const DOMAIN = 'https://www.mktbox.co.kr'
 
@@ -50,6 +53,16 @@ export default function Document() {
       name: "컬러 팔레트",
       description: "브랜드에 맞는 완벽한 컬러 조합 생성",
       path: "/colors"
+    },
+    {
+      name: "이미지 변환기",
+      description: "이미지 파일 형식을 JPG, PNG, WebP로 변환하고 화질 및 크기 조절",
+      path: "/images"
+    },
+    {
+      name: "네이버 검색 분석",
+      description: "네이버 검색 데이터를 기반으로 키워드 트렌드와 인사이트 분석",
+      path: "/nsearch"
     }
   ]
 
@@ -57,7 +70,7 @@ export default function Document() {
   const featureList = tools.map(tool => `${tool.name} - ${tool.description}`)
 
   return (
-    <Html lang="ko">
+    <Html lang={locale}>
       <Head>
         {/* 기본 메타태그 */}
         <meta charSet="utf-8" />
