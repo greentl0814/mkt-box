@@ -9,6 +9,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        // Vercel 도메인을 mktbox.co.kr로 강제 이동
         source: '/:path*',
         has: [
           {
@@ -20,9 +21,15 @@ const nextConfig = {
         statusCode: 301
       },
       {
-        // 알림창이나 꼬리표 없이 pikk의 기능 페이지로 직행
+        // 1. 유튜브 댓글 다운로드 이전
         source: '/youtube-comments',
         destination: 'https://pikk.co.kr/tools/youtube',
+        permanent: true,
+      },
+      {
+        // 2. 유튜브 썸네일 다운로드 이전 (신규 추가)
+        source: '/youtube',
+        destination: 'https://pikk.co.kr/tools/thumbnail',
         permanent: true,
       },
     ];
