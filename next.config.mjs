@@ -32,6 +32,12 @@ const nextConfig = {
         destination: 'https://pikk.co.kr/tools/thumbnail',
         permanent: true,
       },
+      {
+        // 3. utm 생성이전
+        source: '/utm',
+        destination: 'https://pikk.co.kr/tools/utm',
+        permanent: true,
+      },
     ];
   },
 };
