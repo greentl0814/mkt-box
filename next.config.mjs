@@ -38,6 +38,12 @@ const nextConfig = {
         destination: 'https://pikk.co.kr/tools/utm',
         permanent: true,
       },
+      {
+        // 4. 글자수 세기 이전
+        source: '/text',
+        destination: 'https://pikk.co.kr/tools/wordcount',
+        permanent: true,
+      },
     ];
   },
 };
